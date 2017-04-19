@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crime And Criminal Justice Statistics for EU Member Countries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/font_awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/bootstrap/css/bootstrap-theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/css/keen-dashboards.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/css/dc.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='libs/css/introjs.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="application">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Crime and Criminal Justice Statistics for EU Member States</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    {% block links %}{% endblock %}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/dc.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/graph.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

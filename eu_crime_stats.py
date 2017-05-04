@@ -13,6 +13,7 @@ MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DBS_NAME = 'projectModule2'
 COLLECTION_NAME = 'eu_crime_stats'
+#COLLECTION_NAME = 'irish_crime_stats'
 
 
 @app.route('/')
@@ -33,10 +34,11 @@ def charts_data():
     #   CONSTANT that defines the record fields that we wish to retrieve
     FIELDS = {
         '_id': False,
-        'category':True,
+        'type': True,
         'eu_member_state': True,
         'year': True,
-        'amount': True
+        'amount': True,
+        'category': True,
     }
 
     #   Open a connection to MongoDB
@@ -46,7 +48,7 @@ def charts_data():
         collection = conn[DBS_NAME][COLLECTION_NAME]
         #   Retrieve a result set that includes the properties
         #   defined in FIELDS
-        eu_crime_stats = collection.find(projection=FIELDS,limit=1000)
+        eu_crime_stats = collection.find(projection=FIELDS,limit=50000)
         #   convert the data to a list in a JSON object
         #   and RETURN the JSONS
         return json.dumps(list(eu_crime_stats))

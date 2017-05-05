@@ -18,20 +18,14 @@ queue()
     .await(buildGraphs);
 
 function buildGraphs(error,jsonData){
-    //console.log('jsonDATA');
-    //console.log(jsonData);
-
     var euCrimeStats = jsonData
-
     var irishCrimeStats = [];
-
     euCrimeStats.forEach(function(d){
         if(d.eu_member_state == "Ireland"){
-            console.log('FROM IRELAND');
-            console.log(d);
-            irishCrimeStats.add(d);
+           // console.log('FROM IRELAND');
+            //console.log(d);
+            irishCrimeStats.push(d);
         }
-
     });
 
     /*
@@ -50,32 +44,24 @@ function buildGraphs(error,jsonData){
     //var indexedData = crossfilter(jsonData);
     var indexedData = crossfilter(irishCrimeStats);
 
-    //print_filter(indexedData);
-
-    //console.log('data size is '+indexedData.size());
-    //console.log('data groupAll value() is '+indexedData.groupAll().value());
-
-    //  display
-  //console.log('data groupAll reduceSum() is '+indexedData.reduceSum().value());
-
     //#######################################################
     //  2 - CREATE DIMENSIONS FOR FILTERING THE DATA
     //  the X-AXIS
-
     var crimeTypesDim = indexedData.dimension(function(d){
         if(d.year=="2014"){
             if(d.category=="crime") {
                 return d.type;
             }
         }
-
     });
-    console.log('crimeTypesDim:');
-    print_filter(crimeTypesDim);
+    //console.log('crimeTypesDim:');
+    //print_filter(crimeTypesDim);
 
     var justiceSystemTypesDim = indexedData.dimension(function(d){
-        if(d.category=="justice_system") {
-            return d.type;
+        if(d.year=="2014"){
+            if(d.category=="justice_system") {
+                return d.type;
+            }
         }
     });
 
@@ -96,10 +82,15 @@ function buildGraphs(error,jsonData){
     //      -   Calculates the METRICS
     //  The Y-AXIS
 
+    console.log('groupAll()');
+    //console.log(crimeTypesDim.groupAll().reduceSum(function(d){return d.amount;}).value());
+    //console.log(indexedData.groupAll().reduceSum(function(d){return d.amount;}).value());
+
     //  FOR PIE CHART - BY CATEGORY
     var crimeTypesGroup = crimeTypesDim.group();
     console.log('crimeTypesGroup: ');
-    print_filter(crimeTypesGroup);
+    print_filter(crimeTypesGroup.reduceSum(function(d){return d.amount;}));
+
 
     //  FOR TABLE AND LINE CHART
     var justiceSysTypesGroup = justiceSystemTypesDim.group();

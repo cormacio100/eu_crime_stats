@@ -87,10 +87,20 @@ function buildGraphs(error,jsonData){
     //console.log(indexedData.groupAll().reduceSum(function(d){return d.amount;}).value());
 
     //  FOR PIE CHART - BY CATEGORY
+console.log(' print filter for crimeTypesDim: ');
+   // print_filter(crimeTypesDim);
+
     var crimeTypesGroup = crimeTypesDim.group();
     console.log('crimeTypesGroup: ');
-    print_filter(crimeTypesGroup.reduceSum(function(d){return d.amount;}));
+    print_filter(crimeTypesGroup.reduceSum(function(d){
+        if(d.category=="crime"){
+            console.log(d);
+        }
 
+        if(d.year=="2014"){
+            return d.amount;
+        }
+    }));
 
     //  FOR TABLE AND LINE CHART
     var justiceSysTypesGroup = justiceSystemTypesDim.group();

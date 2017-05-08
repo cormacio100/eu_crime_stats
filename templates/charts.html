@@ -8,6 +8,38 @@
     </div>
     <div class="container-fluid">
         <div class="row">
+
+            <div class="col-sm-3">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Select Year
+                    </div>
+                    <div class="chart-stage">
+                        <div id="menu-select"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-2">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                        Total Number of Crimes
+                    </div>
+                    <div class="chart-stage" style="background: #33CC99;
+                        position: relative;
+                        font-size: 29px;
+                        color: white;
+                        vertical-align: middle;
+                        text-align: center;
+                        padding-top: 12px;
+                        padding-bottom: 0px;">
+                        <div id="total-crimes-nd" data-step="5" data-intro="Total crimes for the year" style="font-weight: normal" data-position="right"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">&nbsp;</div>
+        </div>
+        <div class="row">
             <div class="col-sm-5" id="crime_types"></div>
             <div class="col-sm-2">&nbsp;</div>
             <div class="col-sm-5">Country</div>
@@ -17,10 +49,10 @@
             <div class="col-sm-2">&nbsp;</div>
             <div class="col-sm-5">Chart 2</div>
         </div>
-        <div class="row">
-            <div class="col-sm-2">&nbsp;</div>
-            <div class="col-sm-8">Chart 3</div>
-            <div class="col-sm-2">&nbsp;</div>
-        </div>
+
     </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static',filename='js/custom.js') }}"></script>
 {% endblock %}

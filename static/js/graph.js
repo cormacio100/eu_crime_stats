@@ -2,14 +2,9 @@
  * Created by Cormac Liston on 11/04/2017.
  */
 
-
-
 function print_filter(filter) {
     var f=eval(filter);
-    if (typeof(f.length) != "undefined") {}else{}
-    if (typeof(f.top) != "undefined") {f=f.top(Infinity);}else{}
-    if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);}else{}
-    console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
+    console.log(JSON.stringify(f));
 }
 
 //  RETRIEVE DATA FROM API
@@ -47,83 +42,81 @@ function buildGraphs(error,jsonData){
     //#######################################################
     //  2 - CREATE DIMENSIONS FOR FILTERING THE DATA
     //  the X-AXIS
-    var crimeTypesDim = indexedData.dimension(function(d){
-        if(d.year=="2014"){
-            if(d.category=="crime") {
-                return d.type;
-            }
-        }
-    });
-    //console.log('crimeTypesDim:');
-    //print_filter(crimeTypesDim);
 
-    var justiceSystemTypesDim = indexedData.dimension(function(d){
-        if(d.year=="2014"){
-            if(d.category=="justice_system") {
-                return d.type;
-            }
-        }
-    });
-
-    /*var eu_member_state_dim = indexedData.dimension(function(d){
-        return d.eu_member_state;
-    });
-
-    var year_dim = indexedData.dimension(function(d){
+    var yearDim = indexedData.dimension(function(d){
        return d.year;
     });
 
-    var amount_dim = indexedData.dimension(function(d){
-       return d.amount;
-    });*/
+
+
+    var crimeTypesDim = indexedData.dimension(function(d){
+        if(d.category=="crime") {
+            return d.type;
+        }
+    });
+
+    var justiceSystemTypesDim = indexedData.dimension(function(d){
+        if(d.category=="justice_system") {
+            return d.type;
+        }
+    });
 
     //#######################################################
     //  3 - Group the DATA depending on the DIMENSION
     //      -   Calculates the METRICS
     //  The Y-AXIS
+    var yearGroup = yearDim.group();
 
-    console.log('groupAll()');
-    //console.log(crimeTypesDim.groupAll().reduceSum(function(d){return d.amount;}).value());
-    //console.log(indexedData.groupAll().reduceSum(function(d){return d.amount;}).value());
+    console.log('Year Group');
+
 
     //  FOR PIE CHART - BY CATEGORY
-console.log(' print filter for crimeTypesDim: ');
-   // print_filter(crimeTypesDim);
-
-    var crimeTypesGroup = crimeTypesDim.group();
-    console.log('crimeTypesGroup: ');
-    print_filter(crimeTypesGroup.reduceSum(function(d){
-        if(d.category=="crime"){
-            console.log(d);
-        }
-
-        if(d.year=="2014"){
-            return d.amount;
-        }
-    }));
+    var crimeTypesGroup = crimeTypesDim.group().reduceSum(function(d){
+       if(d.category=="crime"){
+       //    if(d.year="2014"){
+               console.log(d);
+               return d.amount;
+         //  }
+       }
+    });
+    console.log(' print filter for crimeTypesDim: ');
+    print_filter(crimeTypesGroup);
 
     //  FOR TABLE AND LINE CHART
     var justiceSysTypesGroup = justiceSystemTypesDim.group();
     console.log('justiceSysTypesGroup GROUP: ');
     print_filter(justiceSysTypesGroup);
-    /*
-    var totCrimeByCountry = eu_member_state_dim.group().reduceSum(function(d){
-       return d.amount;
-    });
-    var numCrimeByYear = eu_member_state_dim.group().reduceSum(function(d){
-       return d.year;
-    // });*/
-    //console.log('number of categories:'+numCategories.size());
+
+    //  #######################################################
+    //  CALCULATE TOTALS
+    //  #######################################################
+    var totalCrimes = indexedData.groupAll().reduceSum(function(d){return d.amount;}).value();
+    console.log('the total amount of crimes for europe - data groupAll reduceSum() value() is '+totalCrimes);
 
     //  #######################################################
     //  DEFINE CHART TYPES AND BIND THEM TO DIVS IN INDEX.HTML
     //  #######################################################
     var crimeTypesPieChart = dc.pieChart('#crime_types');
     var justiceSystemTypesPieChart = dc.pieChart('#justice_system_types');
+    //var totalCrimesND = dc.numberDisplay('#total-crimes-nd');     //  TOTAL NUMBER OF CRIMES
 
     //  #######################################################
     //  BUILD THE CHARTS BY ASSIGNING PROPERTIES AND VALUES
     //  #######################################################
+    //  build the SELECT MENU
+    selectField = dc.selectMenu('#menu-select')
+                    .dimension(yearDim)
+                    .group(yearGroup);
+
+    //  FORMAT Numbers to be displayed in numberDisplay
+    /*totalCrimesND
+        .formatNumber(d3.format("d"))
+        .valueAccessor(function(d){
+            return d;
+        })
+        .group(totalCrimes)
+        .formatNumber(d3.format(".3s"));*/
+
     crimeTypesPieChart
         .width(300)
         .radius(90)
@@ -139,10 +132,6 @@ console.log(' print filter for crimeTypesDim: ');
         .transitionDuration(1500)
         .dimension(justiceSystemTypesDim)
         .group(justiceSysTypesGroup);
-
-      var total_crimes_europe = indexedData.groupAll().reduceSum(function(d){return d.amount;}).value();
-    console.log('the total amount of crimes for europe - data groupAll reduceSum() value() is '+total_crimes_europe);
-
 
     //  #######################################################
     //  RENDER THE CHARTS

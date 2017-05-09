@@ -1,0 +1,7 @@
+{ "_id" : { "$oid" : "58f7f5d30008d687837e1246" }, "year" : 2008, "amount" : 903, "type" : "sexual_assault", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e1247" }, "year" : 2009, "amount" : 1014, "type" : "sexual_assault", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e1248" }, "year" : 2010, "amount" : 1711, "type" : "sexual_assault", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e1249" }, "year" : 2011, "amount" : 1376, "type" : "sexual_assault", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e124a" }, "year" : 2012, "amount" : 1459, "type" : "sexual_assault", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e124b" }, "year" : 2013, "amount" : 1433, "type" : "sexual_assault", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e124c" }, "year" : 2014, "amount" : 1436, "type" : "sexual_assault", "category" : "crime", "eu_member_state" : "Ireland" }

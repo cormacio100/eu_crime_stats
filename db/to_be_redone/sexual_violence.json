@@ -1,0 +1,22 @@
+{ "_id" : { "$oid" : "58f7f5d30008d687837e1008" }, "year" : 2008, "amount" : 1251, "type" : "sexual_violence", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e1009" }, "year" : 2009, "amount" : 1343, "type" : "sexual_violence", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e100a" }, "year" : 2010, "amount" : 2153, "type" : "sexual_violence", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e100b" }, "year" : 2011, "amount" : 1827, "type" : "sexual_violence", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e100c" }, "year" : 2012, "amount" : 1976, "type" : "sexual_violence", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e100d" }, "year" : 2013, "amount" : 1886, "type" : "sexual_violence", "category" : "crime", "eu_member_state" : "Ireland" }
+{ "_id" : { "$oid" : "58f7f5d30008d687837e100e" }, "year" : 2014, "amount" : 1913, "type" : "sexual_violence", "category" : "crime", "eu_member_state" : "Ireland" }
+
+
+db.eu_crime_stats.remove({$and:[{eu_member_state:'Ireland'},{type:'sexual_violence'}]})
+
+
+insert MULTIPLE documents into a collection
+		-	db.eu_crime_stats.insertMany([
+			{year:2008,amount:1251,type:'sexual_violence',category:'crime',eu_member_state: "Ireland"},
+			{year:2009,amount:1343,type:'sexual_violence',category:'crime',eu_member_state: "Ireland"},
+			{year:2010,amount:2153,type:'sexual_violence',category:'crime',eu_member_state: "Ireland"},
+			{year:2011,amount:1827,type:'sexual_violence',category:'crime',eu_member_state: "Ireland"},
+			{year:2012,amount:1976,type:'sexual_violence',category:'crime',eu_member_state: "Ireland"},
+			{year:2013,amount:1886,type:'sexual_violence',category:'crime',eu_member_state: "Ireland"},
+			{year:2014,amount:1913,type:'sexual_violence',category:'crime',eu_member_state: "Ireland"},
+			])

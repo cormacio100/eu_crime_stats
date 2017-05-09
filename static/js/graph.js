@@ -20,8 +20,12 @@ function buildGraphs(error,jsonData){
     var euCrimeStats = jsonData
     var irishCrimeStats = [];
     euCrimeStats.forEach(function(d){
-        if(d.eu_member_state == "Ireland"){
-            irishCrimeStats.push(d);
+        if(d.eu_member_state == "Ireland") {
+            //if (d.type !== "theft") {
+                //if (d.type !== "sexual_violence") {
+                    irishCrimeStats.push(d);
+                //}
+            //}
         }
     });
 
@@ -92,7 +96,7 @@ function buildGraphs(error,jsonData){
                return d.amount;
        }
     });
-    
+
     //  FOR TABLE AND LINE CHART
     var justiceSysTypesGroup = justiceSystemTypesDim.group();
 

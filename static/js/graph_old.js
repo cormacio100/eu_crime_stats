@@ -9,9 +9,9 @@ function print_filter(filter) {
     if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);}else{}
     console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
-//##################################################
+
+
 //  RETRIEVE DATA FROM API
-//##################################################
 queue()
     .defer(d3.json,'/charts/data')
     .await(buildGraphs);
@@ -21,7 +21,11 @@ function buildGraphs(error,jsonData){
     var irishCrimeStats = [];
     euCrimeStats.forEach(function(d){
         if(d.eu_member_state == "Ireland") {
-            irishCrimeStats.push(d);
+            //if (d.type !== "theft") {
+                //if (d.type !== "sexual_violence") {
+                    irishCrimeStats.push(d);
+                //}
+            //}
         }
     });
 
@@ -39,29 +43,56 @@ function buildGraphs(error,jsonData){
     //#######################################################
     //  1 - INDEX THE DATA
     //#######################################################
+    //var indexedData = crossfilter(jsonData);
     var indexedData = crossfilter(irishCrimeStats);
-    var indexedEuroData = crossfilter(euCrimeStats);
+
+
+    //#######################################################
+    //  EXPERIMENT
+    //#######################################################
+
+    var typeDimension = indexedData.dimension(function(d){return d.type;});
+    console.log(typeDimension.top(Infinity)[0].type+'+'+typeDimension.top(Infinity)[0].amount);
+
+
+
+
+
+
+
+
+
+
+
+
     //#######################################################
     //  2 - CREATE DIMENSIONS FOR ACCESSING THE DATA
-    //#######################################################
-    // DIMENSION ON YEAR
+    //  SELECT MENU
     var yearDim = indexedData.dimension(function(d){
        return d.year;
     });
-    //  DIMENSION ON TYPE FOR CRIME ONLY
-    var crimeCatDim = indexedData.dimension(function(d){
-        if(d.category=='crime') {
+    //  HORIZONTAL BAR CHART
+    var typeOfCrimesDim = indexedData.dimension(function(d){
+        if(d.category=="crime") {
             return d.type;
         }
     });
-    //  DIMENSION ON TYPE FOR JUSTICE_SYSTEM ONLY
-    var justiceCatDim = indexedData.dimension(function(d){
-        if(d.category=='justice_system') {
-            return d.type;
-        }
-    });
-    var typeDim = indexedData.dimension(function(d){
+
+    var gardaNumbersDim = indexedData.dimension(function(d){
         return d.type;
+    });
+
+    //  PIE CHART
+    var crimeTypesDim = indexedData.dimension(function(d){
+        if(d.category=="crime") {
+            return d.type;
+        }
+    });
+    //  PIE CHART
+    var justiceSystemTypesDim = indexedData.dimension(function(d){
+        if(d.category=="justice_system") {
+            return d.type;
+        }
     });
 
     //#######################################################
@@ -69,25 +100,23 @@ function buildGraphs(error,jsonData){
     //      -   Calculates the METRICS
     //  The Y-AXIS
     //  GROUP
-    //#######################################################
     var yearGroup = yearDim.group();
-    var typeOfCrimesGroup = crimeCatDim.group().reduceSum(function(d){
-        return d.amount;    //  return the amount value for each type of crime
-    });
+    //  GROUP INTO TYPES OF CRIME
+    var typeOfCrimesGroup = typeOfCrimesDim.group();
+    var gardaNumbersGroup = gardaNumbersDim.group();
 
-    console.log('groupAll:'+justiceCatDim.groupAll().reduceCount().value());
-
-    var gardaNumbersGroup = justiceCatDim.group().reduceSum(function(d) {
-            return d.amount;
-            // NEED TO FILTER ON THE DIAGRAM
-        });
-
-    console.log('gardaNumbersGroup'+gardaNumbersGroup.size());
+    console.log('gardaNumbersGroup');
     print_filter(gardaNumbersGroup);
 
-    //console.log('male_police_officers');
-   // print_filter(justiceCatDim.filterExact('male_police_officers'));
+    //  FOR PIE CHART - BY CATEGORY
+    var crimeTypesGroup = crimeTypesDim.group().reduceSum(function(d){
+       if(d.category=="crime"){
+           return d.amount;
+       }
+    });
 
+    //  FOR TABLE AND LINE CHART
+    var justiceSysTypesGroup = justiceSystemTypesDim.group();
 
     //  #######################################################
     //  CALCULATE TOTALS
@@ -107,10 +136,9 @@ function buildGraphs(error,jsonData){
     var gardaNumbersPieChart = dc.pieChart('#garda_numbers');
     //var totalCrimesND = dc.numberDisplay('#total-crimes-nd');
     var crimeTypesPieChart = dc.pieChart('#crime_types');
-    //var justiceSystemTypesPieChart = dc.rowChart('#justice_system_types');
+    var justiceSystemTypesPieChart = dc.rowChart('#justice_system_types');
 
-console.log('filter');
-//print_filter(typeDim.filterExact('male_police_officers'));
+
 
     //  #######################################################
     //  BUILD THE CHARTS BY ASSIGNING PROPERTIES AND VALUES
@@ -129,12 +157,14 @@ console.log('filter');
 
     //  ROW CHART
     typeOfCrimeRowChart
-        .width(800)
-        .height(200)
+        .width(600)
+        .height(400)
         .x(d3.scale.linear().domain([0,50]))
         .elasticX(true)
-        .dimension(crimeCatDim)
-        .group(typeOfCrimesGroup)
+        .dimension(typeOfCrimesDim)
+        .group(typeOfCrimesGroup.reduceSum(function(d){
+            return d.amount;    //  return the amount value for each type of crime
+        }))
         .xAxis().ticks(10);
 
     //  FORMAT Numbers to be displayed in numberDisplay
@@ -153,8 +183,8 @@ console.log('filter');
         .innerRadius(40)
         .externalLabels(30)
         .transitionDuration(1500)
-        .dimension(crimeCatDim)
-        .group(typeOfCrimesGroup)
+        .dimension(crimeTypesDim)
+        .group(crimeTypesGroup)
         .legend();
 
     gardaNumbersPieChart
@@ -164,15 +194,15 @@ console.log('filter');
         .innerRadius(40)
         .externalLabels(30)
         .transitionDuration(1500)
-        .dimension(typeDim.filterFunction(function(d){
-            if(d.indexOf('male_police_officers')!=-1 ){
-                return d;
-            }
-            if(d.indexOf('female_police_officers')!=-1 ){
-                return d;
-            }
-        }))
-        .group(gardaNumbersGroup)
+        .dimension(gardaNumbersDim)
+        .group(gardaNumbersGroup.reduceSum(function(d){
+            var gardaArray = ['male_police_officers','female_police_officers']
+            $.each(gardaArray,function(index,value){
+               if(d.type==value) {
+                   console.log(d);
+                   return d.amount;
+               }
+            })}))
         .legend();
 
     /*justiceSystemTypesPieChart
@@ -181,7 +211,7 @@ console.log('filter');
         .innerRadius(40)
         .transitionDuration(1500)
         .dimension(justiceSystemTypesDim)
-        .group(justiceSysTypesGroup);
+        .group(justiceSysTypesGroup);*/
 
     justiceSystemTypesPieChart
         .width(400)
@@ -192,7 +222,7 @@ console.log('filter');
         .group(justiceSysTypesGroup.reduceSum(function(d){
             return d.amount;    //  return the amount value for each type of crime
         }))
-        .xAxis().ticks(10);*/
+        .xAxis().ticks(10);
 
 
 

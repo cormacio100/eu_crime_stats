@@ -75,8 +75,8 @@ function buildGraphs(error,jsonData){
         return d.amount;    //  return the amount value for each type of crime
     });
 
-    console.log('groupAll:'+justiceCatDim.groupAll().reduceCount().value());
-
+    console.log('typeOfCrimesGroup'+typeOfCrimesGroup.size());
+    print_filter(typeOfCrimesGroup);
     var gardaNumbersGroup = justiceCatDim.group().reduceSum(function(d) {
             return d.amount;
             // NEED TO FILTER ON THE DIAGRAM
@@ -164,14 +164,14 @@ console.log('filter');
         .innerRadius(40)
         .externalLabels(30)
         .transitionDuration(1500)
-        .dimension(typeDim.filterFunction(function(d){
+        .dimension(typeDim)/*.filterFunction(function(d){
             if(d.indexOf('male_police_officers')!=-1 ){
                 return d;
             }
             if(d.indexOf('female_police_officers')!=-1 ){
                 return d;
             }
-        }))
+        }))*/
         .group(gardaNumbersGroup)
         .legend();
 

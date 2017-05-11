@@ -8,7 +8,7 @@
     </div>-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         Select Year
@@ -18,8 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2">&nbsp;</div>
-            <div class="col-sm-2">
+            <div class="col-sm-4">
                 <div class="chart-wrapper">
                     <div class="chart-title">
                         Total Number of Crimes
@@ -36,24 +35,39 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5">&nbsp;</div>
+            <div class="col-sm-4">
+                <div class="chart-wrapper">
+                    <div class="chart-title">
+                            Total Number of Police
+                    </div>
+                    <div class="chart-stage" style="background: #33CC99;
+                        position: relative;
+                        font-size: 29px;
+                        color: white;
+                        vertical-align: middle;
+                        text-align: center;
+                        padding-top: 12px;
+                        padding-bottom: 0px;">
+                        <div id="total-num-police-nd" data-step="5" data-intro="Total crimes for the year" style="font-weight: normal" data-position="right"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-
+        <div class="row" id="row1">
             <div class="col-sm-8" id="crime-type-row-chart"></div>
-            <div class="col-sm-4" ></div>
+            <div class="col-sm-4" id="garda_numbers"></div>
         </div>
-        <div class="row">
+        <div class="row" id="row2">
             <div class="col-sm-5" ></div>
             <div class="col-sm-2" ></div>
             <div class="col-sm-5" id="crime_types"></div>
         </div>
-        <div class="row">
-            <div class="col-sm-6" id="garda_numbers"></div>
+        <div class="row" id="row2">
+            <div class="col-sm-6" ></div>
             <div class="col-sm-5"></div>
             <div class="col-sm-2" ></div>
         </div>
-        <div class="row">
+        <div class="row" id="row3">
             <div class="col-sm-5" id="justice_system_types"></div>
             <div class="col-sm-2">&nbsp;</div>
             <div class="col-sm-5"></div>

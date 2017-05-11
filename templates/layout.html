@@ -15,7 +15,7 @@
 <body class="application">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-        <div class="container">
+        <!--<div class="container">-->
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -33,14 +33,14 @@
                     {% block links %}{% endblock %}
                 </ul>
             </div><!-- /.navbar-collapse -->
-        </div>
+        <!--</div>-->
       </div><!-- /.container-fluid -->
     </nav>
     <main>
-        <div class="container">
+        <!--<div class="container">-->
             {% block content %}
             {% endblock %}
-        </div>
+        <!--</div>-->
     </main>
     <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>

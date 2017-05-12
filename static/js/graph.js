@@ -39,7 +39,14 @@ function buildGraphs(error,jsonData) {
     var crimeCatDim = indexedData.dimension(function(d){if(d.category=='crime'){return d.type;}});    //  DIMENSION ON TYPE FOR CRIME ONLY
     var justiceCatDim = indexedData.dimension(function(d){if(d.category=='justice_system'){return d.type;}});    //  DIMENSION ON TYPE FOR JUSTICE_SYSTEM ONLY
     var amountCrimeDim = indexedData.dimension(function(d){if(d.category=='crime'){return d.amount}});
-//#######################################################
+
+    var minCrime = amountCrimeDim.bottom(1)[0].amount;
+    var maxCrime = amountCrimeDim.top(1)[0].amount;
+
+    console.log('minCrime: '+minCrime);
+    console.log('maxCrime: '+maxCrime);
+
+    //#######################################################
 //  3 - GROUP THE DATA - AND CALCULATE TOTALS
 //#######################################################
     console.log('groupData2');
@@ -149,11 +156,16 @@ function buildGraphs(error,jsonData) {
                     return value;
                 });
 
+    console.log('typeOfCrimesGroup.size():'+typeOfCrimesGroup.size());
+
+
+
     //  CRIME TYPE ROW CHART
     typeOfCrimeRowChart
         .width(800)
         .height(400)
-        .x(d3.scale.linear().domain([0,50]))
+        .x(d3.scale.linear().domain(d3.range(minCrime,maxCrime)))
+           // .domain(d3.range(0,typeOfCrimesGroup.size())))
         .elasticX(true)
         .dimension(crimeCatDim)
         .group(typeOfCrimesGroup)

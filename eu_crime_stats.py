@@ -23,7 +23,7 @@ def home():
 
 @app.route('/charts')
 def charts():
-    return render_template('charts.html')
+    return render_template('charts_new_data.html')
 
 
 @app.route('/charts/data')

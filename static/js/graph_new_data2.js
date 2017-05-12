@@ -86,6 +86,7 @@ var scotlandAssault = countryDim.group().reduceSum(function(d){
 var minDate = dateDim.bottom(1)[0].date;
 var maxDate = dateDim.top(1)[0].date;
 
+
 crimeLineChart
     .width(800)
     .height(300)

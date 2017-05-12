@@ -12,6 +12,7 @@ function print_filter(filter){
 }
 var yearPieChart = dc.pieChart('#chart-ring-year');
 var crimeLineChart = dc.lineChart('#chart-line-annual-crimes');
+var crimeLineChart2 = dc.lineChart('#chart-line-annual-crimes2');
 var dataTable = dc.dataTable('#dc-data-table');
 
 var data = [
@@ -23,6 +24,8 @@ var data = [
     {year:2013,eu_member_state:'Ireland',assault:12644,burglary:26218,drug_offences:4191,intentional_homicide:83,kidnapping:124,rape:453,robbery:2806,sexual_assault:1433,sexual_violence:1886,theft:31369,police_officers:13093,male_police_officers:10305,female_police_officers:3456,prison_personell:3432,male_prison_personell:2912,female_prison_personell:520,total_prison_population:4088,adult_male_prisoners:3188,adult_female_prisoners:832,juvenile_prison_population:68,native_prisoners:3654,foreign_prisoners:434},
     {year:2014,eu_member_state:'Ireland',assault:13206,burglary:27575,drug_offences:4958,intentional_homicide:80,kidnapping:125,rape:477,robbery:2648,sexual_assault:1436,sexual_violence:1913,theft:39970,police_officers:12799,male_police_officers:10423,female_police_officers:3421,prison_personell:3380,male_prison_personell:2909,female_prison_personell:471,total_prison_population:4218,adult_male_prisoners:3084,adult_female_prisoners:1062,juvenile_prison_population:72,native_prisoners:3833,foreign_prisoners:385}
 ];
+
+
 
 var indexedData = crossfilter(data);
 
@@ -66,7 +69,10 @@ var drug_offences = yearDim.group().reduceSum(function(d){
 var intentional_homicide = yearDim.group().reduceSum(function(d){
    return d.intentional_homicide;
 });
-/*kidnapping
+var kidnapping = yearDim.group().reduceSum(function(d){
+   return d.kidnapping;
+});
+/*
 rape
 robbery
 sexual_assault
@@ -83,7 +89,23 @@ crimeLineChart
     .group(assault,"assault")
     .stack(burglary,"burglary")
     .stack(drug_offences,"drug_offences")
-    .stack(intentional_homicide,"intentional_homicide")
+    .renderArea(true)
+    .brushOn(false)
+    .x(d3.scale.linear().domain([minYear,maxYear]))
+    .legend(dc.legend()
+                .x(750)
+                .y(10)
+                .itemHeight(13)
+        .gap(5))
+    .yAxisLabel('Amount')
+    .xAxisLabel('Years');
+
+crimeLineChart2
+    .width(900)
+    .height(300)
+    .dimension(yearDim)
+    .group(intentional_homicide,"intentional_homicide")
+    .stack(kidnapping,"kidnapping")
     .renderArea(true)
     .brushOn(false)
     .x(d3.scale.linear().domain([minYear,maxYear]))

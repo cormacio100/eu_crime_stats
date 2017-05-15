@@ -13,6 +13,7 @@ MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DBS_NAME = 'projectModule2'
 COLLECTION_NAME = 'eu_crime_stats'
+#COLLECTION_NAME = 'eu_crime_stats'
 #COLLECTION_NAME = 'irish_crime_stats'
 
 
@@ -34,12 +35,31 @@ def charts_data():
     #   CONSTANT that defines the record fields that we wish to retrieve
     FIELDS = {
         '_id': False,
-        'type': True,
-        'eu_member_state': True,
         'year': True,
-        'amount': True,
-        'category': True,
-    }
+        'eu_member_state': True,
+        'assault': True,
+        'burglary': True,
+        'drug_offences': True,
+        'intentional_homicide': True,
+        'kidnapping': True,
+        'rape': True,
+        'robbery': True,
+        'sexual_assault': True,
+        'sexual_violence': True,
+        'theft': True,
+        'police_officers':True,
+        'male_police_officers':True,
+        'female_police_officers':True,
+        'prison_personell':True,
+        'male_prison_personell':True,
+        'female_prison_personell':True,
+        'total_prison_population':True,
+        'adult_male_prisoners':True,
+        'adult_female_prisoners':True,
+        'juvenile_prison_population':True,
+        'native_prisoners':True,
+        'foreign_prisoners':True
+    };
 
     #   Open a connection to MongoDB
     #   the "with" statement auto-closes the connection when done

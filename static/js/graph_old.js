@@ -54,17 +54,6 @@ function buildGraphs(error,jsonData){
     var typeDimension = indexedData.dimension(function(d){return d.type;});
     console.log(typeDimension.top(Infinity)[0].type+'+'+typeDimension.top(Infinity)[0].amount);
 
-
-
-
-
-
-
-
-
-
-
-
     //#######################################################
     //  2 - CREATE DIMENSIONS FOR ACCESSING THE DATA
     //  SELECT MENU

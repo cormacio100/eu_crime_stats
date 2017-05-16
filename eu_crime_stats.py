@@ -89,12 +89,18 @@ def sexual_assault():
 
 @app.route('/sexual_violence')
 def sexual_violence():
-    return render_template('sexual_violence.html')
+    heading = {'byCountry': 'Amount of Sexual Violence By Country',
+               'combo': 'Comparison Between Countries for Amount of Sexual Violence'}
+    script = Markup('<script src="static/js/sexual_violence_graph.js"></script>')
+    return render_template('charts.html', heading=heading, script=script)
 
 
 @app.route('/theft')
 def theft():
-    return render_template('theft.html')
+    heading = {'byCountry': 'Amount of Theft By Country',
+               'combo': 'Comparison Between Countries for Amount of Theft'}
+    script = Markup('<script src="static/js/theft_graph.js"></script>')
+    return render_template('charts.html', heading=heading, script=script)
 
 
 @app.route('/charts')

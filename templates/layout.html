@@ -30,7 +30,35 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    {% block links %}{% endblock %}
+
+                         <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Crime Statistics by Type <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Assault</a></li>
+                            <li><a href="/burglary"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Burlary</a></li>
+                            <li><a href="/drug_offences"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Drug Offences</a></li>
+                            <li><a href="/intentional_homicide"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Intentional Homicide</a></li>
+                            <li><a href="/kidnapping"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Kidnapping</a></li>
+                            <li><a href="/rape"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Rape</a></li>
+                            <li><a href="/robbery"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Robbery</a></li>
+                            <li><a href="/sexual_assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Assault</a></li>
+                            <li><a href="/sexual_violence"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Violence</a></li>
+                            <li><a href="/theft"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Theft</a></li>
+                        </ul>
+                    </li>
+                        <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Justice System Statistics<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Police Officers</a></li>
+                            <li><a href="/assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Prison Staff</a></li>
+                            <li><a href="/assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Prison Population</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         <!--</div>-->

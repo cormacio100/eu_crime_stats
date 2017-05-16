@@ -160,6 +160,7 @@ function buildGraphs(error,jsonData){
         .height(400)
         .dimension(dateDim)
         .group(englandAssaultGrp,"England")
+        .margins({top: 10, right: 50, bottom: 30, left: 40})
         //.dashStyle([2,2])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))

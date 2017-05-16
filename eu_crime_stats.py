@@ -20,10 +20,36 @@ COLLECTION_NAME = 'eu_crime_stats'
 @app.route('/')
 def home():
     return render_template('index.html')
-
 @app.route('/assault')
 def assault():
     return render_template('assault.html')
+@app.route('/burglary')
+def burglary():
+    return render_template('burglary.html')
+@app.route('/drug_offences')
+def drug_offences():
+    return render_template('drug_offences.html')
+@app.route('/intentional_homicide')
+def intentional_homicide():
+    return render_template('intentional_homicide.html')
+@app.route('/kidnapping')
+def kidnapping():
+    return render_template('kidnapping.html')
+@app.route('/rape')
+def rape():
+    return render_template('rape.html')
+@app.route('/robbery')
+def robbery():
+    return render_template('robbery.html')
+@app.route('/sexual_assault')
+def sexual_assault():
+    return render_template('sexual_assault.html')
+@app.route('/sexual_violence')
+def sexual_violence():
+    return render_template('sexual_violence.html')
+@app.route('/theft')
+def theft():
+    return render_template('theft.html')
 
 @app.route('/charts')
 def charts():

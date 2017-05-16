@@ -77,8 +77,8 @@ function buildGraphs(error,jsonData){
        return d.totalCrimes;
     });
     yearPieChart
-        .width(250)
-        .height(250)
+        .width(300)
+        .height(300)
         .slicesCap(10)
         .innerRadius(20)
         .dimension(yearDim)

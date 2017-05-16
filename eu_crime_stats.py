@@ -66,19 +66,25 @@ def kidnapping():
 @app.route('/rape')
 def rape():
     heading = {'byCountry': 'Number of Rapes By Country',
-               'combo': 'Comparison Between Countries for Number of Kidnappings'}
+               'combo': 'Comparison Between Countries for Number of Rapes'}
     script = Markup('<script src="static/js/rape_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
 
 
 @app.route('/robbery')
 def robbery():
-    return render_template('robbery.html')
+    heading = {'byCountry': 'Number of Robberies By Country',
+               'combo': 'Comparison Between Countries for Number of Robberies'}
+    script = Markup('<script src="static/js/robbery_graph.js"></script>')
+    return render_template('charts.html', heading=heading, script=script)
 
 
 @app.route('/sexual_assault')
 def sexual_assault():
-    return render_template('sexual_assault.html')
+    heading = {'byCountry': 'Number of Sexual Assaults By Country',
+               'combo': 'Comparison Between Countries for Number of Sexual Assaults'}
+    script = Markup('<script src="static/js/sexual_assault_graph.js"></script>')
+    return render_template('charts.html', heading=heading, script=script)
 
 
 @app.route('/sexual_violence')

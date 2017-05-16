@@ -44,5 +44,5 @@ function parseData(error,jsonData) {
         d.totalCrimes = d.assault + d.burglary + d.drugs + d.intentional_homicide + d.kidnapping + d.rape + d.robbery + d.sexual_assault + d.sexual_violence + d.theft;
     });
 
-    buildData(euCrimeStats);
+    buildGraphs(euCrimeStats);
 }

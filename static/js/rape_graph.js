@@ -11,7 +11,7 @@ function print_filter(filter){
     console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
 
-function buildData(euCrimeStats){
+function buildGraphs(euCrimeStats){
 
     console.log('euCrimeStats');
     console.log(euCrimeStats);
@@ -53,44 +53,44 @@ function buildData(euCrimeStats){
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
 
-    var irelandKidnappingGrp = dateDim.group().reduceSum(function(d){
+    var irelandRapeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Ireland'){
-            return d.kidnapping;
+            return d.rape;
         }else{
             return 0;
         }
     });
-    var englandKidnappingGrp = dateDim.group().reduceSum(function(d){
+    var englandRapeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='England'){
-            return d.kidnapping;
+            return d.rape;
         }else{
             return 0;
         }
     });
-    var scotlandKidnappingGrp = dateDim.group().reduceSum(function(d){
+    var scotlandRapeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Scotland'){
-            return d.kidnapping;
+            return d.rape;
         }else{
             return 0;
         }
     });
-    var walesKidnappingGrp = dateDim.group().reduceSum(function(d){
+    var walesRapeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Wales'){
-            return d.kidnapping;
+            return d.rape;
         }else{
             return 0;
         }
     });
-    var northernIrelandKidnappingGrp = dateDim.group().reduceSum(function(d){
+    var northernIrelandRapeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Northern Ireland'){
-            return d.kidnapping;
+            return d.rape;
         }else{
             return 0;
         }
     });
-    var restOfUKKidnappingGrp = dateDim.group().reduceSum(function(d){
+    var restOfUKRapeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Northern Ireland' || d.eu_member_state=='Wales' || d.eu_member_state=='Scotland' ){
-            return d.kidnapping;
+            return d.rape;
         }else{
             return 0;
         }
@@ -100,7 +100,7 @@ function buildData(euCrimeStats){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(irelandKidnappingGrp,"Ireland")
+        .group(irelandRapeGrp,"Ireland")
         //.dashStyle([1,1])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -112,7 +112,7 @@ function buildData(euCrimeStats){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(englandKidnappingGrp,"England")
+        .group(englandRapeGrp,"England")
         .margins({top: 10, right: 50, bottom: 30, left: 40})
         //.dashStyle([2,2])
         .renderArea(true)
@@ -125,7 +125,7 @@ function buildData(euCrimeStats){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(scotlandKidnappingGrp,"Scotland")
+        .group(scotlandRapeGrp,"Scotland")
         //.dashStyle([3,3])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -137,7 +137,7 @@ function buildData(euCrimeStats){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(walesKidnappingGrp,"Wales")
+        .group(walesRapeGrp,"Wales")
         //.dashStyle([4,4])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -149,7 +149,7 @@ function buildData(euCrimeStats){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(northernIrelandKidnappingGrp,"Northern Ireland")
+        .group(northernIrelandRapeGrp,"Northern Ireland")
         //.dashStyle([5,5])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -161,7 +161,7 @@ function buildData(euCrimeStats){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(restOfUKKidnappingGrp,"Scotland,Wales,N.I.")
+        .group(restOfUKRapeGrp,"Scotland,Wales,N.I.")
         //.dashStyle([5,5])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -183,7 +183,7 @@ function buildData(euCrimeStats){
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(irelandColor)
-                .group(irelandKidnappingGrp,"Ireland"),
+                .group(irelandRapeGrp,"Ireland"),
                 //.dashStyle([1,1]),
             /*dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
@@ -195,19 +195,19 @@ function buildData(euCrimeStats){
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(scotlandColor)
-                .group(scotlandKidnappingGrp,"Scotland"),
+                .group(scotlandRapeGrp,"Scotland"),
                 //.dashStyle([3,3]),
             dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(walesColor)
-                .group(walesKidnappingGrp,"Wales"),
+                .group(walesRapeGrp,"Wales"),
                 //.dashStyle([4,4]),
             dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(northernIrelandColor)
-                .group(northernIrelandKidnappingGrp,"Northern Ireland")
+                .group(northernIrelandRapeGrp,"Northern Ireland")
                 //.dashStyle([5,5]),
             /*dc.lineChart(countriesLineChart)
                 .dimension(dateDim)

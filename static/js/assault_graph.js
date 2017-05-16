@@ -22,6 +22,7 @@ function buildGraphs(error,jsonData){
     var euCrimeStats = jsonData;
 
     var yearPieChart = dc.pieChart('#chart-ring-year');
+    var yearPieChart2 = dc.pieChart('#chart-ring-year2');
     var crimeLineChartIreland = dc.lineChart('#chart-line-assault-ireland');
     var crimeLineChartEngland = dc.lineChart('#chart-line-assault-england');
     var crimeLineChartScotland = dc.lineChart('#chart-line-assault-scotland');
@@ -78,6 +79,13 @@ function buildGraphs(error,jsonData){
        return d.totalCrimes;
     });
     yearPieChart
+        .width(250)
+        .height(250)
+        .slicesCap(10)
+        .innerRadius(20)
+        .dimension(yearDim)
+        .group(yearlyTotal);
+    yearPieChart2
         .width(250)
         .height(250)
         .slicesCap(10)
@@ -144,8 +152,8 @@ function buildGraphs(error,jsonData){
     });
 
     crimeLineChartIreland
-        .width(400)
-        .height(400)
+        .width(600)
+        .height(300)
         .dimension(dateDim)
         .group(irelandAssaultGrp,"Ireland")
         //.dashStyle([1,1])
@@ -156,8 +164,8 @@ function buildGraphs(error,jsonData){
         .colors(irelandColor);
 
     crimeLineChartEngland
-        .width(400)
-        .height(400)
+        .width(600)
+        .height(300)
         .dimension(dateDim)
         .group(englandAssaultGrp,"England")
         .margins({top: 10, right: 50, bottom: 30, left: 40})
@@ -169,8 +177,8 @@ function buildGraphs(error,jsonData){
         .colors(englandColor);
 
     crimeLineChartScotland
-        .width(400)
-        .height(400)
+        .width(600)
+        .height(300)
         .dimension(dateDim)
         .group(scotlandAssaultGrp,"Scotland")
         //.dashStyle([3,3])
@@ -181,8 +189,8 @@ function buildGraphs(error,jsonData){
         .colors(scotlandColor);
 
     crimeLineChartWales
-        .width(400)
-        .height(400)
+        .width(600)
+        .height(300)
         .dimension(dateDim)
         .group(scotlandAssaultGrp,"Wales")
         //.dashStyle([4,4])
@@ -193,8 +201,8 @@ function buildGraphs(error,jsonData){
         .colors(walesColor);
 
     crimeLineChartNorthernIreland
-        .width(400)
-        .height(400)
+        .width(600)
+        .height(300)
         .dimension(dateDim)
         .group(scotlandAssaultGrp,"Northern Ireland")
         //.dashStyle([5,5])
@@ -205,8 +213,8 @@ function buildGraphs(error,jsonData){
         .colors(northernIrelandColor);
 
     crimeLineChartRestOfUk
-        .width(400)
-        .height(400)
+        .width(600)
+        .height(300)
         .dimension(dateDim)
         .group(restOfUKAssaultGrp,"Scotland,Wales,N.I.")
         //.dashStyle([5,5])

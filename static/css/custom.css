@@ -17,13 +17,25 @@ h3,
 .dc-chart{
     text-align:center;
 }
+chart-ring-year{
+    background-color:white;
+}
+
+.dc-chart-centered{
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .dc-chart{
-    font-family:verdana,helvetica,arial;
-    font-size:0.7em;
-    border:1px solid black;
-    background-color: grey;
     margin:1em;
     padding:1em;
+    font-family:verdana,helvetica,arial;
+    font-size:0.7em;
+}
+
+.colouredChart{
+    border:1px solid black;
+    background-color: grey;
 }
 .dc-chart h3{
     color:white;

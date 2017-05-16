@@ -53,7 +53,7 @@ def theft():
 
 @app.route('/charts')
 def charts():
-    return render_template('charts.html')
+    return render_template('charts_old2.html')
 
 
 @app.route('/charts/data')

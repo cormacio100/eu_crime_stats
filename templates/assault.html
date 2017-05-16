@@ -6,78 +6,145 @@
     <!--<div class="jumbotron">
         <p class="lead text-center">Charts</p>
     </div>-->
-    <div class="container-fluid">
 
-        <div class="row" id="allCountries">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-md-3"></div>
+    <section id="year-and-individual-countries-carousel">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row" id="individual-countries-heading">
+                    <div class="col-md-12">
+                        <h3>Number of Assaults By Country</h3>
+                    </div>
+                </div>
+                <div class="row" id="individualCountries">
                     <div class="col-md-1"></div>
-                    <div class="col-md-8">
-                        <h3>Number of Assaults Compared by Country</h3>
+                    <div class="col-md-3" id="chart-ring-year"></div>
+                    <div class="col-md-1">&nbsp;</div>
+                    <div class="col-md-6">
+                        <div id="carousel-individual-country" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-individual-country" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-individual-country" data-slide-to="1"></li>
+                        <li data-target="#carousel-individual-country" data-slide-to="2"></li>
+                        <li data-target="#carousel-individual-country" data-slide-to="3"></li>
+                        <li data-target="#carousel-individual-country" data-slide-to="4"></li>
+                        <li data-target="#carousel-individual-country" data-slide-to="5"></li>
+                        <li data-target="#carousel-individual-country" data-slide-to="6"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div id="chart-line-assault-ireland" class="colouredChart"><h3>Ireland</h3></div>
+                        </div>
+                        <div class="item">
+                            <div id="chart-line-assault-england" class="colouredChart"><h3>England</h3></div>
+                        </div>
+                        <div class="item">
+                            <div id="chart-line-assault-scotland" class="colouredChart"><h3>Scotland</h3></div>
+                        </div>
+                        <div class="item">
+                            <div id="chart-line-assault-wales" class="colouredChart"><h3>Wales</h3></div>
+                        </div>
+                        <div class="item">
+                            <div id="chart-line-assault-northern-ireland" class="colouredChart"><h3>Northern Ireland</h3></div>
+                        </div>
+                        <div class="item">
+                            <div id="chart-line-assault-rest-of-uk" class="colouredChart"><h3>Scotland, Wales and N.I.</h3></div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-individual-country" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-individual-country" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3" id="chart-ring-year"></div>
-            <div class="col-md-1"></div>
-            <div class="col-md-8" id="chart-line-assault-compare-countries"></div>
         </div>
-        <section id="individual_charts">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Assaults by Country</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row" id="ireland-england">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5">
-                            <div id="chart-line-assault-ireland"><h3>Ireland</h3></div>
+    </section>
+    <section id="year and combination chart">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row" id="allCountries">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8">
+                                <h3>Number of Assaults Compared by Country</h3>
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            <div id="chart-line-assault-england"><h3>England</h3></div>
-                        </div>
-                        <div class="col-md-1"></div>
                     </div>
-                    <div class="row" id="scotland-wales">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5">
-                            <div id="chart-line-assault-scotland"><h3>Scotland</h3></div>
-                        </div>
-                        <div class="col-md-5">
-                            <div id="chart-line-assault-wales"><h3>Wales</h3></div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="row" id="northern-ireland-rest-of-uk">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5">
-                            <div id="chart-line-assault-northern-ireland"><h3>Northern Ireland</h3></div>
-                        </div>
-                        <div class="col-md-5">
-                            <div id="chart-line-assault-rest-of-uk"><h3>Scotland, Wales and N.I.</h3></div>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
+                    <div class="col-md-3" id="chart-ring-year2" ></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8" id="chart-line-assault-compare-countries" class="colouredChart"></div>
                 </div>
             </div>
-        </section>
-        <section id="justice_system_stats">
-            <div class="row" id="row3">
-                <div class="col-md-12" style="clear:both">
-                    <table id="dc-data-table">
-                        <thead>
-                            <tr class="header">
-                                <th>HTTP Response Date</th>
-                                <th>HTTP Response 200</th>
-                                <th>HTTP Response 302</th>
-                                <th>HTTP Response 404</th>
-                                <th>HTTP Response Total</th>
-                            </tr>
-                        </thead>
-                    </table>
+        </div>
+    </section>
+    <section id="individual_charts">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Assaults by Country</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" id="ireland-england">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        xxx
+                    </div>
+                    <div class="col-md-5">
+                        xxx
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row" id="scotland-wales">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        xxx
+                    </div>
+                    <div class="col-md-5">
+                        xxx
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row" id="northern-ireland-rest-of-uk">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        xxx
+                    </div>
+                    <div class="col-md-5">
+                        xxx
+                    </div>
+                    <div class="col-md-1"></div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+    <section id="justice_system_stats">
+        <div class="row" id="row3">
+            <div class="col-md-12" style="clear:both">
+                <table id="dc-data-table">
+                    <thead>
+                        <tr class="header">
+                            <th>HTTP Response Date</th>
+                            <th>HTTP Response 200</th>
+                            <th>HTTP Response 302</th>
+                            <th>HTTP Response 404</th>
+                            <th>HTTP Response Total</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </section>
 
     </div>
 {% endblock %}

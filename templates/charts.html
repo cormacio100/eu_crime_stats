@@ -1,21 +1,12 @@
 {% extends "layout.html" %}
-{% block links %}
-    <li><a href="/"><span class="glyphicon glyphicon-home glyph-nav" aria-hidden="true"></span> Home</a></li>
-{% endblock %}
+{% block links %}{% endblock %}
 {% block content %}
-    <!--<div class="jumbotron">
-        <p class="lead text-center">Charts</p>
-    </div>-->
-
     <section id="year-and-individual-countries-carousel">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row" id="individual-countries-heading">
                     <div class="col-md-12">
-                        <h3>
-                            {% block by_country_header %}Number of Assaults By Country{% endblock %}
-                        </h3>
-
+                        <h3>{{ heading.byCountry }}</h3>
                     </div>
                 </div>
                 <div class="row" id="individualCountries">
@@ -38,22 +29,22 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <div id="chart-line-assault-ireland" class="colouredChart"><h3>Ireland</h3></div>
+                            <div id="chart-line-ireland" class="colouredChart"><h3>Ireland</h3></div>
                         </div>
                         <div class="item">
-                            <div id="chart-line-assault-england" class="colouredChart"><h3>England</h3></div>
+                            <div id="chart-line-england" class="colouredChart"><h3>England</h3></div>
                         </div>
                         <div class="item">
-                            <div id="chart-line-assault-scotland" class="colouredChart"><h3>Scotland</h3></div>
+                            <div id="chart-line-scotland" class="colouredChart"><h3>Scotland</h3></div>
                         </div>
                         <div class="item">
-                            <div id="chart-line-assault-wales" class="colouredChart"><h3>Wales</h3></div>
+                            <div id="chart-line-wales" class="colouredChart"><h3>Wales</h3></div>
                         </div>
                         <div class="item">
-                            <div id="chart-line-assault-northern-ireland" class="colouredChart"><h3>Northern Ireland</h3></div>
+                            <div id="chart-line-northern-ireland" class="colouredChart"><h3>Northern Ireland</h3></div>
                         </div>
                         <div class="item">
-                            <div id="chart-line-assault-rest-of-uk" class="colouredChart"><h3>Scotland, Wales and N.I.</h3></div>
+                            <div id="chart-line-rest-of-uk" class="colouredChart"><h3>Scotland, Wales and N.I.</h3></div>
                         </div>
 
                         <!-- Controls -->
@@ -72,7 +63,7 @@
             </div>
         </div>
     </section>
-    <section id="year and combination chart">
+    <section id="year-and-combination-chart">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row" id="allCountries">
@@ -81,52 +72,13 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-1"></div>
                             <div class="col-md-8">
-                                <h3>Number of Assaults Compared by Country</h3>
+                                <h3>{{ heading.combo }}</h3>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3" id="chart-ring-year2" ></div>
                     <div class="col-md-1"></div>
-                    <div class="col-md-8" id="chart-line-assault-compare-countries" class="colouredChart"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="individual_charts">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Assaults by Country</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row" id="ireland-england">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        xxx
-                    </div>
-                    <div class="col-md-5">
-                        xxx
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row" id="scotland-wales">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        xxx
-                    </div>
-                    <div class="col-md-5">
-                        xxx
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row" id="northern-ireland-rest-of-uk">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-5">
-                        xxx
-                    </div>
-                    <div class="col-md-5">
-                        xxx
-                    </div>
-                    <div class="col-md-1"></div>
+                    <div class="col-md-8" id="chart-line-compare-countries" class="colouredChart"></div>
                 </div>
             </div>
         </div>
@@ -148,11 +100,8 @@
             </div>
         </div>
     </section>
-
-    </div>
 {% endblock %}
-
 {% block scripts %}
-    <script src="{{ url_for('static',filename='js/assault_graph.js') }}"></script>
+    {{ script }}
     <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
 {% endblock %}

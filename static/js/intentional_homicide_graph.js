@@ -1,9 +1,16 @@
 /**
  * Created by Cormac Liston on 12/05/2017.
- *
- * GRAPHS are assigned GLOBALLY to DOM objects in graph.js
- *
  */
+// HELPER FUNCTION to to see if filters are working correctly
+function print_filter(filter){
+    //	first check that the filter if of valid type
+    var f=eval(filter);
+    if (typeof(f.length) != "undefined") {}else{}
+    if (typeof(f.top) != "undefined") {f=f.top(Infinity);}else{}
+    if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);}else{}
+    console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
+}
+
 
 //  RETRIEVE DATA FROM API
 queue()
@@ -33,7 +40,6 @@ function buildGraphs(error,jsonData){
     var yearDim = indexedData.dimension(function(d){
        return +d.year;
     });
-    print_filter(yearDim);
     var yearlyTotal = yearDim.group().reduceSum(function(d){
        return d.totalCrimes;
     });
@@ -62,49 +68,44 @@ function buildGraphs(error,jsonData){
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
 
-   // print_filter(dateDim);
-    console.log('minDate'+minDate);
-    console.log('maxDate'+maxDate);
-
-    var irelandAssaultGrp = dateDim.group().reduceSum(function(d){
+    var irelandDOGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Ireland'){
-            return d.assault;
+            return d.drugs;
         }else{
             return 0;
         }
     });
-    var englandAssaultGrp = dateDim.group().reduceSum(function(d){
+    var englandDOGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='England'){
-            console.log(d);
-            return d.assault;
+            return d.drugs;
         }else{
             return 0;
         }
     });
-    var scotlandAssaultGrp = dateDim.group().reduceSum(function(d){
+    var scotlandDOGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Scotland'){
-            return d.assault;
+            return d.drugs;
         }else{
             return 0;
         }
     });
-    var walesAssaultGrp = dateDim.group().reduceSum(function(d){
+    var walesDOGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Wales'){
-            return d.assault;
+            return d.drugs;
         }else{
             return 0;
         }
     });
-    var northernIrelandAssaultGrp = dateDim.group().reduceSum(function(d){
+    var northernIrelandDOGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Northern Ireland'){
-            return d.assault;
+            return d.drugs;
         }else{
             return 0;
         }
     });
-    var restOfUKAssaultGrp = dateDim.group().reduceSum(function(d){
+    var restOfUKDOGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Northern Ireland' || d.eu_member_state=='Wales' || d.eu_member_state=='Scotland' ){
-            return d.assault;
+            return d.drugs;
         }else{
             return 0;
         }
@@ -114,7 +115,7 @@ function buildGraphs(error,jsonData){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(irelandAssaultGrp,"Ireland")
+        .group(irelandDOGrp,"Ireland")
         //.dashStyle([1,1])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -126,7 +127,7 @@ function buildGraphs(error,jsonData){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(englandAssaultGrp,"England")
+        .group(englandDOGrp,"England")
         .margins({top: 10, right: 50, bottom: 30, left: 40})
         //.dashStyle([2,2])
         .renderArea(true)
@@ -139,7 +140,7 @@ function buildGraphs(error,jsonData){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(scotlandAssaultGrp,"Scotland")
+        .group(scotlandDOGrp,"Scotland")
         //.dashStyle([3,3])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -151,7 +152,7 @@ function buildGraphs(error,jsonData){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(walesAssaultGrp,"Wales")
+        .group(walesDOGrp,"Wales")
         //.dashStyle([4,4])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -163,7 +164,7 @@ function buildGraphs(error,jsonData){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(northernIrelandAssaultGrp,"Northern Ireland")
+        .group(northernIrelandDOGrp,"Northern Ireland")
         //.dashStyle([5,5])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -175,7 +176,7 @@ function buildGraphs(error,jsonData){
         .width(600)
         .height(300)
         .dimension(dateDim)
-        .group(restOfUKAssaultGrp,"Scotland,Wales,N.I.")
+        .group(restOfUKDOGrp,"Scotland,Wales,N.I.")
         //.dashStyle([5,5])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
@@ -197,7 +198,7 @@ function buildGraphs(error,jsonData){
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(irelandColor)
-                .group(irelandAssaultGrp,"Ireland"),
+                .group(irelandDOGrp,"Ireland"),
                 //.dashStyle([1,1]),
             /*dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
@@ -209,19 +210,19 @@ function buildGraphs(error,jsonData){
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(scotlandColor)
-                .group(scotlandAssaultGrp,"Scotland"),
+                .group(scotlandDOGrp,"Scotland"),
                 //.dashStyle([3,3]),
             dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(walesColor)
-                .group(walesAssaultGrp,"Wales"),
+                .group(walesDOGrp,"Wales"),
                 //.dashStyle([4,4]),
             dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(northernIrelandColor)
-                .group(northernIrelandAssaultGrp,"Northern Ireland")
+                .group(northernIrelandDOGrp,"Northern Ireland")
                 //.dashStyle([5,5]),
             /*dc.lineChart(countriesLineChart)
                 .dimension(dateDim)

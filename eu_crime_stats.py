@@ -41,10 +41,10 @@ def burglary():
 
 @app.route('/drug_offences')
 def drug_offences():
-    #heading = {'byCountry':'Number of Dug Offences By Country',
-    #           'combo':'Comparison Between Countries for Number of Drug Offenses'}
-    #script = Markup('<script src="static/js/drug_offenses_graph.js"></script>')
-    return render_template('charts.html')#,heading=heading,script=script)
+    heading = {'byCountry':'Number of Dug Offences By Country',
+               'combo':'Comparison Between Countries for Number of Drug Offences'}
+    script = Markup('<script src="static/js/drug_offences_graph.js"></script>')
+    return render_template('charts.html',heading=heading,script=script)
 
 
 @app.route('/intentional_homicide')
@@ -99,7 +99,7 @@ def charts_data():
         'eu_member_state': True,
         'assault': True,
         'burglary': True,
-        'drug_offences': True,
+        'drugs': True,
         'intentional_homicide': True,
         'kidnapping': True,
         'rape': True,

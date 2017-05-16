@@ -28,7 +28,7 @@ function buildGraphs(error,jsonData){
     // loop through the data
     euCrimeStats.forEach(function(d){
         d.date = parseDate('01/01/'+d.year);
-        d.totalCrimes = d.assault+d.burglary+d.drug_offences+d.intentional_homicide+d.kidnapping+d.rape+d.robbery+d.sexual_assault+d.sexual_violence+d.theft;
+        d.totalCrimes = d.assault+d.burglary+d.drugs+d.intentional_homicide+d.kidnapping+d.rape+d.robbery+d.sexual_assault+d.sexual_violence+d.theft;
     });
 
     //  CROSSFILTER the data

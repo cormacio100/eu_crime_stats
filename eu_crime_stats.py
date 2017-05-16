@@ -57,8 +57,8 @@ def intentional_homicide():
 
 @app.route('/kidnapping')
 def kidnapping():
-    heading = {'byCountry': 'Number of Kidnapping By Country',
-               'combo': 'Comparison Between Countries for Number of Kidnapping'}
+    heading = {'byCountry': 'Number of Kidnappings By Country',
+               'combo': 'Comparison Between Countries for Number of Kidnappings'}
     script = Markup('<script src="static/js/kidnapping_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
 

@@ -49,12 +49,18 @@ def drug_offences():
 
 @app.route('/intentional_homicide')
 def intentional_homicide():
-    return render_template('intentional_homicide.html')
+    heading = {'byCountry': 'Number of Intentional Homicide By Country',
+               'combo': 'Comparison Between Countries for Number of Intentional Homicide'}
+    script = Markup('<script src="static/js/intentional_homicide_graph.js"></script>')
+    return render_template('charts.html', heading=heading, script=script)
 
 
 @app.route('/kidnapping')
 def kidnapping():
-    return render_template('kidnapping.html')
+    heading = {'byCountry': 'Number of Kidnapping By Country',
+               'combo': 'Comparison Between Countries for Number of Kidnapping'}
+    script = Markup('<script src="static/js/kidnapping_graph.js"></script>')
+    return render_template('charts.html', heading=heading, script=script)
 
 
 @app.route('/rape')

@@ -102,6 +102,7 @@
     </section>
 {% endblock %}
 {% block scripts %}
+    <script src="{{ url_for('static',filename='js/graph.js') }}"></script>
     {{ script }}
     <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
 {% endblock %}

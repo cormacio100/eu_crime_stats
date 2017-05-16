@@ -11,6 +11,7 @@ function print_filter(filter){
     console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
 
+
 //  RETRIEVE DATA FROM API
 queue()
     .defer(d3.json,'/charts/data')

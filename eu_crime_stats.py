@@ -21,6 +21,9 @@ COLLECTION_NAME = 'eu_crime_stats'
 def home():
     return render_template('index.html')
 
+@app.route('/assault')
+def assault():
+    return render_template('assault.html')
 
 @app.route('/charts')
 def charts():

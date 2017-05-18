@@ -46,6 +46,7 @@
                             <li><a href="/sexual_assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Assault</a></li>
                             <li><a href="/sexual_violence"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Violence</a></li>
                             <li><a href="/theft"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Theft</a></li>
+                            <li><a href="/country"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Country</a></li>
                         </ul>
                     </li>
                         <li role="presentation" class="dropdown">
@@ -70,14 +71,6 @@
             {% endblock %}
         <!--</div>-->
     </main>
-    <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/dc.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
     <!--<script src="{{ url_for('static',filename='js/graph.js') }}"></script>-->
     {% block scripts %}{% endblock %}
 </body>

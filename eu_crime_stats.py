@@ -20,7 +20,9 @@ COLLECTION_NAME = 'eu_crime_stats'
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    heading = {}
+    script = Markup('<script src="static/js/country_graph.js"></script>')
+    return render_template('index.html',heading=heading,script=script)
 
 
 @app.route('/assault')
@@ -102,11 +104,18 @@ def theft():
     script = Markup('<script src="static/js/theft_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
 
-
+'''
+@app.route('/country')
+def ireland():
+    heading = {}
+    script = Markup('<script src="static/js/country_graph.js"></script>')
+    return render_template('country.html',heading=heading,script=script)
+'''
+'''
 @app.route('/charts')
 def charts():
     return render_template('charts_old2.html')
-
+'''
 
 @app.route('/charts/data')
 def charts_data():

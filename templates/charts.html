@@ -102,6 +102,14 @@
     </section>
 {% endblock %}
 {% block scripts %}
+    <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/dc.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
     <script src="{{ url_for('static',filename='js/graph.js') }}"></script>
     {{ script }}
     <script src="{{ url_for('static',filename='js/custom.js') }}"></script>

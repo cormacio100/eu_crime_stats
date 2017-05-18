@@ -1,10 +1,3 @@
-/*.container-fluid{
-    background-color:black;
-}
-
-.glyph-nav{
-    font-size:1.5em;
-}*/
 #individual_charts{
     margin-top:2em;
     background-color:#68b6c4;
@@ -20,19 +13,19 @@ h3,
 chart-ring-year{
     background-color:white;
 }
-
 .dc-chart-centered{
     margin-left:auto;
     margin-right:auto;
 }
-
 .dc-chart{
     margin:1em;
     padding:1em;
     font-family:verdana,helvetica,arial;
-    font-size:0.7em;
 }
-
+.dc-chart #crime-stats-table .header{
+    padding-left:2em;
+    padding-right:2em;
+}
 .colouredChart{
     border:1px solid black;
     background-color: grey;
@@ -40,7 +33,6 @@ chart-ring-year{
 .dc-chart h3{
     color:white;
 }
-
 .x-axis-label,
 .y-axis-label,
 .dc-legend-item{
@@ -51,7 +43,7 @@ th{
 }
 th,
 td{
-    padding:0.5em;
+    padding:2em;
 }
 .dc-table-group{
     background-color:#68b6c4;
@@ -60,3 +52,17 @@ td{
     font-weight:bold;
     font-style: italic;
 }
+
+.crime-stats-table th{
+    font-size:2em;
+}
+
+/*
+.dc-table-column{
+    xpadding-left:2em;
+    xpadding-right:2em;
+    xfont-size:1.2em;
+}
+.dc-table-label {
+    font-size:1.5em;
+}*/

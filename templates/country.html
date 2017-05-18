@@ -15,43 +15,6 @@
             </div>
         </div>
     </section>
-    <section id="year-and-combination-chart">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="row" id="allCountries">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8">
-                                <h3>{{ heading.combo }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3" id="chart-ring-year" ></div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-8" id="crime-line-chart" class="colouredChart"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="justice_system_stats">
-        <div class="row" id="row3">
-            <div class="col-md-12" style="clear:both">
-                <table id="dc-data-table">
-                    <thead>
-                        <tr class="header">
-                            <th>HTTP Response Date</th>
-                            <th>HTTP Response 200</th>
-                            <th>HTTP Response 302</th>
-                            <th>HTTP Response 404</th>
-                            <th>HTTP Response Total</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </section>
 {% endblock %}
 {% block scripts %}
     <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
@@ -62,7 +25,7 @@
     <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
     <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
     <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
-    <script src="{{ url_for('static',filename='js/graph.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/graph2.js') }}"></script>
     {{ script }}
     <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
 {% endblock %}

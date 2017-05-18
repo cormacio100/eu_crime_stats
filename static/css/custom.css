@@ -6,6 +6,22 @@ svg{
     margin-left:auto;
     margin-right:auto;
 }
+
+table.dc-chart{
+    border:1px solid black;
+    background-color: grey;
+}
+.header th,
+.dc-table-column{
+    border:1px solid black;
+    color:white;
+}
+.dc-table-label{
+    text-align:left;
+}
+.header th{
+    padding:1em;
+}
 h3,
 .dc-chart{
     text-align:center;
@@ -49,8 +65,10 @@ td{
     background-color:#68b6c4;
 }
 .dc-table-row td:first-child{
-    font-weight:bold;
     font-style: italic;
+}
+.dc-table-label{
+    font-weight:bold;
 }
 
 .crime-stats-table th{

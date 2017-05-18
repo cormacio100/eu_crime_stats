@@ -87,7 +87,7 @@ function buildGraphs(euCrimeStats){
         .colors(['#9AB240','#9EC6FF','#E1FF74','#CC5749','#B21400']);
 
     /////////////////////////////////////////////////
-    //  STATS TABLE
+    //  TABLES
     /////////////////////////////////////////////////
     var crimeStatsTable = dc.dataTable('#crime-stats-table');
 
@@ -126,6 +126,86 @@ function buildGraphs(euCrimeStats){
             },
             function(d){
                 return d.theft;
+            }
+        ]);
+
+
+    /////////////////////////////////////////////////
+    //  JUDICIAL SYSTEM STATS TABLE
+    /////////////////////////////////////////////////
+    var policeOfficersTable = dc.dataTable('#police-officers-table');
+
+    policeOfficersTable
+        .dimension(dateDim)
+        .group(function(d){
+            return d.year;
+        })
+        .columns([
+            function(d){
+                return d.police_officers;
+            },
+            function(d){
+                return d.male_police_officers;
+            },
+            function(d){
+                return d.female_police_officers;
+            }
+        ]);
+
+    var prisonPersonellTable = dc.dataTable('#prison-personell-table');
+
+    prisonPersonellTable
+        .dimension(dateDim)
+        .group(function(d){
+            return d.year;
+        })
+        .columns([
+            function(d){
+                return d.prison_personell;
+            },
+            function(d){
+                return d.male_prison_personell;
+            },
+            function(d){
+                return d.female_prison_personell;
+            }
+        ]);
+
+    var prisonPopulationTable = dc.dataTable('#prison-population-table');
+
+    prisonPopulationTable
+        .dimension(dateDim)
+        .group(function(d){
+            return d.year;
+        })
+        .columns([
+            function(d){
+                return d.total_prison_population;
+            },
+            function(d){
+                return d.adult_male_prisoners;
+            },
+            function(d){
+                return d.adult_female_prisoners;
+            },
+            function(d){
+                return d.juvenile_prison_population;
+            }
+        ]);
+
+    var prisonerNationalityTable = dc.dataTable('#prisoner-nationality-table');
+
+    prisonerNationalityTable
+        .dimension(dateDim)
+        .group(function(d){
+            return d.year;
+        })
+        .columns([
+            function(d){
+                return d.native_prisoners;
+            },
+            function(d){
+                return d.foreign_prisoners;
             }
         ]);
 

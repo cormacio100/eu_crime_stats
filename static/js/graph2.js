@@ -11,15 +11,33 @@ function print_filter(filter){
 var assaultLineChart = dc.lineChart('#assault-line-chart');
 var burglaryLineChart = dc.lineChart('#burglary-line-chart');
 var drugsLineChart = dc.lineChart('#drugs-line-chart');
-
+var ihLineChart = dc.lineChart('#ih-line-chart');
+var kidnappingLineChart = dc.lineChart('#kidnapping-line-chart');
+var rapeLineChart = dc.lineChart('#rape-line-chart');
+var robberyLineChart = dc.lineChart('#robbery-line-chart');
+var saLineChart = dc.lineChart('#sa-line-chart');
+var svLineChart = dc.lineChart('#sv-line-chart');
+var theftLineChart = dc.lineChart('#theft-line-chart');
 var crimeCompositeChart = dc.compositeChart('#crime-comparison-chart');
 
-var irelandColor = '#93B240';
-var englandColor = '#E1DDAA';
-var scotlandColor = '#9EC6FF';
-var walesColor = '#CC7789';
-var northernIrelandColor = '#B41414';
-var restOfUkColor = '#AA4088';
+ var palette = {
+        "lightgray": "#819090",
+        "gray": "#708284",
+        "mediumgray": "#536870",
+        "darkgray": "#475B62",
+        "darkblue": "#0A2933",
+        "darkerblue": "#042029",
+        "paleryellow": "#FCF4DC",
+        "paleyellow": "#EAE3CB",
+        "yellow": "#A57706",
+        "orange": "#BD3613",
+        "red": "#D11C24",
+        "pink": "#C61C6F",
+        "purple": "#595AB7",
+        "blue": "#2176C7",
+        "green": "#259286",
+        "yellowgreen": "#738A05"
+      };
 
 //  RETRIEVE DATA FROM API
 queue()

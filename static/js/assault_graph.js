@@ -33,7 +33,6 @@ function buildGraphs(error,jsonData){
     var yearDim = indexedData.dimension(function(d){
        return +d.year;
     });
-    print_filter(yearDim);
     var yearlyTotal = yearDim.group().reduceSum(function(d){
        return d.totalCrimes;
     });
@@ -61,10 +60,6 @@ function buildGraphs(error,jsonData){
     var dateDim = indexedData.dimension(function(d){return d.date});
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
-
-   // print_filter(dateDim);
-    console.log('minDate'+minDate);
-    console.log('maxDate'+maxDate);
 
     var irelandAssaultGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Ireland'){

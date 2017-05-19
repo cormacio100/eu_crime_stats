@@ -6,12 +6,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="select-country"></div>
-                <!--<select id="choose-country">
-                    <option value="Ireland">Ireland</option>
-                    <option value="Wales">Wales</option>
-                    <option value="Scotland">Scotland</option>
-                    <option value="NI">Northern Ireland</option>
-                </select>-->
             </div>
         </div>
     </section>
@@ -19,6 +13,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="crime-line-chart"></div>
+            </div>
+        </div>
+    </section>
+    <section id="crimes2">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="crime-composite-chart"></div>
             </div>
         </div>
     </section>
@@ -92,6 +93,24 @@
             </div>
         </div>
     </section>
+    <section id="composite">
+        <div class="row">
+            <div class="col-md-12" id="crime-comparison-chart"></div>
+        </div>
+    </section>
+    <section id="hidden">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="assault-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="burglary-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="drugs-line-chart"></div>
+        </div>
+
+    </section>
+
 {% endblock %}
 {% block scripts %}
     <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>

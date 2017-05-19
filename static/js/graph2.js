@@ -8,6 +8,12 @@ function print_filter(filter){
     console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
 
+var assaultLineChart = dc.lineChart('#assault-line-chart');
+var burglaryLineChart = dc.lineChart('#burglary-line-chart');
+var drugsLineChart = dc.lineChart('#drugs-line-chart');
+
+var crimeCompositeChart = dc.compositeChart('#crime-comparison-chart');
+
 var irelandColor = '#93B240';
 var englandColor = '#E1DDAA';
 var scotlandColor = '#9EC6FF';

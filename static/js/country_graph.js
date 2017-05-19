@@ -37,19 +37,10 @@ function buildGraphs(euCrimeStats){
                                 return d.key;
                             });
 
-
-
-    /*.title(function(d){
- +                    return d.key;
- +                })
- +                .filter(function(d){
- +                    var value = $(this).find(':selected').val();
- +                    return value;
- +                });*/
     /////////////////////////////////////////////////
     //  LINE CHART
     /////////////////////////////////////////////////
-    var crimeLineChart = dc.lineChart('#crime-line-chart');
+    //var crimeLineChart = dc.lineChart('#crime-line-chart');
     var dateDim = indexedData.dimension(function(d){
         return d.date;
     });
@@ -67,11 +58,7 @@ function buildGraphs(euCrimeStats){
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
 
-    console.log('assaultGroup size:'+assaultGroup.size());
-    print_filter(assaultGroup);
-    console.log('minYear:'+minDate+' maxYear:'+maxDate);
-
-    crimeLineChart
+    /*crimeLineChart
         .width(800)
         .height(300)
         .dimension(dateDim)
@@ -84,8 +71,93 @@ function buildGraphs(euCrimeStats){
         .legend(dc.legend().x(750).y(10).itemHeight(13).gap(5))
         .yAxisLabel('Crime Level')
         .xAxisLabel('Year')
-        .colors(['#9AB240','#9EC6FF','#E1FF74','#CC5749','#B21400']);
+        .colors(['#9AB240','#9EC6FF','#E1FF74','#CC5749','#B21400']);*/
+    /////////////////////////////////////////////////
+    //  COMPARISON CHART
+    /////////////////////////////////////////////////
 
+/*
+    var assaultGrp = dateDim.group().reduceSum(function(d){
+        if(d.assault){
+            return d.assault;
+        }else{
+            return 0;
+        }
+    });
+    var burglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.assault){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+    var drugsGrp = dateDim.group().reduceSum(function(d){
+        if(d.assault){
+            return d.drugs;
+        }else{
+            return 0;
+        }
+    });*/
+
+    assaultLineChart
+        .width(800)
+        .height(400)
+        .dimension(dateDim)
+        .group(assaultGroup,"Assault")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('Assault')
+        .xAxisLabel('Year')
+        .colors(irelandColor);
+    burglaryLineChart
+        .width(800)
+        .height(400)
+        .dimension(dateDim)
+        .group(burglaryGroup,"Burglary")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('Burglary')
+        .xAxisLabel('Year')
+        .colors(irelandColor);
+    drugsLineChart
+        .width(800)
+        .height(400)
+        .dimension(dateDim)
+        .group(drugsGroup,"Drugs")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('Drugs')
+        .xAxisLabel('Year')
+        .colors(irelandColor);
+
+    crimeCompositeChart
+        .width(800)
+        .height(400)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        //.yAxisLabel(dc.legend().x(400).y(120).itemHeight(13).gap(5))
+        .yAxisLabel('Amount')
+        .xAxisLabel('Year')
+        .legend(dc.legend().x(650).y(120).itemHeight(13).gap(5))
+        .renderHorizontalGridLines(true)
+        .compose([
+            dc.lineChart(assaultLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(irelandColor)
+                .group(assaultGroup,"Assault"),
+            dc.lineChart(burglaryLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(scotlandColor)
+                .group(burglaryGroup,"Burglary"),
+                //.dashStyle([3,3]),
+            dc.lineChart(drugsLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(walesColor)
+                .group(drugsGroup,"Drugs")
+        ])
+        .brushOn(false);
     /////////////////////////////////////////////////
     //  TABLES
     /////////////////////////////////////////////////

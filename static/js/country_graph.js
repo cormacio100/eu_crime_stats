@@ -15,6 +15,7 @@ function buildGraphs(euCrimeStats){
 
     var smallCountryStats = [];
     euCrimeStats.forEach(function(d){
+
         if('England'!==d.eu_member_state){
             smallCountryStats.push(d);
         }
@@ -22,7 +23,6 @@ function buildGraphs(euCrimeStats){
 
     var indexedData = crossfilter(smallCountryStats);
     print_filter(indexedData);
-
     /////////////////////////////////////////////////
     //  SELECT MENU
     /////////////////////////////////////////////////
@@ -36,6 +36,10 @@ function buildGraphs(euCrimeStats){
                             .title(function(d){
                                 return d.key;
                             });
+                            /*.promptValue(function(d){
+                                //var val = 'Ireland';
+                                //return val;
+                            });*/
 
     /////////////////////////////////////////////////
     //  LINE CHART
@@ -44,10 +48,11 @@ function buildGraphs(euCrimeStats){
     var dateDim = indexedData.dimension(function(d){
         return d.date;
     });
+    var totalCrimesGroup = dateDim.group().reduceSum(function(d){return d.totalCrimes;});
     var assaultGroup = dateDim.group().reduceSum(function(d){return d.assault;});
     var burglaryGroup = dateDim.group().reduceSum(function(d){return d.burglary;});
     var drugsGroup = dateDim.group().reduceSum(function(d){return d.drugs;});
-    var ihGroup = dateDim.group().reduceSum(function(d){return d.intentional_homicide;});
+    var murderGroup = dateDim.group().reduceSum(function(d){return d.murder;});
     var kidnappingGroup = dateDim.group().reduceSum(function(d){return d.kidnapping;});
     var rapeGroup = dateDim.group().reduceSum(function(d){return d.rape;});
     var robberyGroup = dateDim.group().reduceSum(function(d){return d.robbery;});
@@ -58,7 +63,14 @@ function buildGraphs(euCrimeStats){
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
 
-    /*crimeLineChart
+    /*var heightScale = d3.scale.linear()
+						.domain([0,d3.max(totalCrimesGroup)])
+						.range([0,svgHeight]);
+
+    console.log('heightScales is '+heightScale);
+
+
+    crimeLineChart
         .width(800)
         .height(300)
         .dimension(dateDim)
@@ -100,8 +112,8 @@ function buildGraphs(euCrimeStats){
     });*/
 
     assaultLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(assaultGroup,"Assault")
         .renderArea(true)
@@ -110,8 +122,8 @@ function buildGraphs(euCrimeStats){
         .xAxisLabel('Year')
         //.colors(irelandColor);
     burglaryLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(burglaryGroup,"Burglary")
         .renderArea(true)
@@ -120,64 +132,64 @@ function buildGraphs(euCrimeStats){
         //.xAxisLabel('Year')
         //.colors(irelandColor);
     drugsLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(drugsGroup,"Drugs")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.colors(irelandColor);
-    ihLineChart
-        .width(800)
-        .height(400)
+    murderLineChart
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
-        .group(ihGroup,"Intentional Homicide")
+        .group(murderGroup,"Murder")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.colors(irelandColor);
     kidnappingLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(kidnappingGroup,"Kidnapping")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.colors(irelandColor);
     rapeLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(rapeGroup,"Rape")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.colors(irelandColor);
     robberyLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(robberyGroup,"Robbery")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.colors(irelandColor);
     saLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(saGroup,"Sexual Assault")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.colors(irelandColor);
     svLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(svGroup,"Sexual Violence")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.colors(irelandColor);
     theftLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(theftGroup,"Theft")
         .renderArea(true)
@@ -185,13 +197,13 @@ function buildGraphs(euCrimeStats){
         //.colors(irelandColor);
 
     crimeCompositeChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel(dc.legend().x(400).y(120).itemHeight(13).gap(5))
+        .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('Amount')
         .xAxisLabel('Year')
-        .legend(dc.legend().x(650).y(120).itemHeight(13).gap(5))
+        .legend(dc.legend().x(450).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(assaultLineChart)
@@ -210,11 +222,11 @@ function buildGraphs(euCrimeStats){
                 //.renderArea(true)
                 .colors(palette.orange)
                 .group(drugsGroup,"Drugs"),
-            dc.lineChart(ihLineChart)
+            dc.lineChart(murderLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(palette.red)
-                .group(ihGroup,"Intentional Homicide"),
+                .group(murderGroup,"Murder"),
             dc.lineChart(kidnappingLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
@@ -224,7 +236,7 @@ function buildGraphs(euCrimeStats){
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(palette.purple)
-                .group(rapeGroup,"Rape Group"),
+                .group(rapeGroup,"Rape"),
             dc.lineChart(robberyLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
@@ -246,7 +258,10 @@ function buildGraphs(euCrimeStats){
                 .colors(palette.darkgray)
                 .group(theftGroup,"Theft")
         ])
-        .brushOn(false);
+        .brushOn(false)
+        //.mouseZoomable(true)
+    .elasticY(true)
+        .renderHorizontalGridLines(true);
     /////////////////////////////////////////////////
     //  TABLES
     /////////////////////////////////////////////////

@@ -3,7 +3,6 @@
  */
 
 $(function() {
-// hide the carousel controls;
     $('.carousel-control').hide();
 });
 

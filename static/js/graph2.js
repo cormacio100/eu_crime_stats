@@ -11,7 +11,7 @@ function print_filter(filter){
 var assaultLineChart = dc.lineChart('#assault-line-chart');
 var burglaryLineChart = dc.lineChart('#burglary-line-chart');
 var drugsLineChart = dc.lineChart('#drugs-line-chart');
-var ihLineChart = dc.lineChart('#ih-line-chart');
+var murderLineChart = dc.lineChart('#ih-line-chart');
 var kidnappingLineChart = dc.lineChart('#kidnapping-line-chart');
 var rapeLineChart = dc.lineChart('#rape-line-chart');
 var robberyLineChart = dc.lineChart('#robbery-line-chart');
@@ -20,9 +20,17 @@ var svLineChart = dc.lineChart('#sv-line-chart');
 var theftLineChart = dc.lineChart('#theft-line-chart');
 var crimeCompositeChart = dc.compositeChart('#crime-comparison-chart');
 
+var svgWidth = 600;
+var svgHeight = 300;
+
+//	 add a COLOR SCALE
+/*var colorScale = d3.scale.linear()
+                    .domain([0,d3.max(myData)])
+                    .range(["green","red"]);*/
+
  var palette = {
         "lightgray": "#819090",
-        "gray": "#708284",
+        "gray": "#cfd0d1",
         "mediumgray": "#536870",
         "darkgray": "#475B62",
         "darkblue": "#0A2933",
@@ -30,13 +38,13 @@ var crimeCompositeChart = dc.compositeChart('#crime-comparison-chart');
         "paleryellow": "#FCF4DC",
         "paleyellow": "#EAE3CB",
         "yellow": "#A57706",
-        "orange": "#BD3613",
-        "red": "#D11C24",
-        "pink": "#C61C6F",
-        "purple": "#595AB7",
+        "orange": "#f99602",
+        "red": "#f90101",
+        "pink": "#ff00d0",
+        "purple": "#cc35b0",
         "blue": "#2176C7",
-        "green": "#259286",
-        "yellowgreen": "#738A05"
+        "green": "#0ef202",
+        "yellowgreen": "#c4ff02"
       };
 
 //  RETRIEVE DATA FROM API
@@ -55,6 +63,8 @@ function parseData(error,jsonData) {
     // loop through the data
     euCrimeStats.forEach(function (d) {
         d.date = parseDate('01/01/' + d.year);
+        // Want to use the word murder instead of intentional homicide as it's easier to fit
+        d.murder = d.intentional_homicide;
         d.totalCrimes = d.assault + d.burglary + d.drugs + d.intentional_homicide + d.kidnapping + d.rape + d.robbery + d.sexual_assault + d.sexual_violence + d.theft;
     });
 

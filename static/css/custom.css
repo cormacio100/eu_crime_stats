@@ -20,7 +20,7 @@ table.dc-chart{
     text-align:left;
 }
 .header th{
-    padding:1em;
+    padding:0.3em;
 }
 h3,
 .dc-chart{
@@ -37,6 +37,7 @@ chart-ring-year{
     margin:1em;
     padding:1em;
     font-family:verdana,helvetica,arial;
+    font-size:0.7em;
 }
 .dc-chart #crime-stats-table .header{
     padding-left:2em;

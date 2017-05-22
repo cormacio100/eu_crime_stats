@@ -4,5 +4,9 @@
 
 $(function() {
     $('.carousel-control').hide();
+    //$('#select-country select option:first').text('Select a Country');
+    console.log('selecting a country');
+
+    $('#select-country select option[value="Ireland"]').click();
 });
 

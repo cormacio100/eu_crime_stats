@@ -106,8 +106,8 @@ function buildGraphs(error,jsonData){
     });
 
     crimeLineChartIreland
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(irelandAssaultGrp,"Ireland")
         //.dashStyle([1,1])
@@ -118,8 +118,8 @@ function buildGraphs(error,jsonData){
         .colors(irelandColor);
 
     crimeLineChartEngland
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(englandAssaultGrp,"England")
         .margins({top: 10, right: 50, bottom: 30, left: 40})
@@ -131,8 +131,8 @@ function buildGraphs(error,jsonData){
         .colors(englandColor);
 
     crimeLineChartScotland
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(scotlandAssaultGrp,"Scotland")
         //.dashStyle([3,3])
@@ -143,8 +143,8 @@ function buildGraphs(error,jsonData){
         .colors(scotlandColor);
 
     crimeLineChartWales
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(walesAssaultGrp,"Wales")
         //.dashStyle([4,4])
@@ -155,8 +155,8 @@ function buildGraphs(error,jsonData){
         .colors(walesColor);
 
     crimeLineChartNorthernIreland
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(northernIrelandAssaultGrp,"Northern Ireland")
         //.dashStyle([5,5])
@@ -167,8 +167,8 @@ function buildGraphs(error,jsonData){
         .colors(northernIrelandColor);
 
     crimeLineChartRestOfUk
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(restOfUKAssaultGrp,"Scotland,Wales,N.I.")
         //.dashStyle([5,5])
@@ -179,8 +179,8 @@ function buildGraphs(error,jsonData){
         .colors(restOfUkColor);
 
     countriesLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.yAxisLabel(dc.legend().x(400).y(120).itemHeight(13).gap(5))
         .yAxisLabel('Assaults')

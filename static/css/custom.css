@@ -7,9 +7,21 @@ svg{
     margin-right:auto;
 }
 
+svg{
+    padding:0em;
+    margin:0;
+}
+
+.smallerText{
+    font-size: 0.7em;
+}
+
 table.dc-chart{
     border:1px solid black;
     background-color: grey;
+}
+table.dc-chart caption{
+    font-weight:bold;
 }
 .header th,
 .dc-table-column{

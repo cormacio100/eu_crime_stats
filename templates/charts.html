@@ -15,50 +15,60 @@
                     <div class="col-md-1">&nbsp;</div>
                     <div class="col-md-6">
                         <div id="carousel-individual-country" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-individual-country" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-individual-country" data-slide-to="1"></li>
-                        <li data-target="#carousel-individual-country" data-slide-to="2"></li>
-                        <li data-target="#carousel-individual-country" data-slide-to="3"></li>
-                        <li data-target="#carousel-individual-country" data-slide-to="4"></li>
-                        <li data-target="#carousel-individual-country" data-slide-to="5"></li>
-                        <li data-target="#carousel-individual-country" data-slide-to="6"></li>
-                    </ol>
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-individual-country" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-individual-country" data-slide-to="1"></li>
+                                <li data-target="#carousel-individual-country" data-slide-to="2"></li>
+                                <li data-target="#carousel-individual-country" data-slide-to="3"></li>
+                                <li data-target="#carousel-individual-country" data-slide-to="4"></li>
+                                <li data-target="#carousel-individual-country" data-slide-to="5"></li>
+                                <li data-target="#carousel-individual-country" data-slide-to="6"></li>
+                            </ol>
 
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <div id="chart-line-ireland" class="colouredChart"><h3>Ireland</h3></div>
-                        </div>
-                        <div class="item">
-                            <div id="chart-line-england" class="colouredChart"><h3>England</h3></div>
-                        </div>
-                        <div class="item">
-                            <div id="chart-line-scotland" class="colouredChart"><h3>Scotland</h3></div>
-                        </div>
-                        <div class="item">
-                            <div id="chart-line-wales" class="colouredChart"><h3>Wales</h3></div>
-                        </div>
-                        <div class="item">
-                            <div id="chart-line-northern-ireland" class="colouredChart"><h3>Northern Ireland</h3></div>
-                        </div>
-                        <div class="item">
-                            <div id="chart-line-rest-of-uk" class="colouredChart"><h3>Scotland, Wales and N.I.</h3></div>
-                        </div>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <div id="chart-line-ireland" class="colouredChart"><h3>Ireland</h3></div>
+                                </div>
+                                <div class="item">
+                                    <div id="chart-line-england" class="colouredChart"><h3>England</h3></div>
+                                </div>
+                                <div class="item">
+                                    <div id="chart-line-scotland" class="colouredChart"><h3>Scotland</h3></div>
+                                </div>
+                                <div class="item">
+                                    <div id="chart-line-wales" class="colouredChart"><h3>Wales</h3></div>
+                                </div>
+                                <div class="item">
+                                    <div id="chart-line-northern-ireland" class="colouredChart"><h3>Northern Ireland</h3></div>
+                                </div>
+                                <div class="item">
+                                    <div id="chart-line-rest-of-uk" class="colouredChart"><h3>Scotland, Wales and N.I.</h3></div>
+                                </div>
 
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-individual-country" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-individual-country" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                        </a>
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-individual-country" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-individual-country" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>{{ heading.combo }}</h3>
                     </div>
+                </div>
+                <div class="row" id="allCountries">
+                   <!-- <div class="col-md-3" id="chart-ring-year2" ></div>
+                    <div class="col-md-1"></div>-->
+                    <div class="col-md-12" id="chart-line-compare-countries" class="colouredChart"></div>
                 </div>
             </div>
         </div>
@@ -66,20 +76,7 @@
     <section id="year-and-combination-chart">
         <div class="panel panel-default">
             <div class="panel-body">
-                <div class="row" id="allCountries">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-8">
-                                <h3>{{ heading.combo }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3" id="chart-ring-year2" ></div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-8" id="chart-line-compare-countries" class="colouredChart"></div>
-                </div>
+
             </div>
         </div>
     </section>

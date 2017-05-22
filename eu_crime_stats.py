@@ -24,7 +24,6 @@ def home():
     script = Markup('<script src="static/js/country_graph.js"></script>')
     return render_template('index.html',heading=heading,script=script)
 
-
 @app.route('/assault')
 def assault():
     heading = {'byCountry':'Number of Assaults By Country',

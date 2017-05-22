@@ -25,6 +25,9 @@ var walesColor = '#CC7789';
 var northernIrelandColor = '#B41414';
 var restOfUkColor = '#AA4088';
 
+var svgWidth = 600;
+var svgHeight = 250;
+
 //  RETRIEVE DATA FROM API
 queue()
     .defer(d3.json,'/charts/data')

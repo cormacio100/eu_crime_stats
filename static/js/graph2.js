@@ -8,6 +8,7 @@ function print_filter(filter){
     console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
 
+//  Crime Charts
 var assaultLineChart = dc.lineChart('#assault-line-chart');
 var burglaryLineChart = dc.lineChart('#burglary-line-chart');
 var drugsLineChart = dc.lineChart('#drugs-line-chart');
@@ -20,7 +21,14 @@ var svLineChart = dc.lineChart('#sv-line-chart');
 var theftLineChart = dc.lineChart('#theft-line-chart');
 var crimeCompositeChart = dc.compositeChart('#crime-comparison-chart');
 
-var svgWidth = 600;
+//  Justice system charts
+var malePoliceLineChart = dc.lineChart('#male-police-line-chart');
+var femalePoliceLineChart = dc.lineChart('#female-police-line-chart');
+var policeCompositeChart = dc.compositeChart('#police-officers-gender-comparison-chart');
+//var malePrisonPersLineChart = dc.lineChart('#male-prison-pers-line-chart');
+//var femalePrisonPersChart = dc.lineChart('#female-prison-pers-line-chart');
+
+var svgWidth = 650;
 var svgHeight = 300;
 
 //	 add a COLOR SCALE
@@ -66,6 +74,8 @@ function parseData(error,jsonData) {
         // Want to use the word murder instead of intentional homicide as it's easier to fit
         d.murder = d.intentional_homicide;
         d.totalCrimes = d.assault + d.burglary + d.drugs + d.intentional_homicide + d.kidnapping + d.rape + d.robbery + d.sexual_assault + d.sexual_violence + d.theft;
+        d.native_prisoner_perc = Math.round(d.native_prisoners / d.total_prison_population *100,2);
+        d.foreign_prisoner_perc = Math.round(d.foreign_prisoners / d.total_prison_population *100,2);
     });
 
     buildGraphs(euCrimeStats);

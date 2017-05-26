@@ -29,10 +29,12 @@ var malePrisonPersLineChart = dc.lineChart('#male-prison-pers-line-chart');
 var femalePrisonPersLineChart = dc.lineChart('#female-prison-pers-line-chart');
 var prisonPersCompositeChart = dc.compositeChart('#prison-pers-gender-comparison-chart');
 
-/*var adultMalePrisonerLineChart = dc.lineChart('#adult-male-prisoner-line-chart');
-var adultMalePrisonerLineChart = dc.lineChart('#adult-female-prisoner-line-chart');
-var adultMalePrisonerLineChart = dc.lineChart('#juvenile-prisoner-line-chart');
-var prisonerCompositeChart = dc.compositeChart('#prisoner-comparison-chart');*/
+var adultMalePrisonerLineChart = dc.lineChart('#adult-male-prisoner-line-chart');
+var adultFemalePrisonerLineChart = dc.lineChart('#adult-female-prisoner-line-chart');
+var juvenilePrisonerLineChart = dc.lineChart('#juvenile-prisoner-line-chart');
+var prisonerCompositeChart = dc.compositeChart('#prisonser-comparison-chart');
+
+
 
 //var malePrisonPersLineChart = dc.lineChart('#male-prison-pers-line-chart');
 //var femalePrisonPersChart = dc.lineChart('#female-prison-pers-line-chart');

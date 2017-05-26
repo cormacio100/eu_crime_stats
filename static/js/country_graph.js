@@ -355,6 +355,59 @@ function buildGraphs(euCrimeStats){
         .brushOn(false)
         .elasticY(true)
         .renderHorizontalGridLines(true);
+
+    //  PRISON POPULATION
+    adultMalePrisonerLineChart
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(adultMalePrisonerGrp,"Male")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]));
+    adultFemalePrisonerLineChart
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(adultFemalePrisonerGrp,"Female")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]));
+    juvenilePrisonerLineChart
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(juvenilePrisonerGrp,"Juvenile")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]));
+    prisonerCompositeChart
+        .width(svgWidth-150)
+        .height(svgHeight-150)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
+        .yAxisLabel('')
+        .legend(dc.legend().x(400).y(10).itemHeight(13).gap(10))
+        .renderHorizontalGridLines(true)
+        .compose([
+            dc.lineChart(adultMalePrisonerLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(palette.blue)
+                .group(adultMalePrisonerGrp,"Male"),
+            dc.lineChart(adultFemalePrisonerLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(palette.pink)
+                .group(adultFemalePrisonerGrp,"Female"),
+            dc.lineChart(juvenilePrisonerLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(palette.green)
+                .group(juvenilePrisonerGrp,"Juvenile"),
+        ])
+        .brushOn(false)
+        .elasticY(true)
+        .renderHorizontalGridLines(true);
+
+
     /////////////////////////////////////////////////
     //  TABLES
     /////////////////////////////////////////////////

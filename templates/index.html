@@ -12,7 +12,7 @@
                                     <div id="select-country"><h4>Select A Country </h4></div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row init-hide">
                                 <div class="col-md-12">
                                     <table id="crime-stats-table">
                                         <caption><h4>Crime Types</h4></caption>
@@ -36,60 +36,62 @@
                             </div>
                         </div>
                         <div class="col-md-1"></div>
-                        <div class="col-md-6" id="crime-comparison-chart"></div>
+                        <div class="col-md-6 init-hide" id="crime-comparison-chart"></div>
                     </div>
-                    <div class="row chart-title">
-                        <div class="col-md-12"><h4>Police Officers</h4></div>
-                    </div>
-                    <div class="row chart-stage">
-                        <div class="col-md-2" style="clear:both">
-                            <table id="police-officers-table">
-                                <thead>
-                                    <tr class="header">
-                                        <th>Year</th>
-                                        <th>Total Officers</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                    <div class="init-hide">
+                        <div class="row chart-title">
+                            <div class="col-md-12"><h4>Police Officers</h4></div>
                         </div>
-                        <div class="col-md-4" id="police-officers-gender-comparison-chart"></div>
-                    </div>
-                    <div class="row chart-title">
-                        <div class="col-md-12"><h4>Prison Personnel</h4></div>
-                    </div>
-                    <div class="row chart-stage">
-                        <!--<div class="col-md-6"></div>-->
-                        <div class="col-md-2" style="clear:both">
-                            <table id="prison-personell-table">
-                                <thead>
-                                    <tr class="header">
-                                        <th>Year</th>
-                                        <th>Total Prison Personnel</th>
-                                        <!--<th>Male</th>
-                                        <th>Female</th>-->
-                                    </tr>
-                                </thead>
-                            </table>
+                        <div class="row chart-stage">
+                            <div class="col-md-2" style="clear:both">
+                                <table id="police-officers-table">
+                                    <thead>
+                                        <tr class="header">
+                                            <th>Year</th>
+                                            <th>Total Officers</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="col-md-4" id="police-officers-gender-comparison-chart"></div>
                         </div>
-                        <div class="col-md-4" id="prison-pers-gender-comparison-chart"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12"><h4>Prison Population</h4></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3" style="clear:both">
-                            <table id="prison-population-table">
-                                <thead>
-                                    <tr class="header">
-                                        <th>Year</th>
-                                        <th>Total Prison Population</th>
-                                        <th>Native Prisoners</th>
-                                        <th>Foreign Prisoners</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                        <div class="row chart-title">
+                            <div class="col-md-12"><h4>Prison Personnel</h4></div>
                         </div>
-                        <div class="col-md-6" id="prisonser-comparison-chart"></div>
+                        <div class="row chart-stage">
+                            <!--<div class="col-md-6"></div>-->
+                            <div class="col-md-2" style="clear:both">
+                                <table id="prison-personell-table">
+                                    <thead>
+                                        <tr class="header">
+                                            <th>Year</th>
+                                            <th>Total Prison Personnel</th>
+                                            <!--<th>Male</th>
+                                            <th>Female</th>-->
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="col-md-4" id="prison-pers-gender-comparison-chart"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12"><h4>Prison Population</h4></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3" style="clear:both">
+                                <table id="prison-population-table">
+                                    <thead>
+                                        <tr class="header">
+                                            <th>Year</th>
+                                            <th>Total Prison Population</th>
+                                            <th>Native Prisoners</th>
+                                            <th>Foreign Prisoners</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="col-md-6" id="prisonser-comparison-chart"></div>
+                        </div>
                     </div>
                     <div id="hidden">
                         <div class="row">
@@ -159,5 +161,5 @@
     <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
     <script src="{{ url_for('static',filename='js/graph2.js') }}"></script>
     {{ script }}
-    <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/country_custom.js') }}"></script>
 {% endblock %}

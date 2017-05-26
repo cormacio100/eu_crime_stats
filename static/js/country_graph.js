@@ -22,7 +22,7 @@ function buildGraphs(euCrimeStats){
     });
 
     var indexedData = crossfilter(smallCountryStats);
-    print_filter(indexedData);
+    //print_filter(indexedData);
     /////////////////////////////////////////////////
     //  SELECT MENU
     /////////////////////////////////////////////////

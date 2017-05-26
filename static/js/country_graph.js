@@ -278,18 +278,19 @@ function buildGraphs(euCrimeStats){
     /////////////////////////////////////////////////
     //  JUSTICE SYSTEM CHARTS
     /////////////////////////////////////////////////
+    //  POLICE OFFICERS
     malePoliceLineChart
         .width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
-        .group(malePoliceGrp,"Male Police")
+        .group(malePoliceGrp,"Male Officers")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     femalePoliceLineChart
         .width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
-        .group(femalePoliceGrp,"Female Police")
+        .group(femalePoliceGrp,"Female Officers")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     policeCompositeChart
@@ -298,23 +299,61 @@ function buildGraphs(euCrimeStats){
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('')
-        .legend(dc.legend().x(500).y(10).itemHeight(13).gap(10))
+        .legend(dc.legend().x(400).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(malePoliceLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(palette.blue)
-                .group(malePoliceGrp,"Male Police"),
+                .group(malePoliceGrp,"Male"),
             dc.lineChart(femalePoliceLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(palette.pink)
-                .group(femalePoliceGrp,"Female Police"),
+                .group(femalePoliceGrp,"Female"),
         ])
         .brushOn(false)
-        //.mouseZoomable(true)
-    .elasticY(true)
+        .elasticY(true)
+        .renderHorizontalGridLines(true);
+
+    //  PRISON PERSONNEL
+    malePrisonPersLineChart
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(malePrisonPersGrp,"Male")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]));
+    femalePrisonPersLineChart
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(femalePrisonPersGrp,"Female")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]));
+    prisonPersCompositeChart
+        .width(svgWidth-150)
+        .height(svgHeight-150)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
+        .yAxisLabel('')
+        .legend(dc.legend().x(400).y(10).itemHeight(13).gap(10))
+        .renderHorizontalGridLines(true)
+        .compose([
+            dc.lineChart(malePrisonPersLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(palette.blue)
+                .group(malePrisonPersGrp,"Male"),
+            dc.lineChart(femalePrisonPersLineChart)
+                .dimension(dateDim)
+                //.renderArea(true)
+                .colors(palette.pink)
+                .group(femalePrisonPersGrp,"Female"),
+        ])
+        .brushOn(false)
+        .elasticY(true)
         .renderHorizontalGridLines(true);
     /////////////////////////////////////////////////
     //  TABLES
@@ -367,7 +406,6 @@ function buildGraphs(euCrimeStats){
     //  JUDICIAL SYSTEM STATS TABLE
     /////////////////////////////////////////////////
     var policeOfficersTable = dc.dataTable('#police-officers-table');
-
     policeOfficersTable
         .dimension(dateDim)
         .group(function(d){
@@ -394,18 +432,21 @@ function buildGraphs(euCrimeStats){
     prisonPersonellTable
         .dimension(dateDim)
         .group(function(d){
-            return d.year;
+            return d.eu_member_state;
         })
         .columns([
             function(d){
-                return d.prison_personell;
+                return d.year;
             },
             function(d){
+                return d.prison_personell;
+            },
+            /*function(d){
                 return d.male_prison_personell;
             },
             function(d){
                 return d.female_prison_personell;
-            }
+            }*/
         ]);
 
     var prisonPopulationTable = dc.dataTable('#prison-population-table');
@@ -413,13 +454,25 @@ function buildGraphs(euCrimeStats){
     prisonPopulationTable
         .dimension(dateDim)
         .group(function(d){
-            return d.year;
+            //return d.year;
+            return d.eu_member_state;
         })
         .columns([
+            function(d){
+                return d.year;
+            },
             function(d){
                 return d.total_prison_population;
             },
             function(d){
+                return d.native_prisoners;
+            },
+            function(d){
+                return d.foreign_prisoners;
+            },
+
+
+           /* function(d){
                 return d.adult_male_prisoners;
             },
             function(d){
@@ -427,7 +480,7 @@ function buildGraphs(euCrimeStats){
             },
             function(d){
                 return d.juvenile_prison_population;
-            }
+            }*/
         ]);
 
     var prisonerNationalityTable = dc.dataTable('#prisoner-nationality-table');

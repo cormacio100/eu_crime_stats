@@ -39,7 +39,7 @@ var prisonerCompositeChart = dc.compositeChart('#prisonser-comparison-chart');
 //var malePrisonPersLineChart = dc.lineChart('#male-prison-pers-line-chart');
 //var femalePrisonPersChart = dc.lineChart('#female-prison-pers-line-chart');
 
-var svgWidth = 650;
+var svgWidth = 900;
 var svgHeight = 300;
 
 //	 add a COLOR SCALE

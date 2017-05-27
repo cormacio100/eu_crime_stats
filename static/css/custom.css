@@ -11,7 +11,21 @@ svg{
     padding:0em;
     margin:0;
 }
+#select-country{
+    background-color:#cfd0d1;
+    border:1px solid black;
+    color:white;
+}
+select.dc-select-menu{
 
+    color:white;
+    font-weight: bold;
+    border:1px solid black;
+    background-color: #68b6c4;
+}
+.chart-title{
+    border-bottom:1px solid #cfd0d1;
+}
 .smallerText{
     font-size: 0.7em;
 }

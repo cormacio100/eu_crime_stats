@@ -36,10 +36,24 @@ function buildGraphs(euCrimeStats){
                             .title(function(d){
                                 return d.key;
                             });
-                            /*.promptValue(function(d){
-                                //var val = 'Ireland';
-                                //return val;
-                            });*/
+
+    /////////////////////////////////////////////////
+    //  POPULATION DISPLAY
+    /////////////////////////////////////////////////
+    var population = dc.numberDisplay('#population');
+    var populationDim = indexedData.dimension(function(d){
+       return d.population;
+    });
+    var populationGroup = populationDim.group(function(d){console.log(d);});
+    //  FORMAT Numbers to be displayed in numberDisplay
+    population
+        .formatNumber(d3.format("d"))
+        .valueAccessor(function(d){
+            console.log(d);
+            return d;
+        })
+        .group(populationGroup);
+
 
     /////////////////////////////////////////////////
     //  LINE CHART
@@ -215,7 +229,7 @@ function buildGraphs(euCrimeStats){
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('')
         //.xAxisLabel('Year')
-        .legend(dc.legend().x(500).y(10).itemHeight(13).gap(10))
+        .legend(dc.legend().x(700).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(assaultLineChart)
@@ -294,7 +308,7 @@ function buildGraphs(euCrimeStats){
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     policeCompositeChart
-        .width(svgWidth-150)
+        .width(svgWidth-400)
         .height(svgHeight-150)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
@@ -333,7 +347,7 @@ function buildGraphs(euCrimeStats){
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     prisonPersCompositeChart
-        .width(svgWidth-150)
+        .width(svgWidth-400)
         .height(svgHeight-150)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
@@ -379,7 +393,7 @@ function buildGraphs(euCrimeStats){
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     prisonerCompositeChart
-        .width(svgWidth-150)
+        .width(svgWidth-400)
         .height(svgHeight-150)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
@@ -516,6 +530,15 @@ function buildGraphs(euCrimeStats){
             },
             function(d){
                 return d.total_prison_population;
+            },
+            function(d){
+                return d.adult_male_prisoners;
+            },
+            function(d){
+                return d.adult_female_prisoners;
+            },
+            function(d){
+                return d.juvenile_prison_population;
             },
             function(d){
                 return d.native_prisoners;

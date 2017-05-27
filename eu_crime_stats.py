@@ -147,7 +147,8 @@ def charts_data():
         'adult_female_prisoners':True,
         'juvenile_prison_population':True,
         'native_prisoners':True,
-        'foreign_prisoners':True
+        'foreign_prisoners':True,
+        'population':True
     };
 
     #   Open a connection to MongoDB

@@ -6,13 +6,9 @@ $(function() {
     $('.carousel-control').hide();
     //  hide hidden charts
 
-
-
-
-
     //$('#select-country select option:first').text('Select a Country');
-    console.log('selecting a country');
+    //console.log('selecting a country');
 
-    $('#select-country select option[value="Ireland"]').click();
+   // $('#select-country select option[value="Ireland"]').click();
 });
 

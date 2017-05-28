@@ -36,6 +36,23 @@ function buildGraphs(euCrimeStats){
 
     var indexedData = crossfilter(smallCountryStats);
     //print_filter(indexedData);
+    var countryPopObj = {};
+   // var populationGroup = populationDim.group(function(d){
+        //  save the list of populations to an array
+
+    //});
+    var countryPopulationDim = indexedData.dimension(function(d){
+        countryPopObj[d.eu_member_state]=d.population;
+    });
+    //console.log('populationArr Length:'+populationArr.length);
+
+    console.log('populations:');
+    console.log(countryPopObj);
+    /*$.each(populationArr,function(index,value){
+        console.log('index:'+index+' value:'+value);
+    })*/
+    //var uniquePopulationArr = uniqueArrayContents(populationArr);
+
     /////////////////////////////////////////////////
     //  SELECT MENU
     /////////////////////////////////////////////////
@@ -43,26 +60,16 @@ function buildGraphs(euCrimeStats){
        return d.eu_member_state;
     });
     var countryGroup = countryDim.group();
-    var countryArr = [];
+    /*var countryArr = [];
     var countryGroup2 = countryDim.group(function(d){
         countryArr.push(d);
     });
 
     var uniqueCountryArr = uniqueArrayContents(countryArr);
-
-    /*var uniqueCountryArr = [];
-    var markerIndex = 0;
-    uniqueCountryArr[markerIndex] = countryArr[0];
-    $.each(countryArr,function(index,value){
-        if(uniqueCountryArr[markerIndex]!=value){
-            markerIndex++;
-            uniqueCountryArr[markerIndex]=value;
-        }
-    });*/
     console.log('countries are: ');
     $.each(uniqueCountryArr,function(index,value){
         console.log('value is '+value);
-    });
+    });*/
     var selectCountry = dc.selectMenu('#select-country')
                             .dimension(countryDim)
                             .group(countryGroup)
@@ -73,41 +80,31 @@ function buildGraphs(euCrimeStats){
     /////////////////////////////////////////////////
     //  POPULATION DISPLAY
     /////////////////////////////////////////////////
-    var population = dc.numberDisplay('#population');
+   // var population = dc.numberDisplay('#population');
     var populationDim = indexedData.dimension(function(d){
         return d.population;
     });
-    var populationArr = [];
+   /* var populationArr = [];
     var populationGroup = populationDim.group(function(d){
         //  save the list of populations to an array
         populationArr.push(d);
     });
 
     var uniquePopulationArr = uniqueArrayContents(populationArr);
-    /*console.log('population array contains:');
-    var uniquePopulationArr = []
-    var markerIndex = 0;
-    uniquePopulationArr[markerIndex] = populationArr[0];
-    $.each(populationArr,function(index,value){
-        if(uniquePopulationArr[markerIndex]!=value){
-            markerIndex++;
-            uniquePopulationArr[markerIndex]=value;
-        }
-    });*/
-
     console.log('populations are: ');
     $.each(uniquePopulationArr,function(index,value){
         console.log('value is '+value);
-    });
+    });*/
 
     //  FORMAT Numbers to be displayed in numberDisplay
-    population
+    /*population
         .formatNumber(d3.format("d"))
         .valueAccessor(function(d){
             console.log(d);
             return d;
         })
-        .group(populationGroup);
+        .group(populationGroup);*/
+
 
 
     /////////////////////////////////////////////////
@@ -634,11 +631,20 @@ function buildGraphs(euCrimeStats){
     dc.renderAll();
 
     $('.init-hide').hide();
+
+
     $('select.dc-select-menu').on('change',function(){
         console.log('selection changed');
         if($('select.dc-select-menu').val()==''){
             $('.init-hide').hide();
         }else{
+
+            var country = $('select.dc-select-menu').val();
+            //countryPopObj
+
+            var pop=countryPopObj[country];
+            console.log('population:'+pop);
+            $('#population').text(pop);
             $('.init-hide').show();
         }
     });

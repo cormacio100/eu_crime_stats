@@ -10,6 +10,19 @@ function print_filter(filter){
     if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);}else{}
     console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
+function uniqueArrayContents(arr){
+    var markerIndex = 0;
+    var uniqueArr = [];
+    uniqueArr[markerIndex] = arr[0];
+    $.each(arr,function(index,value){
+        if(uniqueArr[markerIndex]!=value){
+            markerIndex++;
+            uniqueArr[markerIndex]=value;
+        }
+    });
+    return uniqueArr;
+}
+
 
 function buildGraphs(euCrimeStats){
 
@@ -30,6 +43,26 @@ function buildGraphs(euCrimeStats){
        return d.eu_member_state;
     });
     var countryGroup = countryDim.group();
+    var countryArr = [];
+    var countryGroup2 = countryDim.group(function(d){
+        countryArr.push(d);
+    });
+
+    var uniqueCountryArr = uniqueArrayContents(countryArr);
+
+    /*var uniqueCountryArr = [];
+    var markerIndex = 0;
+    uniqueCountryArr[markerIndex] = countryArr[0];
+    $.each(countryArr,function(index,value){
+        if(uniqueCountryArr[markerIndex]!=value){
+            markerIndex++;
+            uniqueCountryArr[markerIndex]=value;
+        }
+    });*/
+    console.log('countries are: ');
+    $.each(uniqueCountryArr,function(index,value){
+        console.log('value is '+value);
+    });
     var selectCountry = dc.selectMenu('#select-country')
                             .dimension(countryDim)
                             .group(countryGroup)
@@ -42,9 +75,31 @@ function buildGraphs(euCrimeStats){
     /////////////////////////////////////////////////
     var population = dc.numberDisplay('#population');
     var populationDim = indexedData.dimension(function(d){
-       return d.population;
+        return d.population;
     });
-    var populationGroup = populationDim.group(function(d){console.log(d);});
+    var populationArr = [];
+    var populationGroup = populationDim.group(function(d){
+        //  save the list of populations to an array
+        populationArr.push(d);
+    });
+
+    var uniquePopulationArr = uniqueArrayContents(populationArr);
+    /*console.log('population array contains:');
+    var uniquePopulationArr = []
+    var markerIndex = 0;
+    uniquePopulationArr[markerIndex] = populationArr[0];
+    $.each(populationArr,function(index,value){
+        if(uniquePopulationArr[markerIndex]!=value){
+            markerIndex++;
+            uniquePopulationArr[markerIndex]=value;
+        }
+    });*/
+
+    console.log('populations are: ');
+    $.each(uniquePopulationArr,function(index,value){
+        console.log('value is '+value);
+    });
+
     //  FORMAT Numbers to be displayed in numberDisplay
     population
         .formatNumber(d3.format("d"))
@@ -577,4 +632,14 @@ function buildGraphs(euCrimeStats){
 
 
     dc.renderAll();
+
+    $('.init-hide').hide();
+    $('select.dc-select-menu').on('change',function(){
+        console.log('selection changed');
+        if($('select.dc-select-menu').val()==''){
+            $('.init-hide').hide();
+        }else{
+            $('.init-hide').show();
+        }
+    });
 }

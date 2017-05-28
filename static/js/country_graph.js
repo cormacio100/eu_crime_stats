@@ -371,17 +371,18 @@ function buildGraphs(euCrimeStats){
         ]);
 
     dc.renderAll();
+    $('select.dc-select-menu option:first').text('Select');
     $('#hidden').remove();
     $('.init-hide').hide();
     $('select.dc-select-menu').on('change',function(){
         if($('select.dc-select-menu').val()==''){
-            $('.init-hide').hide();
+            $('.init-hide').fadeOut('slow');
         }else{
             //  RETRIEVE THE COUNTRY SELECTION AND FIND THE CORRESPONDNG POPULATION TO DISPLAY
             var country = $('select.dc-select-menu').val();
             var pop=countryPopObj[country];
             $('#population').text(addCommas(pop));
-            $('.init-hide').show();
+            $('.init-hide').fadeIn('slow');
         }
     });
 }

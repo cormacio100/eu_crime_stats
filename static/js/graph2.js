@@ -8,7 +8,7 @@ function print_filter(filter){
     console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
 }
 
-//  Crime Charts
+//  CRIME CHARTS
 var assaultLineChart = dc.lineChart('#assault-line-chart');
 var burglaryLineChart = dc.lineChart('#burglary-line-chart');
 var drugsLineChart = dc.lineChart('#drugs-line-chart');
@@ -21,7 +21,7 @@ var svLineChart = dc.lineChart('#sv-line-chart');
 var theftLineChart = dc.lineChart('#theft-line-chart');
 var crimeCompositeChart = dc.compositeChart('#crime-comparison-chart');
 
-//  Justice system charts
+//  JUSTICE SYSTEM CHARTS
 var malePoliceLineChart = dc.lineChart('#male-police-line-chart');
 var femalePoliceLineChart = dc.lineChart('#female-police-line-chart');
 var policeCompositeChart = dc.compositeChart('#police-officers-gender-comparison-chart');
@@ -34,20 +34,10 @@ var adultFemalePrisonerLineChart = dc.lineChart('#adult-female-prisoner-line-cha
 var juvenilePrisonerLineChart = dc.lineChart('#juvenile-prisoner-line-chart');
 var prisonerCompositeChart = dc.compositeChart('#prisonser-comparison-chart');
 
-
-
-//var malePrisonPersLineChart = dc.lineChart('#male-prison-pers-line-chart');
-//var femalePrisonPersChart = dc.lineChart('#female-prison-pers-line-chart');
-
 var svgWidth = 900;
 var svgHeight = 300;
 
-//	 add a COLOR SCALE
-/*var colorScale = d3.scale.linear()
-                    .domain([0,d3.max(myData)])
-                    .range(["green","red"]);*/
-
- var palette = {
+var palette = {
         "lightgray": "#819090",
         "gray": "#cfd0d1",
         "mediumgray": "#536870",

@@ -52,7 +52,6 @@ function parseData(error,jsonData) {
     var numberFormat = d3.format('.0f');
     // loop through the data
     euCrimeStats.forEach(function (d) {
-       // console.log(d);
         d.date = parseDate('01/01/' + d.year);
         var total = d.assault + d.burglary + d.drugs + d.intentional_homicide + d.kidnapping + d.rape + d.robbery + d.sexual_assault + d.sexual_violence + d.theft;
         if(isNaN(total)){
@@ -60,8 +59,6 @@ function parseData(error,jsonData) {
         }else{
             d.totalCrimes = total;
         }
-        //console.log('total '+total+' population:'+d.population);
-        //console.log(d.eu_member_state);
     });
     buildGraphs(euCrimeStats);
 }

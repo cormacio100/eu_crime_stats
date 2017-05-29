@@ -70,7 +70,7 @@ function buildGraphs(error,jsonData){
     });
     var englandAssaultGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='England'){
-            console.log(d);
+            //console.log(d);
             return d.assault;
         }else{
             return 0;

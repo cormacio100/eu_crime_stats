@@ -371,7 +371,7 @@ function buildGraphs(euCrimeStats){
         ]);
 
     dc.renderAll();
-    $('select.dc-select-menu option:first').text('Select');
+    $('select.dc-select-menu option:first').text('-- COUNTRY --');
     $('#hidden').remove();
     $('.init-hide').hide();
     $('select.dc-select-menu').on('change',function(){

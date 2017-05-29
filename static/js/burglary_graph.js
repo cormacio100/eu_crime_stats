@@ -1,16 +1,9 @@
 /**
  * Created by Cormac Liston on 12/05/2017.
+ *
+ * GRAPHS are assigned GLOBALLY to DOM objects in graph.js
+ *
  */
-// HELPER FUNCTION to to see if filters are working correctly
-function print_filter(filter){
-    //	first check that the filter if of valid type
-    var f=eval(filter);
-    if (typeof(f.length) != "undefined") {}else{}
-    if (typeof(f.top) != "undefined") {f=f.top(Infinity);}else{}
-    if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);}else{}
-    console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
-}
-
 
 //  RETRIEVE DATA FROM API
 queue()
@@ -29,13 +22,6 @@ function buildGraphs(error,jsonData){
     euCrimeStats.forEach(function(d){
         d.date = parseDate('01/01/'+d.year);
         d.totalCrimes = d.assault+d.burglary+d.drugs+d.intentional_homicide+d.kidnapping+d.rape+d.robbery+d.sexual_assault+d.sexual_violence+d.theft;
-        /*if(isNaN(d.totalCrimes)){
-            console.log('NaN found');
-            console.log(d.eu_member_state);
-        }else{
-            console.log('NaN NOT found');
-        }*/
-        //console.log('country:'+d.eu_member_state+' population:'+d.population+' theft '+d.theft+' totalCrimes:'+d.totalCrimes);
     });
 
     //  CROSSFILTER the data
@@ -51,10 +37,10 @@ function buildGraphs(error,jsonData){
        return d.totalCrimes;
     });
     yearPieChart
-        .width(250)
-        .height(250)
+        .width(200)
+        .height(200)
         .slicesCap(10)
-        .innerRadius(20)
+        .innerRadius(15)
         .dimension(yearDim)
         .group(yearlyTotal);
     yearPieChart2
@@ -75,29 +61,29 @@ function buildGraphs(error,jsonData){
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
 
+    var austriaBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Austria'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+    var denmarkBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Denmark'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+    var finlandBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Finland'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
     var irelandBurglaryGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Ireland'){
-            return d.burglary;
-        }else{
-            return 0;
-        }
-    });
-    var englandBurglaryGrp = dateDim.group().reduceSum(function(d){
-        if(d.eu_member_state=='England'){
-            return d.burglary;
-        }else{
-            return 0;
-        }
-    });
-    var scotlandBurglaryGrp = dateDim.group().reduceSum(function(d){
-        if(d.eu_member_state=='Scotland'){
-            return d.burglary;
-        }else{
-            return 0;
-        }
-    });
-    var walesBurglaryGrp = dateDim.group().reduceSum(function(d){
-        if(d.eu_member_state=='Wales'){
             return d.burglary;
         }else{
             return 0;
@@ -110,6 +96,42 @@ function buildGraphs(error,jsonData){
             return 0;
         }
     });
+    var norwayBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Norway'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+    var scotlandBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Scotland'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+    var slovakiaBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Slovakia'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+    var swedenBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Sweden'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+    var walesBurglaryGrp = dateDim.group().reduceSum(function(d){
+        if(d.eu_member_state=='Wales'){
+            return d.burglary;
+        }else{
+            return 0;
+        }
+    });
+
     var restOfUKBurglaryGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Northern Ireland' || d.eu_member_state=='Wales' || d.eu_member_state=='Scotland' ){
             return d.burglary;
@@ -118,125 +140,157 @@ function buildGraphs(error,jsonData){
         }
     });
 
+    crimeLineChartAustria
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(austriaBurglaryGrp,"Austria")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(austriaColor);
+    crimeLineChartDenmark
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(denmarkBurglaryGrp,"Denmark")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(denmarkColor);
+    crimeLineChartFinland
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(finlandBurglaryGrp,"Finland")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(finlandColor);
     crimeLineChartIreland
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(irelandBurglaryGrp,"Ireland")
-        //.dashStyle([1,1])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel('Assaults')
-        .xAxisLabel('Year')
+        .yAxisLabel('...')
         .colors(irelandColor);
-
-    crimeLineChartEngland
-        .width(600)
-        .height(300)
-        .dimension(dateDim)
-        .group(englandBurglaryGrp,"England")
-        .margins({top: 10, right: 50, bottom: 30, left: 40})
-        //.dashStyle([2,2])
-        .renderArea(true)
-        .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel('Assaults')
-        .xAxisLabel('Year')
-        .colors(englandColor);
-
-    crimeLineChartScotland
-        .width(600)
-        .height(300)
-        .dimension(dateDim)
-        .group(scotlandBurglaryGrp,"Scotland")
-        //.dashStyle([3,3])
-        .renderArea(true)
-        .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel('Assaults')
-        .xAxisLabel('Year')
-        .colors(scotlandColor);
-
-    crimeLineChartWales
-        .width(600)
-        .height(300)
-        .dimension(dateDim)
-        .group(walesBurglaryGrp,"Wales")
-        //.dashStyle([4,4])
-        .renderArea(true)
-        .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel('Assaults')
-        .xAxisLabel('Year')
-        .colors(walesColor);
-
     crimeLineChartNorthernIreland
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(northernIrelandBurglaryGrp,"Northern Ireland")
-        //.dashStyle([5,5])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel('Assaults')
-        .xAxisLabel('Year')
+        .yAxisLabel('...')
         .colors(northernIrelandColor);
-
+    crimeLineChartNorway
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(norwayBurglaryGrp,"Norway")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(norwayColor);
+    crimeLineChartScotland
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(scotlandBurglaryGrp,"Scotland")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(scotlandColor);
+    crimeLineChartSlovakia
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(slovakiaBurglaryGrp,"Slovakia")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(slovakiaColor);
+    crimeLineChartSweden
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(swedenBurglaryGrp,"Sweden")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(swedenColor);
+    crimeLineChartWales
+        .width(svgWidth)
+        .height(svgHeight)
+        .dimension(dateDim)
+        .group(walesBurglaryGrp,"Wales")
+        .renderArea(true)
+        .x(d3.time.scale().domain([minDate,maxDate]))
+        .yAxisLabel('...')
+        .colors(walesColor);
     crimeLineChartRestOfUk
-        .width(600)
-        .height(300)
+        .width(svgWidth)
+        .height(svgHeight)
         .dimension(dateDim)
         .group(restOfUKBurglaryGrp,"Scotland,Wales,N.I.")
-        //.dashStyle([5,5])
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel('Assaults')
-        .xAxisLabel('Year')
+        .yAxisLabel('...')
         .colors(restOfUkColor);
 
     countriesLineChart
-        .width(800)
-        .height(400)
+        .width(svgWidth)
+        .height(svgHeight+100)
         .x(d3.time.scale().domain([minDate,maxDate]))
         //.yAxisLabel(dc.legend().x(400).y(120).itemHeight(13).gap(5))
         .yAxisLabel('Assaults')
         .xAxisLabel('Year')
-        .legend(dc.legend().x(650).y(120).itemHeight(13).gap(5))
+        .legend(dc.legend().x(700).y(20).itemHeight(13).gap(5))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
-                //.renderArea(true)
+                .colors(austriaColor)
+                .group(austriaBurglaryGrp,"Austria"),
+            dc.lineChart(countriesLineChart)
+                .dimension(dateDim)
+                .colors(denmarkColor)
+                .group(denmarkBurglaryGrp,"Denmark"),
+            dc.lineChart(countriesLineChart)
+                .dimension(dateDim)
+                .colors(finlandColor)
+                .group(finlandBurglaryGrp,"Finland"),
+            dc.lineChart(countriesLineChart)
+                .dimension(dateDim)
                 .colors(irelandColor)
                 .group(irelandBurglaryGrp,"Ireland"),
-                //.dashStyle([1,1]),
-            /*dc.lineChart(countriesLineChart)
-                .dimension(dateDim)
-                //.renderArea(true)
-                .colors('#E1FF74')
-                .group(englandAssaultGrp,"England"),
-                //.dashStyle([2,2]),*/
-            dc.lineChart(countriesLineChart)
-                .dimension(dateDim)
-                //.renderArea(true)
-                .colors(scotlandColor)
-                .group(scotlandBurglaryGrp,"Scotland"),
-                //.dashStyle([3,3]),
-            dc.lineChart(countriesLineChart)
-                .dimension(dateDim)
-                //.renderArea(true)
-                .colors(walesColor)
-                .group(walesBurglaryGrp,"Wales"),
-                //.dashStyle([4,4]),
             dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(northernIrelandColor)
-                .group(northernIrelandBurglaryGrp,"Northern Ireland")
-                //.dashStyle([5,5]),
-            /*dc.lineChart(countriesLineChart)
+                .group(northernIrelandBurglaryGrp,"Northern Ireland"),
+            dc.lineChart(countriesLineChart)
                 .dimension(dateDim)
-                //.renderArea(true)
-                .colors(restOfUkColor)
-                .group(restOfUKAssaultGrp,"Scotland,Wales,N.I.")
-                //.dashStyle([5,5]),*/
+                .colors(norwayColor)
+                .group(norwayBurglaryGrp,"Norway"),
+            dc.lineChart(countriesLineChart)
+                .dimension(dateDim)
+                .colors(scotlandColor)
+                .group(scotlandBurglaryGrp,"Scotland"),
+            dc.lineChart(countriesLineChart)
+                .dimension(dateDim)
+                .colors(slovakiaColor)
+                .group(slovakiaBurglaryGrp,"Slovakia"),
+            dc.lineChart(countriesLineChart)
+                .dimension(dateDim)
+                .colors(swedenColor)
+                .group(swedenBurglaryGrp,"Sweden"),
+            dc.lineChart(countriesLineChart)
+                .dimension(dateDim)
+                .colors(walesColor)
+                .group(walesBurglaryGrp,"Wales"),
         ])
         .brushOn(false);
     dc.renderAll();

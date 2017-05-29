@@ -34,7 +34,7 @@ function buildGraphs(euCrimeStats){
     var countryPopulationDim = indexedData.dimension(function(d){
         countryPopObj[d.eu_member_state]=d.population;
     });
-   // console.log(countryPopObj);
+
     /////////////////////////////////////////////////
     //  SELECT MENU
     /////////////////////////////////////////////////
@@ -48,7 +48,6 @@ function buildGraphs(euCrimeStats){
                             .title(function(d){
                                 return d.key;
                             });
-
     /////////////////////////////////////////////////
     //  POPULATION DISPLAY
     /////////////////////////////////////////////////

@@ -25,12 +25,12 @@ var crimeLineChartRestOfUk = dc.lineChart('#chart-line-rest-of-uk');
 var countriesLineChart = dc.compositeChart('#chart-line-compare-countries');
 
 var austriaColor = '#B41414';
-var denmarkColor = '#f4a941';
+var denmarkColor = '#f9e909';
 var finlandColor = '#c4a509';
 var irelandColor = '#93B240';
 var norwayColor = '#E1DDAA';
-var scotlandColor = '#9EC6FF';
-var slovakiaColor = '#939e80';
+var scotlandColor = '#80afa6';
+var slovakiaColor = '#3a4f4b';
 var swedenColor = '#36ed25';
 var irelandColor = '#a01e61';
 var walesColor = '#CC7711';

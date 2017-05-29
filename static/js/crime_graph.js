@@ -61,8 +61,9 @@ function buildGraphs(error,jsonData){
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
 
+    //  RETRIEVE CRIME TYPE FROM HIDDEN FIELD
     var crime_type = $('#hidden_crime_type').text();
-    console.log('crime_type:'+crime_type);
+    console.log('crime type '+crime_type);
 
     var austriaCrimeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Austria'){
@@ -247,9 +248,7 @@ function buildGraphs(error,jsonData){
         .width(svgWidth)
         .height(svgHeight+100)
         .x(d3.time.scale().domain([minDate,maxDate]))
-        //.yAxisLabel(dc.legend().x(400).y(120).itemHeight(13).gap(5))
-        .yAxisLabel('Assaults')
-        .xAxisLabel('Year')
+        .yAxisLabel('...')
         .legend(dc.legend().x(700).y(20).itemHeight(13).gap(5))
         .renderHorizontalGridLines(true)
         .compose([
@@ -297,6 +296,7 @@ function buildGraphs(error,jsonData){
         ])
         .brushOn(false);
     dc.renderAll();
+    $('#hidden').hide();
 }
 
 

@@ -26,7 +26,7 @@ def home():
 @app.route('/assault')
 def assault():
     heading = {'byCountry':Markup('<strong>Assaults</strong> by Country'),
-               'combo':'Comparison between Countries for Number of Assaults',
+               'combo':Markup('Country Comparison of <strong>Assaults</strong>'),
                'hidden':'assault'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html',heading=heading,script=script)
@@ -35,7 +35,7 @@ def assault():
 @app.route('/burglary')
 def burglary():
     heading = {'byCountry':Markup('<strong>Burglaries</strong> by Country'),
-               'combo':'Comparison between Countries for Number of Burglaries',
+               'combo':Markup('Country Comparison of <strong>Burglaries</strong>'),
                'hidden':'burglary'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html',heading=heading,script=script)
@@ -44,7 +44,7 @@ def burglary():
 @app.route('/drug_offences')
 def drug_offences():
     heading = {'byCountry':Markup('<strong>Drug Offences</strong> by Country'),
-               'combo':'Comparison between Countries for Number of Drug Offences',
+               'combo':Markup('Country Comparison of <strong>Drug Offences</strong>'),
                'hidden':'drugs'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html',heading=heading,script=script)
@@ -53,7 +53,7 @@ def drug_offences():
 @app.route('/intentional_homicide')
 def intentional_homicide():
     heading = {'byCountry': Markup('<strong>Intentional Homicides</strong> by Country'),
-               'combo': 'Comparison Between Countries for Number of Intentional Homicide',
+               'combo': Markup('Country Comparison of <strong>Intentional Homicide</strong>'),
                'hidden': 'intentional_homicide'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
@@ -62,7 +62,7 @@ def intentional_homicide():
 @app.route('/kidnapping')
 def kidnapping():
     heading = {'byCountry': Markup('<strong>Kidnappings<strong> By Country'),
-               'combo': 'Comparison Between Countries for Number of Kidnappings',
+               'combo': Markup('Country Comparison of <strong>Kidnappings</strong>'),
                'hidden': 'kidnapping'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
@@ -71,7 +71,7 @@ def kidnapping():
 @app.route('/rape')
 def rape():
     heading = {'byCountry': Markup('<strong>Rapes</strong> by Country'),
-               'combo': 'Comparison Between Countries for Number of Rapes',
+               'combo': Markup('Country Comparison of <strong>Rapes</strong>'),
                'hidden': 'rape'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
@@ -80,7 +80,7 @@ def rape():
 @app.route('/robbery')
 def robbery():
     heading = {'byCountry': Markup('<strong>Robberies</strong> by Country'),
-               'combo': 'Comparison Between Countries for Number of Robberies',
+               'combo': Markup('Country Comparison of <strong>Robberies</strong>'),
                'hidden': 'robbery'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
@@ -89,7 +89,7 @@ def robbery():
 @app.route('/sexual_assault')
 def sexual_assault():
     heading = {'byCountry': Markup('<strong>Sexual Assaults</strong> By Country'),
-               'combo': 'Comparison Between Countries for Number of Sexual Assaults',
+               'combo': Markup('Country Comparison of <strong>Sexual Assaults</strong>'),
                'hidden': 'sexual_assault'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
@@ -98,7 +98,7 @@ def sexual_assault():
 @app.route('/sexual_violence')
 def sexual_violence():
     heading = {'byCountry': Markup('<strong>Sexual Violence</strong> by Country'),
-               'combo': 'Comparison Between Countries for Amount of Sexual Violence',
+               'combo': Markup('Country Comparison of <strong>Sexual Violence</strong>'),
                'hidden':'sexual_violence'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)
@@ -107,7 +107,7 @@ def sexual_violence():
 @app.route('/theft')
 def theft():
     heading = {'byCountry': Markup('<strong>Theft</strong> by Country'),
-               'combo': 'Comparison Between Countries for Amount of Theft',
+               'combo': Markup('Country Comparison of <strong>Theft</strong>'),
                'hidden':'theft'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
     return render_template('charts.html', heading=heading, script=script)

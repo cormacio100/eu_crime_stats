@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77cf3806-32dc-4798-93e0-8c54e5e377a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/assault_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/burglary_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/burglary_graph_old.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/drug_offences_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/drug_offences_old.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/intentional_homicide_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/kidnapping_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/old/graph_new_data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/old/graph_old.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/old/graph_old2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/rape_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/robbery_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/sexual_assault_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/sexual_violence_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/theft_graph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/assault.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/burglary.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/charts_bkp.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/charts_old.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/charts_old2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/country.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/drug_offences.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/index_bkp.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eu_crime_stats.py" afterPath="$PROJECT_DIR$/eu_crime_stats.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/crime_graph.js" afterPath="$PROJECT_DIR$/static/js/crime_graph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/custom.js" afterPath="$PROJECT_DIR$/static/js/custom.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,11 +21,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="eu_crime_stats.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="eu_crime_stats.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eu_crime_stats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="110" column="32" lean-forward="true" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+            <state relative-caret-position="137">
+              <caret line="63" column="57" lean-forward="false" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -102,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crime_graph.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="crime_graph.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/crime_graph.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="235">
@@ -244,8 +218,8 @@
         <option value="$PROJECT_DIR$/templates/charts.html" />
         <option value="$PROJECT_DIR$/static/js/country_graph.js" />
         <option value="$PROJECT_DIR$/static/js/custom.js" />
-        <option value="$PROJECT_DIR$/eu_crime_stats.py" />
         <option value="$PROJECT_DIR$/static/js/crime_graph.js" />
+        <option value="$PROJECT_DIR$/eu_crime_stats.py" />
       </list>
     </option>
   </component>
@@ -979,14 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eu_crime_stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="110" column="32" lean-forward="true" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/charts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-575">
@@ -1043,6 +1009,14 @@
             <element signature="e#3718#3847#0" expanded="false" />
             <element signature="e#3912#4040#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eu_crime_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="63" column="57" lean-forward="false" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>

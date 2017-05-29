@@ -61,7 +61,7 @@ def intentional_homicide():
 
 @app.route('/kidnapping')
 def kidnapping():
-    heading = {'byCountry': Markup('<strong>Kidnappings<strong> By Country'),
+    heading = {'byCountry': Markup('<strong>Kidnappings</strong> By Country'),
                'combo': Markup('Country Comparison of <strong>Kidnappings</strong>'),
                'hidden': 'kidnapping'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')

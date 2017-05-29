@@ -29,6 +29,13 @@ function buildGraphs(error,jsonData){
     euCrimeStats.forEach(function(d){
         d.date = parseDate('01/01/'+d.year);
         d.totalCrimes = d.assault+d.burglary+d.drugs+d.intentional_homicide+d.kidnapping+d.rape+d.robbery+d.sexual_assault+d.sexual_violence+d.theft;
+        /*if(isNaN(d.totalCrimes)){
+            console.log('NaN found');
+            console.log(d.eu_member_state);
+        }else{
+            console.log('NaN NOT found');
+        }*/
+        //console.log('country:'+d.eu_member_state+' population:'+d.population+' theft '+d.theft+' totalCrimes:'+d.totalCrimes);
     });
 
     //  CROSSFILTER the data

@@ -26,6 +26,11 @@ select.dc-select-menu{
 .chart-title{
     border-bottom:1px solid #cfd0d1;
 }
+.svg-middle{
+    margin-left:auto;
+    margin-right:auto;
+}
+
 .smallerText{
     font-size: 0.7em;
 }

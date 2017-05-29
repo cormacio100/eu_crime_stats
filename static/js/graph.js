@@ -10,23 +10,35 @@ function print_filter(filter){
 
 var yearPieChart = dc.pieChart('#chart-ring-year');
 var yearPieChart2 = dc.pieChart('#chart-ring-year2');
+
+var crimeLineChartAustria = dc.lineChart('#chart-line-austria');
+var crimeLineChartDenmark = dc.lineChart('#chart-line-denmark');
+var crimeLineChartFinland = dc.lineChart('#chart-line-finland');
 var crimeLineChartIreland = dc.lineChart('#chart-line-ireland');
-var crimeLineChartEngland = dc.lineChart('#chart-line-england');
-var crimeLineChartScotland = dc.lineChart('#chart-line-scotland');
-var crimeLineChartWales = dc.lineChart('#chart-line-wales');
 var crimeLineChartNorthernIreland = dc.lineChart('#chart-line-northern-ireland');
+var crimeLineChartNorway = dc.lineChart('#chart-line-norway');
+var crimeLineChartScotland = dc.lineChart('#chart-line-scotland');
+var crimeLineChartSlovakia = dc.lineChart('#chart-line-slovakia');
+var crimeLineChartSweden = dc.lineChart('#chart-line-sweden');
+var crimeLineChartWales = dc.lineChart('#chart-line-wales');
 var crimeLineChartRestOfUk = dc.lineChart('#chart-line-rest-of-uk');
 var countriesLineChart = dc.compositeChart('#chart-line-compare-countries');
 
+var austriaColor = '#B41414';
+var denmarkColor = '#f4a941';
+var finlandColor = '#c4a509';
 var irelandColor = '#93B240';
-var englandColor = '#E1DDAA';
+var norwayColor = '#E1DDAA';
 var scotlandColor = '#9EC6FF';
-var walesColor = '#CC7789';
-var northernIrelandColor = '#B41414';
-var restOfUkColor = '#AA4088';
+var slovakiaColor = '#939e80';
+var swedenColor = '#36ed25';
+var irelandColor = '#a01e61';
+var walesColor = '#CC7711';
+var northernIrelandColor = '#24beed';
+var restOfUkColor = '#1199aa';
 
-var svgWidth = 600;
-var svgHeight = 250;
+var svgWidth = 850;
+var svgHeight = 200;
 
 //  RETRIEVE DATA FROM API
 queue()
@@ -40,6 +52,7 @@ function parseData(error,jsonData) {
     var numberFormat = d3.format('.0f');
     // loop through the data
     euCrimeStats.forEach(function (d) {
+       // console.log(d);
         d.date = parseDate('01/01/' + d.year);
         var total = d.assault + d.burglary + d.drugs + d.intentional_homicide + d.kidnapping + d.rape + d.robbery + d.sexual_assault + d.sexual_violence + d.theft;
         if(isNaN(total)){
@@ -47,6 +60,8 @@ function parseData(error,jsonData) {
         }else{
             d.totalCrimes = total;
         }
+        //console.log('total '+total+' population:'+d.population);
+        //console.log(d.eu_member_state);
     });
     buildGraphs(euCrimeStats);
 }

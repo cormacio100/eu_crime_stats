@@ -1,6 +1,6 @@
--	Blank all fields until a country selection is made
--	Add in Extra countries
--	Add in a total
+-	Fix NAVBAR
+-	Make the STATS BY CRIME PAGE PRETTIER
+-	Get SWEDEN and FINLAND data back
 
 POPULATIONS:
 belgium 11.29

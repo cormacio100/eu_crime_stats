@@ -43,14 +43,6 @@ function buildGraphs(error,jsonData){
         .innerRadius(15)
         .dimension(yearDim)
         .group(yearlyTotal);
-    yearPieChart2
-        .width(250)
-        .height(250)
-        .slicesCap(10)
-        .innerRadius(20)
-        .dimension(yearDim)
-        .group(yearlyTotal);
-        //.colors(["#a60000","#ff0000", "#ff4040","#ff7373","#67e667","#39e639","#00cc00"]);
 
     /////////////////////////////////////////////////////////
     //  LINE CHART

@@ -9,8 +9,6 @@ function print_filter(filter){
 }
 
 var yearPieChart = dc.pieChart('#chart-ring-year');
-var yearPieChart2 = dc.pieChart('#chart-ring-year2');
-
 var crimeLineChartAustria = dc.lineChart('#chart-line-austria');
 var crimeLineChartDenmark = dc.lineChart('#chart-line-denmark');
 var crimeLineChartFinland = dc.lineChart('#chart-line-finland');

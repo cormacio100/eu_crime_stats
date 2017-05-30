@@ -1,15 +1,30 @@
 #individual_charts{
     margin-top:2em;
-    background-color:#68b6c4;
 }
 svg{
     margin-left:auto;
     margin-right:auto;
-}
-
-svg{
-    padding:0em;
+    padding:0;
     margin:0;
+}
+.jumbotron{
+    text-align:center;
+    opacity: 0.4;
+}
+.jumbotron:hover{
+    opacity: 1.0;
+}
+.jumbotron a{
+    color:#68b6c4;
+    text-decoration: none;
+}
+.jumbotron a:hover{
+    color:white;
+    text-decoration: underline;
+}
+.jumbotron a:visited{
+    color:#68b6c4;
+    text-decoration: none;
 }
 #select-country{
     background-color:#cfd0d1;
@@ -66,8 +81,8 @@ h3,
 .dc-chart{
     text-align:center;
 }
-chart-ring-year{
-    background-color:white;
+#chart-ring-year{
+    text-align:center;
 }
 .dc-chart-centered{
     margin-left:auto;
@@ -111,7 +126,6 @@ td{
 .dc-table-label{
     font-weight:bold;
 }
-
 .crime-stats-table th{
     font-size:2em;
 }

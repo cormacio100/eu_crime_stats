@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+{% block links %}{% endblock %}
+{% block content %}
+
+    <div id="outer" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Select A Country
+                            </div>
+                            <div class="chart-stage">
+                                <div id="select-country" data-step="1" data-intro="Select a Country to View Stats" style="font-weight: normal" data-position="right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row init-hide">
+                    <div class="col-sm-12">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Population
+                            </div>
+                            <div class="chart-stage">
+                                <div id="population" data-step="1" data-intro="Country Population" style="font-weight: normal" data-position="right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10">
+                <div class="row init-hide">
+                    <div class="col-sm-12">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Crime Types
+                            </div>
+                            <div class="chart-stage">
+                                 <div id="crime-comparison-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row init-hide">
+                    <div class="col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Police Officers
+                            </div>
+                            <div class="chart-stage">
+                                <div class="col-md-6" id="police-officers-gender-comparison-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Prison Personnel
+                            </div>
+                            <div class="chart-stage">
+                                <div class="col-md-4" id="prison-pers-gender-comparison-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row init-hide">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">
+                                Prisoner Population
+                            </div>
+                            <div class="chart-stage">
+                                <table id="prison-population-table">
+                                    <thead>
+                                        <tr class="header">
+                                            <th>Year</th>
+                                            <th>Total Prison Population</th>
+                                            <th>Adult Male Prisoners</th>
+                                            <th>Adult Female Prisoners</th>
+                                            <th>Juvenile Prisoners</th>
+                                            <th>Native Prisoners</th>
+                                            <th>Foreign Prisoners</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="hidden">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="assault-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="burglary-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="drugs-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="burglary-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="drugs-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="burglary-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="drugs-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="burglary-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="drugs-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="burglary-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="male-police-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="female-police-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="male-prison-pers-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="female-prison-pers-line-chart"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3" id="adult-male-prisoner-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3" id="adult-female-prisoner-line-chart"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3" id="juvenile-prisoner-line-chart"></div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/dc_old.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/graph2.js') }}"></script>
+    {{ script }}
+{% endblock %}

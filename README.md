@@ -16,14 +16,14 @@ The data range is between the years 2008 and 2014
 
 #   Technologies Used:
 
-Python (Flask)
-MongoDB
-D3.js
-DC.js
-Crossfilter.js
-JQuery
-BootStrap
-CSS3
+Python (Flask),
+MongoDB,
+D3.js,
+DC.js,
+Crossfilter.js,
+JQuery,
+BootStrap,
+CSS3,
 HTML5
 
 #   Installation

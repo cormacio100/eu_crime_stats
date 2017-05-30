@@ -31,9 +31,9 @@ HTML5
 1.   Clone the REPO to local `git clone https://github.com/cormacio100/eu_crime_stats.git`
 2.   Import the eu_crime_stats.json file from the db folder into a MongoDB collection based on the below settings
 
-        MONGODB_HOST = 'localhost'
-        MONGODB_PORT = 27017
-        DBS_NAME = 'projectModule2'
+        MONGODB_HOST = 'localhost',
+        MONGODB_PORT = 27017,
+        DBS_NAME = 'projectModule2',
         COLLECTION_NAME = 'eu_crime_stats'
 
 3.   Run the project through program Pycharm and then access the site through a browser at address http://127.0.0.1:5000/

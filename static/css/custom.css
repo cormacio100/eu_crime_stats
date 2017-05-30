@@ -48,7 +48,10 @@ select.dc-select-menu{
     margin-left:auto;
     margin-right:auto;
 }
-
+.right carousel-control{
+    opacity:0.1;
+    background-color:white;
+}
 .smallerText{
     font-size: 0.7em;
 }

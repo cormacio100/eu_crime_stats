@@ -68,7 +68,7 @@ def intentional_homicide():
 
 @app.route('/kidnapping')
 def kidnapping():
-    heading = {'byCountry': Markup('<strong>Kidnappings</strong> By Country'),
+    heading = {'byCountry': Markup('<strong>Kidnappings</strong> by Country'),
                'combo': Markup('Country Comparison of <strong>Kidnappings</strong>'),
                'hidden': 'kidnapping'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')
@@ -95,7 +95,7 @@ def robbery():
 
 @app.route('/sexual_assault')
 def sexual_assault():
-    heading = {'byCountry': Markup('<strong>Sexual Assaults</strong> By Country'),
+    heading = {'byCountry': Markup('<strong>Sexual Assaults</strong> by Country'),
                'combo': Markup('Country Comparison of <strong>Sexual Assaults</strong>'),
                'hidden': 'sexual_assault'}
     script = Markup('<script src="static/js/crime_graph.js"></script>')

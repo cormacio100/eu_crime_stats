@@ -56,7 +56,6 @@ select.dc-select-menu{
     background-color:#68b6c4;
     color:white;
     border:1px solid black;
-    xfont-weight: bold;
     font-size:1.3em;
     padding:0.5em;
     margin:0.5em;
@@ -104,6 +103,7 @@ h3,
 .colouredChart{
     border:1px solid black;
     background-color: grey;
+    padding:0;
 }
 .dc-chart h3{
     color:white;

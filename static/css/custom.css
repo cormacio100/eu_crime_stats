@@ -26,6 +26,9 @@ svg{
     color:#68b6c4;
     text-decoration: none;
 }
+.fa-balance-scale{
+    color:#68b6c4;
+}
 #select-country{
     background-color:#cfd0d1;
     border:1px solid black;

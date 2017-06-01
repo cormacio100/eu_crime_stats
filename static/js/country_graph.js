@@ -21,6 +21,32 @@ function addCommas(x) {
     return parts.join(".");
 }
 function buildGraphs(euCrimeStats){
+    var lineChartWidth = svgWidth;
+    var crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
+    //console.log('crimeTypeWidth '+crimeTypeWidth);
+    $(window).on('resize', function(){
+
+          var win = $(this); //this = window
+          //console.log('window width is '+win.width());
+          var crime_type_width = $('#crime-type-stage').width();
+          //console.log('crime_type_width: '+crime_type_width);
+          if(win.width() >= 992 ) {
+                lineChartWidth = lineChartWidth-150;
+                dc.renderAll();
+              console.log('>=992');
+          }else if(win.width() >= 768) {
+              lineChartWidth = lineChartWidth-230;
+              dc.renderAll();
+              console.log('>=768');
+          }else if(win.width() <768){
+
+              lineChartWidth = lineChartWidth-230;
+              dc.renderAll();
+              console.log('<768');
+          }
+          $('select.dc-select-menu option:first').text('-- COUNTRY --');
+    });
+
 
     var smallCountryStats = [];
     euCrimeStats.forEach(function(d){
@@ -88,7 +114,7 @@ function buildGraphs(euCrimeStats){
     //  CRIME CHARTS
     ////////////////////////////////////////////////////////////
     assaultLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(assaultGroup,"Assault")
@@ -97,70 +123,70 @@ function buildGraphs(euCrimeStats){
         .yAxisLabel('Assault')
         .xAxisLabel('Year');
     burglaryLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(burglaryGroup,"Burglary")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     drugsLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(drugsGroup,"Drugs")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     murderLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(murderGroup,"Murder")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     kidnappingLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(kidnappingGroup,"Kidnapping")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     rapeLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(rapeGroup,"Rape")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     robberyLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(robberyGroup,"Robbery")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     saLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(saGroup,"Sexual Assault")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     svLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(svGroup,"Sexual Violence")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     theftLineChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .dimension(dateDim)
         .group(theftGroup,"Theft")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     crimeCompositeChart
-        .width(svgWidth)
+        .width(null)
         .height(svgHeight)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
@@ -371,18 +397,25 @@ function buildGraphs(euCrimeStats){
         ]);
 
     dc.renderAll();
-    $('select.dc-select-menu option:first').text('-- COUNTRY --');
-    $('#hidden').remove();
-    $('.init-hide').hide();
-    $('select.dc-select-menu').on('change',function(){
-        if($('select.dc-select-menu').val()==''){
-            $('.init-hide').fadeOut('slow');
-        }else{
-            //  RETRIEVE THE COUNTRY SELECTION AND FIND THE CORRESPONDNG POPULATION TO DISPLAY
-            var country = $('select.dc-select-menu').val();
-            var pop=countryPopObj[country];
-            $('#population').text(addCommas(pop));
-            $('.init-hide').fadeIn('slow');
-        }
+
+
+    $(document).ready(function () {
+
+
+
+        $('select.dc-select-menu option:first').text('-- COUNTRY --');
+        $('#hidden').remove();
+        $('.init-hide').hide();
+        $('select.dc-select-menu').on('change',function(){
+            if($('select.dc-select-menu').val()==''){
+                $('.init-hide').fadeOut('slow');
+            }else{
+                //  RETRIEVE THE COUNTRY SELECTION AND FIND THE CORRESPONDNG POPULATION TO DISPLAY
+                var country = $('select.dc-select-menu').val();
+                var pop=countryPopObj[country];
+                $('#population').text(addCommas(pop));
+                $('.init-hide').fadeIn('slow');
+            }
+        });
     });
 }

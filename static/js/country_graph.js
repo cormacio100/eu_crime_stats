@@ -21,7 +21,45 @@ function addCommas(x) {
     return parts.join(".");
 }
 
-function setChartWidth(width,assaultLineChart,burglaryLineChart,drugsLineChart,murderLineChart,kidnappingLineChart,rapeLineChart,robberyLineChart,saLineChart,svLineChart,theftLineChart,crimeCompositeChart)
+//  WHAT HAPPENS WHEN A SELECTION IS MADE AFTER A RESIZE
+function selectMenuChange(countryPopObj){
+    $('select.dc-select-menu').on('change',function(){
+        if($('select.dc-select-menu').val()==''){
+            $('.init-hide').fadeOut('slow');
+        }else{
+            //  RETRIEVE THE COUNTRY SELECTION AND FIND THE CORRESPONDNG POPULATION TO DISPLAY
+            var country = $('select.dc-select-menu').val();
+            var pop=countryPopObj[country];
+            $('#population').text(addCommas(pop));
+            $('.init-hide').fadeIn('slow');
+        }
+    });
+}
+
+//  SET HOW THE SELECT MENU AFFECTS THE REST OF THE PAGE
+function selectMenu(countryPopObj,selection){
+    if('none'==selection){
+        console.log('selection:'+selection);
+        //  DEFAULT SELECTION ON LOAD
+        $('select.dc-select-menu option:first').text('-- COUNTRY --');
+        $('#hidden').remove();
+        $('.init-hide').hide();
+        //  HANDLE CHANGES IN SELECTION
+        selectMenuChange(countryPopObj);
+    }else{
+        console.log('resized and selection:'+selection);
+        // display the correct country
+        $('select.dc-select-menu').val(selection);
+        $('select.dc-select-menu option:first').text('-- COUNTRY --');
+        //  HANDLE CHANGES IN SELECTION
+        selectMenuChange(countryPopObj);
+    }
+}
+//  SET THE WIDTH OF ALL OF THE CRIME CHARTS
+function setCrimeChartWidth(width){
+    //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+    width=width-20;
+    console.log('width: '+width);
     assaultLineChart.width(width);
     burglaryLineChart.width(width);
     drugsLineChart.width(width);
@@ -33,14 +71,9 @@ function setChartWidth(width,assaultLineChart,burglaryLineChart,drugsLineChart,m
     svLineChart.width(width);
     theftLineChart.width(width);
     crimeCompositeChart.width(width);
+    crimeCompositeChart.legend(dc.legend().x(width-200).y(10).itemHeight(13).gap(10))
 }
-
-
 function buildGraphs(euCrimeStats){
-
-
-
-
     var smallCountryStats = [];
     euCrimeStats.forEach(function(d){
 
@@ -184,7 +217,7 @@ function buildGraphs(euCrimeStats){
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('')
-        .legend(dc.legend().x(crimeTypeWidth-200).y(10).itemHeight(13).gap(10))
+        //.legend(dc.legend().x(crimeTypeWidth-200).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(assaultLineChart)
@@ -390,76 +423,54 @@ function buildGraphs(euCrimeStats){
         ]);
 
 
-    //var lineChartWidth = svgWidth;
+    /**
+     *  -   retrieve width of the window
+     *  -   retrieve initial width of the container
+     *  -   set the chart width to container width - 20px
+     *  -   dc.renderall
+     *  -   when the window resizes
+     *      -   in stages
+     *          -   retrieve the width of the container again
+     *          -   set the chart width to the new container width - 20px
+     *          -   dc.renderAll
+     * @type {*}
+     */
+
+    //  retrieve initial width of the container
     var crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
-    var newCrimeTypeWidth = 0;
-    var initWindowSize = $(window).width();
-    var width = initWindowSize;
-    console.log('crimeTypeWidth '+crimeTypeWidth + ' window size '+initWindowSize);
-    $(window).on('resize', function(){
-        //lineChartWidth = svgWidth;
-        width = $(this).width();
-        if(width >= 992 ) {
-            newCrimeTypeWidth = $('#crime-type-stage').width();
-
-            //lineChartWidth = lineChartWidth-150;
-            //dc.renderAll();
-            console.log('>=992 and crimeTypeWidth:'+crimeTypeWidth);
-        }else if(width >= 768) {
-            newCrimeTypeWidth = $('#crime-type-stage').width();
-            //lineChartWidth = lineChartWidth-230;
-            //dc.renderAll();
-            console.log('>=768 and crimeTypeWidth:'+crimeTypeWidth);
-        }else if(width <768){
-            newCrimeTypeWidth = $('#crime-type-stage').width();
-            //lineChartWidth = lineChartWidth-230;
-            //dc.renderAll();
-            console.log('<768 and crimeTypeWidth:'+crimeTypeWidth);
-        }
-        $('select.dc-select-menu option:first').text('-- COUNTRY --');
-    });
-
-    if(width<initWindowSize){
-        setChartWidth(newCrimeTypeWidth,assaultLineChart,burglaryLineChart,drugsLineChart,murderLineChart,kidnappingLineChart,rapeLineChart,robberyLineChart,saLineChart,svLineChart,theftLineChart,crimeCompositeChart);
-        dc.renderAll();
-    }else{
-        setChartWidth(newCrimeTypeWidth,assaultLineChart,burglaryLineChart,drugsLineChart,murderLineChart,kidnappingLineChart,rapeLineChart,robberyLineChart,saLineChart,svLineChart,theftLineChart,crimeCompositeChart);
-        dc.renderAll();
+    if(0<crimeTypeWidth) {
+        console.log('crimeTypeWidth: '+crimeTypeWidth);
+        setCrimeChartWidth(crimeTypeWidth);
     }
-
-
-
-    /*
-    assaultLineChart.width(crimeTypeWidth);
-    burglaryLineChart.width(crimeTypeWidth);
-    drugsLineChart.width(crimeTypeWidth);
-    murderLineChart.width(crimeTypeWidth);
-    kidnappingLineChart.width(crimeTypeWidth);
-    rapeLineChart.width(crimeTypeWidth);
-    robberyLineChart.width(crimeTypeWidth);
-    saLineChart.width(crimeTypeWidth);
-    svLineChart.width(crimeTypeWidth);
-    theftLineChart.width(crimeTypeWidth);
-    crimeCompositeChart.width(crimeTypeWidth);*/
-
     dc.renderAll();
 
-
     $(document).ready(function () {
+        //  DEFINE HOW PAGE REACTS TO THE SELECT MENU
+        //  THE SELECTION WILL DEFAULT TO -- COUNTRY --
+        selectMenu(countryPopObj,'none');
 
-        $('select.dc-select-menu option:first').text('-- COUNTRY --');
-        $('#hidden').remove();
-        $('.init-hide').hide();
-        $('select.dc-select-menu').on('change',function(){
-            if($('select.dc-select-menu').val()==''){
-                $('.init-hide').fadeOut('slow');
-            }else{
-                //  RETRIEVE THE COUNTRY SELECTION AND FIND THE CORRESPONDNG POPULATION TO DISPLAY
-                var country = $('select.dc-select-menu').val();
-                var pop=countryPopObj[country];
-                $('#population').text(addCommas(pop));
-                $('.init-hide').fadeIn('slow');
+        //  WHAT HAPPENS WHEN THE PAGE RESIZES
+        $(window).on('resize', function(){
+            //  RETAIN THE COUNTRY SELECTION
+            var country = $('select.dc-select-menu').val();
+            width = $(this).width();
+            if(width >= 992 ) {
+                crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
+                setCrimeChartWidth(crimeTypeWidth)
+                dc.renderAll();
+                console.log('>=992 and crimeTypeWidth:'+crimeTypeWidth);
+            }else if(width >= 768) {
+                crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
+                setCrimeChartWidth(crimeTypeWidth)
+                dc.renderAll();
+                console.log('>=768 and crimeTypeWidth:'+crimeTypeWidth);
+            }else if(width <768){
+                crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
+                setCrimeChartWidth(crimeTypeWidth)
+                dc.renderAll();
+                console.log('<768 and crimeTypeWidth:'+crimeTypeWidth);
             }
+            selectMenu(countryPopObj,country);
         });
     });
 }

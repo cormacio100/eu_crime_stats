@@ -20,8 +20,7 @@ function addCommas(x) {
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
 }
-
-//  WHAT HAPPENS WHEN A SELECTION IS MADE AFTER A RESIZE
+//  WHAT HAPPENS WHEN A SELECTION IS MADE AFTER A BROWSER RESIZE
 function selectMenuChange(countryPopObj){
     $('select.dc-select-menu').on('change',function(){
         if($('select.dc-select-menu').val()==''){
@@ -35,7 +34,6 @@ function selectMenuChange(countryPopObj){
         }
     });
 }
-
 //  SET HOW THE SELECT MENU AFFECTS THE REST OF THE PAGE
 function selectMenu(countryPopObj,selection){
     if('none'==selection){
@@ -71,7 +69,23 @@ function setCrimeChartWidth(width){
     svLineChart.width(width);
     theftLineChart.width(width);
     crimeCompositeChart.width(width);
-    crimeCompositeChart.legend(dc.legend().x(width-200).y(10).itemHeight(13).gap(10))
+    crimeCompositeChart.legend(dc.legend().x(width-150).y(10).itemHeight(13).gap(10))
+}
+function setPoliceChartWidth(width){
+    //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+    width=width-20;
+    malePoliceLineChart.width(width);
+    femalePoliceLineChart.width(width);
+    policeCompositeChart.width(width);
+    policeCompositeChart.legend(dc.legend().x(width-100).y(10).itemHeight(13).gap(10));
+}
+function setPrisonPersChartWidth(width){
+    //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+    width=width-20;
+    malePrisonPersLineChart.width(width);
+    femalePrisonPersLineChart.width(width);
+    prisonPersCompositeChart.width(width);
+    prisonPersCompositeChart.legend(dc.legend().x(width-100).y(10).itemHeight(13).gap(10));
 }
 function buildGraphs(euCrimeStats){
     var smallCountryStats = [];
@@ -140,7 +154,6 @@ function buildGraphs(euCrimeStats){
     //  CRIME LINE CHARTS
     ////////////////////////////////////////////////////////////
     assaultLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(assaultGroup,"Assault")
@@ -149,75 +162,64 @@ function buildGraphs(euCrimeStats){
         .yAxisLabel('Assault')
         .xAxisLabel('Year');
     burglaryLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(burglaryGroup,"Burglary")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     drugsLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(drugsGroup,"Drugs")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     murderLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(murderGroup,"Murder")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     kidnappingLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(kidnappingGroup,"Kidnapping")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     rapeLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(rapeGroup,"Rape")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     robberyLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(robberyGroup,"Robbery")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     saLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(saGroup,"Sexual Assault")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     svLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(svGroup,"Sexual Violence")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     theftLineChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(theftGroup,"Theft")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     crimeCompositeChart
-        //.width(crimeTypeWidth)
         .height(svgHeight)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('')
-        //.legend(dc.legend().x(crimeTypeWidth-200).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(assaultLineChart)
@@ -289,7 +291,6 @@ function buildGraphs(euCrimeStats){
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('')
-        .legend(dc.legend().x(400).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(malePoliceLineChart)
@@ -326,7 +327,6 @@ function buildGraphs(euCrimeStats){
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('')
-        .legend(dc.legend().x(400).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(malePrisonPersLineChart)
@@ -422,26 +422,23 @@ function buildGraphs(euCrimeStats){
             }
         ]);
 
-
-    /**
-     *  -   retrieve width of the window
-     *  -   retrieve initial width of the container
-     *  -   set the chart width to container width - 20px
-     *  -   dc.renderall
-     *  -   when the window resizes
-     *      -   in stages
-     *          -   retrieve the width of the container again
-     *          -   set the chart width to the new container width - 20px
-     *          -   dc.renderAll
-     * @type {*}
-     */
-
-    //  retrieve initial width of the container
+    //  retrieve initial width of the container for the CRIME charts
     var crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
     if(0<crimeTypeWidth) {
-        console.log('crimeTypeWidth: '+crimeTypeWidth);
         setCrimeChartWidth(crimeTypeWidth);
     }
+    //  retrieve initial width of the container for the POLICE OFFICER chart
+    var policeTypeWidth = $('#police-comparison-stage').outerWidth( true );
+    if(0<policeTypeWidth) {
+        setPoliceChartWidth(policeTypeWidth);
+    }
+    //  retrieve initial width of the container for the PRISON PERSONNEL chart
+    var prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
+    if(0<prisonPersTypeWidth) {
+        setPrisonPersChartWidth(prisonPersTypeWidth);
+    }
+
+
     dc.renderAll();
 
     $(document).ready(function () {
@@ -454,21 +451,47 @@ function buildGraphs(euCrimeStats){
             //  RETAIN THE COUNTRY SELECTION
             var country = $('select.dc-select-menu').val();
             width = $(this).width();
+
+            var selectContainer=$('#select-country').parent().outerWidth(true);
+            console.log('width of select container:'+selectContainer);
+            var selectDivWidth = $('#select-country').outerWidth(true);
+            console.log('width of select div:'+selectDivWidth);
+            if(selectDivWidth>selectContainer){
+                console.log('shrinking the select');
+                $('#select-country select').addClass('smallSelect');
+            }else{
+                $('#select-country select').removeClass('smallSelect');
+            }
+
+
             if(width >= 992 ) {
+                //  detect the size of teh chart containers and resize the charts
                 crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
-                setCrimeChartWidth(crimeTypeWidth)
+                setCrimeChartWidth(crimeTypeWidth);
+                policeTypeWidth = $('#police-comparison-stage').outerWidth( true );
+                setPoliceChartWidth(policeTypeWidth);
+                prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
+                setPrisonPersChartWidth(prisonPersTypeWidth);
                 dc.renderAll();
-                console.log('>=992 and crimeTypeWidth:'+crimeTypeWidth);
+                //console.log('>=992 and crimeTypeWidth:'+crimeTypeWidth);
             }else if(width >= 768) {
                 crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
-                setCrimeChartWidth(crimeTypeWidth)
+                setCrimeChartWidth(crimeTypeWidth);
+                policeTypeWidth = $('#police-comparison-stage').outerWidth( true );
+                setPoliceChartWidth(policeTypeWidth);
+                prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
+                setPrisonPersChartWidth(prisonPersTypeWidth);
                 dc.renderAll();
-                console.log('>=768 and crimeTypeWidth:'+crimeTypeWidth);
+                //console.log('>=768 and crimeTypeWidth:'+crimeTypeWidth);
             }else if(width <768){
                 crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
-                setCrimeChartWidth(crimeTypeWidth)
+                setCrimeChartWidth(crimeTypeWidth);
+                policeTypeWidth = $('#police-comparison-stage').outerWidth( true );
+                setPoliceChartWidth(policeTypeWidth);
+                prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
+                setPrisonPersChartWidth(prisonPersTypeWidth);
                 dc.renderAll();
-                console.log('<768 and crimeTypeWidth:'+crimeTypeWidth);
+                //console.log('<768 and crimeTypeWidth:'+crimeTypeWidth);
             }
             selectMenu(countryPopObj,country);
         });

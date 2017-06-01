@@ -135,3 +135,6 @@ td{
 .crime-stats-table th{
     font-size:2em;
 }
+div#population{
+    word-wrap: break-word;
+}

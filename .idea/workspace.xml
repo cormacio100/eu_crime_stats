@@ -13,7 +13,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/eu_crime_stats$eu_crime_stats.coverage" NAME="eu_crime_stats Coverage Results" MODIFIED="1496336478382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/eu_crime_stats$eu_crime_stats.coverage" NAME="eu_crime_stats Coverage Results" MODIFIED="1496336964854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,10 +34,10 @@
       <file leaf-file-name="country_graph.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/country_graph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+            <state relative-caret-position="316">
+              <caret line="193" column="46" lean-forward="false" selection-start-line="193" selection-start-column="46" selection-end-line="193" selection-end-column="46" />
               <folding>
-                <element signature="e#1753#1853#0" expanded="false" />
+                <element signature="e#1986#2086#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -146,7 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>population</find>
       <find>console.log</find>
       <find>Number of Assaults By Country</find>
       <find>crimeLineChartIreland</find>
@@ -176,6 +175,7 @@
       <find>dc-select-menu</find>
       <find>crimeTypeWidth</find>
       <find>lineChartWidth</find>
+      <find>crime_type_width</find>
     </findStrings>
     <replaceStrings>
       <replace>libs</replace>
@@ -664,7 +664,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/static/js/country_graph.js</url>
-          <line>193</line>
+          <line>195</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -1000,10 +1000,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/country_graph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        <state relative-caret-position="316">
+          <caret line="193" column="46" lean-forward="false" selection-start-line="193" selection-start-column="46" selection-end-line="193" selection-end-column="46" />
           <folding>
-            <element signature="e#1753#1853#0" expanded="false" />
+            <element signature="e#1986#2086#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -22,25 +22,27 @@ function addCommas(x) {
 }
 function buildGraphs(euCrimeStats){
 
-    var lineChartWidth = svgWidth;
-    //var crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
+    //var lineChartWidth = svgWidth;
+    var crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
     //console.log('crimeTypeWidth '+crimeTypeWidth);
     $(window).on('resize', function(){
-        lineChartWidth = svgWidth;
+        //lineChartWidth = svgWidth;
         var width = $(this).width();
-        var crime_type_width = $('#crime-type-stage').width();
         if(width >= 992 ) {
-            lineChartWidth = lineChartWidth-150;
+            crimeTypeWidth = $('#crime-type-stage').width();
+            //lineChartWidth = lineChartWidth-150;
             dc.renderAll();
-            console.log('>=992');
+            console.log('>=992 and crimeTypeWidth:'+crimeTypeWidth);
         }else if(width >= 768) {
-            lineChartWidth = lineChartWidth-230;
+            crimeTypeWidth = $('#crime-type-stage').width();
+            //lineChartWidth = lineChartWidth-230;
             dc.renderAll();
-            console.log('>=768');
+            console.log('>=768 and crimeTypeWidth:'+crimeTypeWidth);
         }else if(width <768){
-            lineChartWidth = lineChartWidth-230;
+            crimeTypeWidth = $('#crime-type-stage').width();
+            //lineChartWidth = lineChartWidth-230;
             dc.renderAll();
-            console.log('<768');
+            console.log('<768 and crimeTypeWidth:'+crimeTypeWidth);
         }
         $('select.dc-select-menu option:first').text('-- COUNTRY --');
     });
@@ -109,10 +111,10 @@ function buildGraphs(euCrimeStats){
     var minDate = dateDim.bottom(1)[0].date;
     var maxDate = dateDim.top(1)[0].date;
     ////////////////////////////////////////////////////////////
-    //  CRIME CHARTS
+    //  CRIME LINE CHARTS
     ////////////////////////////////////////////////////////////
     assaultLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(assaultGroup,"Assault")
@@ -121,75 +123,75 @@ function buildGraphs(euCrimeStats){
         .yAxisLabel('Assault')
         .xAxisLabel('Year');
     burglaryLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(burglaryGroup,"Burglary")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     drugsLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(drugsGroup,"Drugs")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     murderLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(murderGroup,"Murder")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     kidnappingLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(kidnappingGroup,"Kidnapping")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     rapeLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(rapeGroup,"Rape")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     robberyLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(robberyGroup,"Robbery")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     saLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(saGroup,"Sexual Assault")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     svLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(svGroup,"Sexual Violence")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     theftLineChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(theftGroup,"Theft")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     crimeCompositeChart
-        .width(lineChartWidth)
+        .width(crimeTypeWidth)
         .height(svgHeight)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
         .yAxisLabel('')
-        .legend(dc.legend().x(700).y(10).itemHeight(13).gap(10))
+        .legend(dc.legend().x(crimeTypeWidth-200).y(10).itemHeight(13).gap(10))
         .renderHorizontalGridLines(true)
         .compose([
             dc.lineChart(assaultLineChart)

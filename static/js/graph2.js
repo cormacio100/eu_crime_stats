@@ -29,13 +29,11 @@ var malePrisonPersLineChart = dc.lineChart('#male-prison-pers-line-chart');
 var femalePrisonPersLineChart = dc.lineChart('#female-prison-pers-line-chart');
 var prisonPersCompositeChart = dc.compositeChart('#prison-pers-gender-comparison-chart');
 
-var adultMalePrisonerLineChart = dc.lineChart('#adult-male-prisoner-line-chart');
-var adultFemalePrisonerLineChart = dc.lineChart('#adult-female-prisoner-line-chart');
-var juvenilePrisonerLineChart = dc.lineChart('#juvenile-prisoner-line-chart');
-var prisonerCompositeChart = dc.compositeChart('#prisonser-comparison-chart');
-
 var svgWidth = 900;
 var svgHeight = 300;
+var globalCrimeChartWidth = 0;
+var globalPoliceChartWidth = 0;
+var globalPrisonPersChartWidth = 0;
 
 var palette = {
         "lightgray": "#819090",

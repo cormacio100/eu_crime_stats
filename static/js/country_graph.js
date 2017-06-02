@@ -37,7 +37,6 @@ function selectMenuChange(countryPopObj){
 //  SET HOW THE SELECT MENU AFFECTS THE REST OF THE PAGE
 function selectMenu(countryPopObj,selection){
     if('none'==selection){
-        console.log('selection:'+selection);
         //  DEFAULT SELECTION ON LOAD
         $('select.dc-select-menu option:first').text('-- COUNTRY --');
         $('#hidden').remove();
@@ -45,7 +44,6 @@ function selectMenu(countryPopObj,selection){
         //  HANDLE CHANGES IN SELECTION
         selectMenuChange(countryPopObj);
     }else{
-        console.log('resized and selection:'+selection);
         // display the correct country
         $('select.dc-select-menu').val(selection);
         $('select.dc-select-menu option:first').text('-- COUNTRY --');
@@ -55,9 +53,17 @@ function selectMenu(countryPopObj,selection){
 }
 //  SET THE WIDTH OF ALL OF THE CRIME CHARTS
 function setCrimeChartWidth(width){
-    //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
-    width=width-20;
-    console.log('width: '+width);
+    /**
+     * IF BROWSER IS INITIALLY SMALL AND EXPANDED BEFORE A COUNTRY SELECTION IS MADE
+     * THEN THE WIDTH NEEDS TO BE TAKEN FROM THE GLOBAL VAR.
+     * OTHERWISE AN ERROR IS THROWN AS THE WIDTH EQUALS 0
+     */
+    if(0==width){
+        width=globalCrimeChartWidth-20;
+    }else{
+        //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+        width=width-20;
+    }
     assaultLineChart.width(width);
     burglaryLineChart.width(width);
     drugsLineChart.width(width);
@@ -71,17 +77,27 @@ function setCrimeChartWidth(width){
     crimeCompositeChart.width(width);
     crimeCompositeChart.legend(dc.legend().x(width-150).y(10).itemHeight(13).gap(10))
 }
+//  SET THE WIDTH OF ALL OF THE POLICE CHART
 function setPoliceChartWidth(width){
-    //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
-    width=width-20;
+    if(0==width){
+        width=globalPoliceChartWidth-20;
+    }else{
+        //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+        width=width-20;
+    }
     malePoliceLineChart.width(width);
     femalePoliceLineChart.width(width);
     policeCompositeChart.width(width);
     policeCompositeChart.legend(dc.legend().x(width-100).y(10).itemHeight(13).gap(10));
 }
+//  SET THE WIDTH OF ALL OF THE PRISON PERSONNEL CHART
 function setPrisonPersChartWidth(width){
-    //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
-    width=width-20;
+    if(0==width){
+        width=globalPoliceChartWidth-20;
+    }else{
+        //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+        width=width-20;
+    }
     malePrisonPersLineChart.width(width);
     femalePrisonPersLineChart.width(width);
     prisonPersCompositeChart.width(width);
@@ -272,21 +288,18 @@ function buildGraphs(euCrimeStats){
     /////////////////////////////////////////////////
     //  POLICE OFFICERS
     malePoliceLineChart
-        .width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(malePoliceGrp,"Male Officers")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     femalePoliceLineChart
-        .width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(femalePoliceGrp,"Female Officers")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     policeCompositeChart
-        .width(svgWidth-400)
         .height(svgHeight-150)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
@@ -308,21 +321,18 @@ function buildGraphs(euCrimeStats){
 
     //  PRISON PERSONNEL
     malePrisonPersLineChart
-        .width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(malePrisonPersGrp,"Male")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     femalePrisonPersLineChart
-        .width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(femalePrisonPersGrp,"Female")
         .renderArea(true)
         .x(d3.time.scale().domain([minDate,maxDate]));
     prisonPersCompositeChart
-        .width(svgWidth-400)
         .height(svgHeight-150)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
@@ -342,53 +352,6 @@ function buildGraphs(euCrimeStats){
         .elasticY(true)
         .renderHorizontalGridLines(true);
 
-    //  PRISON POPULATION
-    adultMalePrisonerLineChart
-        .width(svgWidth)
-        .height(svgHeight)
-        .dimension(dateDim)
-        .group(adultMalePrisonerGrp,"Male")
-        .renderArea(true)
-        .x(d3.time.scale().domain([minDate,maxDate]));
-    adultFemalePrisonerLineChart
-        .width(svgWidth)
-        .height(svgHeight)
-        .dimension(dateDim)
-        .group(adultFemalePrisonerGrp,"Female")
-        .renderArea(true)
-        .x(d3.time.scale().domain([minDate,maxDate]));
-    juvenilePrisonerLineChart
-        .width(svgWidth)
-        .height(svgHeight)
-        .dimension(dateDim)
-        .group(juvenilePrisonerGrp,"Juvenile")
-        .renderArea(true)
-        .x(d3.time.scale().domain([minDate,maxDate]));
-    prisonerCompositeChart
-        .width(svgWidth-400)
-        .height(svgHeight-150)
-        .x(d3.time.scale().domain([minDate,maxDate]))
-        .yAxisLabel(dc.legend().x(220).y(120).itemHeight(13).gap(10))
-        .yAxisLabel('')
-        .legend(dc.legend().x(400).y(10).itemHeight(13).gap(10))
-        .renderHorizontalGridLines(true)
-        .compose([
-            dc.lineChart(adultMalePrisonerLineChart)
-                .dimension(dateDim)
-                .colors(palette.blue)
-                .group(adultMalePrisonerGrp,"Male"),
-            dc.lineChart(adultFemalePrisonerLineChart)
-                .dimension(dateDim)
-                .colors(palette.pink)
-                .group(adultFemalePrisonerGrp,"Female"),
-            dc.lineChart(juvenilePrisonerLineChart)
-                .dimension(dateDim)
-                .colors(palette.green)
-                .group(juvenilePrisonerGrp,"Juvenile"),
-        ])
-        .brushOn(false)
-        .elasticY(true)
-        .renderHorizontalGridLines(true);
     /////////////////////////////////////////////////
     //  JUDICIAL SYSTEM STATS TABLE
     /////////////////////////////////////////////////
@@ -422,48 +385,45 @@ function buildGraphs(euCrimeStats){
             }
         ]);
 
+    ////////////////////////////////////////////////////////////////////
+    //  SET THE WIDTH OF THE CHARTS
+    ////////////////////////////////////////////////////////////////////
     //  retrieve initial width of the container for the CRIME charts
     var crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
     if(0<crimeTypeWidth) {
+        globalCrimeChartWidth = crimeTypeWidth;
         setCrimeChartWidth(crimeTypeWidth);
     }
     //  retrieve initial width of the container for the POLICE OFFICER chart
     var policeTypeWidth = $('#police-comparison-stage').outerWidth( true );
     if(0<policeTypeWidth) {
+        globalPoliceChartWidth = policeTypeWidth;
         setPoliceChartWidth(policeTypeWidth);
     }
     //  retrieve initial width of the container for the PRISON PERSONNEL chart
     var prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
     if(0<prisonPersTypeWidth) {
+        globalPrisonPersChartWidth = prisonPersTypeWidth;
         setPrisonPersChartWidth(prisonPersTypeWidth);
     }
-
-
     dc.renderAll();
 
     $(document).ready(function () {
         //  DEFINE HOW PAGE REACTS TO THE SELECT MENU
         //  THE SELECTION WILL DEFAULT TO -- COUNTRY --
         selectMenu(countryPopObj,'none');
-
         //  WHAT HAPPENS WHEN THE PAGE RESIZES
         $(window).on('resize', function(){
             //  RETAIN THE COUNTRY SELECTION
             var country = $('select.dc-select-menu').val();
             width = $(this).width();
-
             var selectContainer=$('#select-country').parent().outerWidth(true);
-            console.log('width of select container:'+selectContainer);
             var selectDivWidth = $('#select-country').outerWidth(true);
-            console.log('width of select div:'+selectDivWidth);
             if(selectDivWidth>selectContainer){
-                console.log('shrinking the select');
                 $('#select-country select').addClass('smallSelect');
             }else{
                 $('#select-country select').removeClass('smallSelect');
             }
-
-
             if(width >= 992 ) {
                 //  detect the size of teh chart containers and resize the charts
                 crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
@@ -473,7 +433,6 @@ function buildGraphs(euCrimeStats){
                 prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
                 setPrisonPersChartWidth(prisonPersTypeWidth);
                 dc.renderAll();
-                //console.log('>=992 and crimeTypeWidth:'+crimeTypeWidth);
             }else if(width >= 768) {
                 crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
                 setCrimeChartWidth(crimeTypeWidth);
@@ -482,7 +441,6 @@ function buildGraphs(euCrimeStats){
                 prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
                 setPrisonPersChartWidth(prisonPersTypeWidth);
                 dc.renderAll();
-                //console.log('>=768 and crimeTypeWidth:'+crimeTypeWidth);
             }else if(width <768){
                 crimeTypeWidth = $('#crime-type-stage').outerWidth( true );
                 setCrimeChartWidth(crimeTypeWidth);
@@ -491,7 +449,6 @@ function buildGraphs(euCrimeStats){
                 prisonPersTypeWidth = $('#prison-pers-comparison-stage').outerWidth( true );
                 setPrisonPersChartWidth(prisonPersTypeWidth);
                 dc.renderAll();
-                //console.log('<768 and crimeTypeWidth:'+crimeTypeWidth);
             }
             selectMenu(countryPopObj,country);
         });

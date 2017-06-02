@@ -4,6 +4,7 @@
     <list default="true" id="77cf3806-32dc-4798-93e0-8c54e5e377a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/custom.css" afterPath="$PROJECT_DIR$/static/css/custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/country_graph.js" afterPath="$PROJECT_DIR$/static/js/country_graph.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/graph2.js" afterPath="$PROJECT_DIR$/static/js/graph2.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/country.html" afterPath="$PROJECT_DIR$/templates/country.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,17 +34,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="country_graph.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="country_graph.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/country_graph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="327" column="33" lean-forward="true" selection-start-line="327" selection-start-column="33" selection-end-line="327" selection-end-column="33" />
+            <state relative-caret-position="143">
+              <caret line="391" column="48" lean-forward="true" selection-start-line="391" selection-start-column="48" selection-end-line="391" selection-end-column="66" />
               <folding>
                 <element signature="n#!!block;n#print_filter#0" expanded="false" />
                 <element signature="n#!!block;n#addCommas#0" expanded="false" />
                 <element signature="n#!!block;n#selectMenuChange#0" expanded="false" />
                 <element signature="n#!!block;n#selectMenu#0" expanded="false" />
-                <element signature="e#3563#3663#0" expanded="false" />
+                <element signature="n#!!block;n#setPrisonPersChartWidth#0" expanded="false" />
+                <element signature="e#3998#4098#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -52,8 +54,8 @@
       <file leaf-file-name="graph2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/graph2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="28" />
+            <state relative-caret-position="194">
+              <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -62,8 +64,8 @@
       <file leaf-file-name="country.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/country.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="61" column="57" lean-forward="false" selection-start-line="61" selection-start-column="57" selection-end-line="61" selection-end-column="85" />
+            <state relative-caret-position="317">
+              <caret line="140" column="14" lean-forward="false" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -96,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="134" column="22" lean-forward="true" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
+            <state relative-caret-position="303">
+              <caret line="143" column="1" lean-forward="false" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -140,18 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>a</find>
-      <find>country</find>
-      <find>burglary-line-chart</find>
-      <find>chart-line-compare-countries</find>
-      <find>col-md-</find>
-      <find>Crime Types</find>
-      <find>countriesLineChart</find>
-      <find>select</find>
-      <find>svgWidth</find>
-      <find>dc-select-menu</find>
-      <find>lineChartWidth</find>
-      <find>crime-type-col</find>
       <find>crime_type_width</find>
       <find>kid</find>
       <find>windowSize</find>
@@ -161,15 +151,27 @@
       <find>selectMenu</find>
       <find>crimeTypeWidth</find>
       <find>assaultLineChart</find>
-      <find>setCrimeChartWidth</find>
       <find>crime-type-stagecrime-type-stage</find>
       <find>policeCompositeChart</find>
-      <find>prisonPersCompositeChart</find>
       <find>.legend(</find>
       <find>//.legend(</find>
       <find>&gt;</find>
       <find>dc-chart</find>
       <find>//.</find>
+      <find>prisonPopulationTable</find>
+      <find>prisonPersCompositeChart</find>
+      <find>svgWi</find>
+      <find>adult-male-prisoner-line-chart</find>
+      <find>adult-female-prisoner-line-chart</find>
+      <find>juvenile-prisoner-line-chart</find>
+      <find>prisonser-comparison-chart</find>
+      <find>function setCrimeChartWidth</find>
+      <find>setCrimeChartWidth</find>
+      <find>adultMalePrisonerLineChart</find>
+      <find>consol</find>
+      <find>console</find>
+      <find>console.log</find>
+      <find>outer</find>
     </findStrings>
     <replaceStrings>
       <replace>libs</replace>
@@ -219,10 +221,10 @@
         <option value="$PROJECT_DIR$/eu_crime_stats.py" />
         <option value="$PROJECT_DIR$/static/js/custom.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/static/js/graph2.js" />
         <option value="$PROJECT_DIR$/templates/country.html" />
-        <option value="$PROJECT_DIR$/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/static/js/graph2.js" />
         <option value="$PROJECT_DIR$/static/js/country_graph.js" />
+        <option value="$PROJECT_DIR$/static/css/custom.css" />
       </list>
     </option>
   </component>
@@ -658,7 +660,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/static/js/country_graph.js</url>
-          <line>223</line>
+          <line>239</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -668,7 +670,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/static/js/country_graph.js</url>
-          <line>155</line>
+          <line>171</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
@@ -974,41 +976,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/graph2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/country.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="61" column="57" lean-forward="false" selection-start-line="61" selection-start-column="57" selection-end-line="61" selection-end-column="85" />
+        <state relative-caret-position="317">
+          <caret line="140" column="14" lean-forward="false" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/static/js/graph2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="134" column="22" lean-forward="true" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
+        <state relative-caret-position="194">
+          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/country_graph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="327" column="33" lean-forward="true" selection-start-line="327" selection-start-column="33" selection-end-line="327" selection-end-column="33" />
+        <state relative-caret-position="143">
+          <caret line="391" column="48" lean-forward="true" selection-start-line="391" selection-start-column="48" selection-end-line="391" selection-end-column="66" />
           <folding>
             <element signature="n#!!block;n#print_filter#0" expanded="false" />
             <element signature="n#!!block;n#addCommas#0" expanded="false" />
             <element signature="n#!!block;n#selectMenuChange#0" expanded="false" />
             <element signature="n#!!block;n#selectMenu#0" expanded="false" />
-            <element signature="e#3563#3663#0" expanded="false" />
+            <element signature="n#!!block;n#setPrisonPersChartWidth#0" expanded="false" />
+            <element signature="e#3998#4098#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="143" column="1" lean-forward="false" selection-start-line="143" selection-start-column="1" selection-end-line="143" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

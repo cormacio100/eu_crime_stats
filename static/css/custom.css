@@ -138,3 +138,7 @@ td{
 div#population{
     word-wrap: break-word;
 }
+.smallSelect{
+    font-size: 0.6em;
+    background-color: orange;
+}

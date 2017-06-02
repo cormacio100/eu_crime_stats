@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77cf3806-32dc-4798-93e0-8c54e5e377a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/js/custom.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/country_graph.js" afterPath="$PROJECT_DIR$/static/js/country_graph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/crime_graph.js" afterPath="$PROJECT_DIR$/static/js/crime_graph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/graph.js" afterPath="$PROJECT_DIR$/static/js/graph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/crime.html" afterPath="$PROJECT_DIR$/templates/crime.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/country.html" afterPath="$PROJECT_DIR$/templates/country.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/todo.txt" afterPath="$PROJECT_DIR$/todo.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,7 +60,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crime_graph.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="crime_graph.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/crime_graph.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="283">
@@ -92,12 +87,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="country.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="country.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/country.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="140" column="14" lean-forward="false" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="187">
+              <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+              <folding>
+                <element signature="e#250#791#0#HTML" expanded="false" />
+                <element signature="e#812#1341#0#HTML" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -221,7 +219,6 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/eu_crime_stats.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/templates/country.html" />
         <option value="$PROJECT_DIR$/static/js/graph2.js" />
         <option value="$PROJECT_DIR$/static/css/custom.css" />
         <option value="$PROJECT_DIR$/static/js/custom.js" />
@@ -229,6 +226,7 @@
         <option value="$PROJECT_DIR$/templates/crime.html" />
         <option value="$PROJECT_DIR$/static/js/graph.js" />
         <option value="$PROJECT_DIR$/static/js/crime_graph.js" />
+        <option value="$PROJECT_DIR$/templates/country.html" />
       </list>
     </option>
   </component>
@@ -955,14 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/country.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="140" column="14" lean-forward="false" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/graph2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -1014,6 +1004,17 @@
             <element signature="e#4583#4714#0" expanded="false" />
             <element signature="e#4781#4912#0" expanded="false" />
             <element signature="e#5171#5299#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/country.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+          <folding>
+            <element signature="e#250#791#0#HTML" expanded="false" />
+            <element signature="e#812#1341#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -10,6 +10,53 @@ queue()
     .defer(d3.json,'/charts/data')
     .await(buildGraphs);
 
+//  SET THE WIDTH OF ALL OF THE CRIME CHARTS
+function setCountryCrimeChartWidth(width){
+    /**
+     * IF BROWSER IS INITIALLY SMALL AND EXPANDED BEFORE A COUNTRY SELECTION IS MADE
+     * THEN THE WIDTH NEEDS TO BE TAKEN FROM THE GLOBAL VAR.
+     * OTHERWISE AN ERROR IS THROWN AS THE WIDTH EQUALS 0
+     */
+    if(0==width){
+        width=globalCountryCrimeChartWidth-50;
+    }else{
+        //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+        width=width-50;
+    }
+    countriesCompChart.width(width);
+    countriesCompChart.legend(dc.legend().x(width-150).y(10).itemHeight(13).gap(10))
+}
+
+function setCrimeChartWidth(width){
+    if(0==width){
+        width=globalCrimeChartWidth-50;
+    }else{
+        //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+        width=width-50;
+    }
+    crimeLineChartAustria.width(width);
+    crimeLineChartDenmark.width(width);
+    crimeLineChartFinland.width(width);
+    crimeLineChartIreland.width(width);
+    crimeLineChartNorthernIreland.width(width);
+    crimeLineChartNorway.width(width);
+    crimeLineChartScotland.width(width);
+    crimeLineChartSlovakia.width(width);
+    crimeLineChartSweden.width(width);
+    crimeLineChartWales.width(width);
+    crimeLineChartRestOfUk.width(width);
+}
+function setYearRingWidth(width){
+    if(0==width){
+        width=globalYearRingWidth-50;
+    }else{
+        //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
+        width=width-50;
+    }
+    yearPieChart.width(width);
+    yearPieChart.height(width);
+}
+
 function buildGraphs(error,jsonData){
 
     var euCrimeStats = jsonData;
@@ -37,8 +84,8 @@ function buildGraphs(error,jsonData){
        return d.totalCrimes;
     });
     yearPieChart
-        .width(200)
-        .height(200)
+        //.width(200)
+        //.height(200)
         .slicesCap(10)
         .innerRadius(15)
         .dimension(yearDim)
@@ -137,7 +184,7 @@ function buildGraphs(error,jsonData){
     });
 
     crimeLineChartAustria
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(austriaCrimeGrp,"Austria")
@@ -146,7 +193,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(austriaColor);
     crimeLineChartDenmark
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(denmarkCrimeGrp,"Denmark")
@@ -155,7 +202,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(denmarkColor);
     crimeLineChartFinland
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(finlandCrimeGrp,"Finland")
@@ -164,7 +211,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(finlandColor);
     crimeLineChartIreland
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(irelandCrimeGrp,"Ireland")
@@ -173,7 +220,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(irelandColor);
     crimeLineChartNorthernIreland
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(northernIrelandCrimeGrp,"Northern Ireland")
@@ -182,7 +229,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(northernIrelandColor);
     crimeLineChartNorway
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(norwayCrimeGrp,"Norway")
@@ -191,7 +238,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(norwayColor);
     crimeLineChartScotland
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(scotlandCrimeGrp,"Scotland")
@@ -200,7 +247,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(scotlandColor);
     crimeLineChartSlovakia
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(slovakiaCrimeGrp,"Slovakia")
@@ -209,7 +256,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(slovakiaColor);
     crimeLineChartSweden
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(swedenCrimeGrp,"Sweden")
@@ -218,7 +265,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(swedenColor);
     crimeLineChartWales
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(walesCrimeyGrp,"Wales")
@@ -227,7 +274,7 @@ function buildGraphs(error,jsonData){
         .yAxisLabel('...')
         .colors(walesColor);
     crimeLineChartRestOfUk
-        .width(svgWidth)
+        //.width(svgWidth)
         .height(svgHeight)
         .dimension(dateDim)
         .group(restOfUKCrimeGrp,"Scotland,Wales,N.I.")
@@ -235,60 +282,133 @@ function buildGraphs(error,jsonData){
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel('...')
         .colors(restOfUkColor);
-
-    countriesLineChart
-        .width(svgWidth)
+    countriesCompChart
+        //.width(svgWidth)
         .height(svgHeight+100)
         .x(d3.time.scale().domain([minDate,maxDate]))
         .yAxisLabel('...')
-        .legend(dc.legend().x(700).y(20).itemHeight(13).gap(5))
+        //.legend(dc.legend().x(700).y(20).itemHeight(13).gap(5))
         .renderHorizontalGridLines(true)
         .compose([
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(austriaColor)
                 .group(austriaCrimeGrp,"Austria"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(denmarkColor)
                 .group(denmarkCrimeGrp,"Denmark"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(finlandColor)
                 .group(finlandCrimeGrp,"Finland"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(irelandColor)
                 .group(irelandCrimeGrp,"Ireland"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 //.renderArea(true)
                 .colors(northernIrelandColor)
                 .group(northernIrelandCrimeGrp,"Northern Ireland"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(norwayColor)
                 .group(norwayCrimeGrp,"Norway"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(scotlandColor)
                 .group(scotlandCrimeGrp,"Scotland"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(slovakiaColor)
                 .group(slovakiaCrimeGrp,"Slovakia"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(swedenColor)
                 .group(swedenCrimeGrp,"Sweden"),
-            dc.lineChart(countriesLineChart)
+            dc.lineChart(countriesCompChart)
                 .dimension(dateDim)
                 .colors(walesColor)
                 .group(walesCrimeyGrp,"Wales"),
         ])
         .brushOn(false);
+    ////////////////////////////////////////////////////////////////////
+    //  SET THE INITIAL WIDTH OF THE CHARTS
+    ////////////////////////////////////////////////////////////////////
+    //  retrieve initial width of the containers for the CRIME charts
+    var countryCrimeChartWidth = $('#country-crime-compare-stage').outerWidth( true );
+    if(0<countryCrimeChartWidth) {
+        globalCountryCrimeCompWidth = countryCrimeChartWidth;
+        setCountryCrimeChartWidth(countryCrimeChartWidth);
+    }
+    var crimeLineWidth = $('#crime-line-stage').outerWidth( true );
+    if(0<crimeLineWidth) {
+        globalCrimeCompWidth = crimeLineWidth;
+        setCrimeChartWidth(crimeLineWidth);
+    }
+    var yearRingWidth = $('#year-ring-stage').outerWidth( true );
+    if(0<yearRingWidth) {
+        globalYearRingWidth = yearRingWidth;
+        if($(window).width()>768){
+            globalInitYearRingWidth = yearRingWidth;
+            console.log('globalInitYearRingWidth:'+globalInitYearRingWidth);
+        }else{
+            //  set a limit on the size of the year Ring. Otherwise when the screen is at it's smallest the year ring is at it's largest
+            globalInitYearRingWidth = 200;
+        }
+        setYearRingWidth(globalInitYearRingWidth);
+    }
+
+
     dc.renderAll();
-    $('#hidden').hide();
+    $(document).ready(function () {
+        //$('.carousel-control').hide();
+        $('#hidden').hide();
+        /**
+     *  -   retrieve width of the window
+     *  -   retrieve initial width of the container
+     *  -   set the chart width to container width - 20px
+     *  -   dc.renderall
+     *  -   when the window resizes
+     *      -   in stages
+     *          -   retrieve the width of the container again
+     *          -   set the chart width to the new container width - 20px
+     *          -   dc.renderAll
+     * @type {*}
+     */
+        $(window).on('resize', function(){
+            console.log('window resized');
+            width = $(this).width();
+            // countryCompareContainer = $('#country-crime-compare-stage').outerWidth(true);
+            if(width >= 992 ) {
+                //  detect the size of teh chart containers and resize the charts
+                countryCrimeChartWidth = $('#country-crime-compare-stage').outerWidth( true );
+                setCountryCrimeChartWidth(countryCrimeChartWidth);
+                crimeLineWidth = $('#crime-line-stage').outerWidth( true );
+                setCrimeChartWidth(crimeLineWidth);
+                yearRingWidth = $('#year-ring-stage').outerWidth( true );
+                setYearRingWidth(yearRingWidth);
+                dc.renderAll();
+            }else if(width >= 768) {
+                countryCrimeChartWidth = $('#country-crime-compare-stage').outerWidth( true );
+                setCountryCrimeChartWidth(countryCrimeChartWidth);
+                crimeLineWidth = $('#crime-line-stage').outerWidth( true );
+                setCrimeChartWidth(crimeLineWidth);
+                yearRingWidth = $('#year-ring-stage').outerWidth( true );
+                setYearRingWidth(yearRingWidth);
+                dc.renderAll();
+            }else if(width <768){
+                countryCrimeChartWidth = $('#country-crime-compare-stage').outerWidth( true );
+                setCountryCrimeChartWidth(countryCrimeChartWidth);
+                crimeLineWidth = $('#crime-line-stage').outerWidth( true );
+                setCrimeChartWidth(crimeLineWidth);
+                setYearRingWidth(globalInitYearRingWidth);
+                dc.renderAll();
+            }
+        });
+
+    });
 }
 
 

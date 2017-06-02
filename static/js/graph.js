@@ -20,7 +20,7 @@ var crimeLineChartSlovakia = dc.lineChart('#chart-line-slovakia');
 var crimeLineChartSweden = dc.lineChart('#chart-line-sweden');
 var crimeLineChartWales = dc.lineChart('#chart-line-wales');
 var crimeLineChartRestOfUk = dc.lineChart('#chart-line-rest-of-uk');
-var countriesLineChart = dc.compositeChart('#chart-line-compare-countries');
+var countriesCompChart = dc.compositeChart('#chart-line-compare-countries');
 
 var austriaColor = '#B41414';
 var denmarkColor = '#f9e909';
@@ -37,6 +37,10 @@ var restOfUkColor = '#1199aa';
 
 var svgWidth = 850;
 var svgHeight = 200;
+var globalCountryCrimeChartWidth = 0;
+var globalCrimeChartWidth = 0;
+var globalYearRingWidth = 0;
+var globalInitYearRingWidth = 0
 
 //  RETRIEVE DATA FROM API
 queue()

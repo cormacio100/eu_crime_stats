@@ -417,6 +417,7 @@ function buildGraphs(euCrimeStats){
             //  RETAIN THE COUNTRY SELECTION
             var country = $('select.dc-select-menu').val();
             width = $(this).width();
+            /*
             var selectContainer=$('#select-country').parent().outerWidth(true);
             var selectDivWidth = $('#select-country').outerWidth(true);
             if(selectDivWidth>selectContainer){
@@ -424,6 +425,7 @@ function buildGraphs(euCrimeStats){
             }else{
                 $('#select-country select').removeClass('smallSelect');
             }
+            */
             if(width >= 992 ) {
                 //  detect the size of teh chart containers and resize the charts
                 crimeTypeWidth = $('#crime-type-stage').outerWidth( true );

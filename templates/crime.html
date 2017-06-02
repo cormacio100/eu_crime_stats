@@ -10,7 +10,7 @@
                             <div class="chart-title">
                                 Year
                             </div>
-                            <div class="chart-stage">
+                            <div class="chart-stage" id="year-ring-stage">
                                 <div id="chart-ring-year" data-step="1" data-intro="Select Year" style="font-weight: normal" data-position="right"></div>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                             <div class="chart-title">
                                 {{ heading.byCountry }}
                             </div>
-                            <div class="chart-stage">
+                            <div class="chart-stage" id="crime-line-stage">
                                 <div id="carousel-individual-country" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
                                     <ol class="carousel-indicators">
@@ -97,7 +97,7 @@
                             <div class="chart-title">
                                 {{ heading.combo }}
                             </div>
-                            <div class="chart-stage">
+                            <div class="chart-stage" id="country-crime-compare-stage">
                                 <div class="colouredChart" id="chart-line-compare-countries"></div>
                             </div>
                         </div>
@@ -123,5 +123,4 @@
     <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
     <script src="{{ url_for('static',filename='js/graph.js') }}"></script>
     {{ script }}
-    <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
 {% endblock %}

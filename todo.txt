@@ -1,6 +1,6 @@
--	Fix NAVBAR
--	Make the STATS BY CRIME PAGE PRETTIER
--	Get SWEDEN and FINLAND data back
+-	FIX SELECT BOX ON BROWSER CHANGE
+-	DYNAMICALLY CHANGE SIZES OF THE CRIME PAGE CHARTS
+-	Instead of styling them, when browser size goes under a certain size put the country select and population on their own row
 
 POPULATIONS:
 belgium 11.29

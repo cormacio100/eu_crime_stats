@@ -4,11 +4,6 @@
     <list default="true" id="77cf3806-32dc-4798-93e0-8c54e5e377a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/crime_graph.js" afterPath="$PROJECT_DIR$/static/js/crime_graph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/graph.js" afterPath="$PROJECT_DIR$/static/js/graph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/country.html" afterPath="$PROJECT_DIR$/templates/country.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/crime.html" afterPath="$PROJECT_DIR$/templates/crime.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/layout.html" afterPath="$PROJECT_DIR$/templates/layout.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,18 +50,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crime_graph.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crime_graph.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/crime_graph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="356" column="44" lean-forward="true" selection-start-line="356" selection-start-column="44" selection-end-line="356" selection-end-column="44" />
+            <state relative-caret-position="111">
+              <caret line="380" column="32" lean-forward="false" selection-start-line="380" selection-start-column="29" selection-end-line="380" selection-end-column="32" />
               <folding>
-                <element signature="n#!!block;n#setCrimeChartWidth#0" expanded="false" />
-                <element signature="e#4399#4538#0" expanded="false" />
-                <element signature="e#4603#4732#0" expanded="false" />
-                <element signature="e#4799#4930#0" expanded="false" />
-                <element signature="e#4997#5128#0" expanded="false" />
-                <element signature="e#5387#5515#0" expanded="false" />
+                <element signature="e#4104#4243#0" expanded="false" />
+                <element signature="e#4308#4437#0" expanded="false" />
+                <element signature="e#4504#4635#0" expanded="false" />
+                <element signature="e#4702#4833#0" expanded="false" />
+                <element signature="e#5092#5220#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -109,7 +103,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crime.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="crime.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/crime.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
@@ -189,18 +183,18 @@
       <find>countriesCompChart</find>
       <find>function setCrimeChartWidth</find>
       <find>setCountryCrimeChartWidth</find>
-      <find>setCrimeChartWidth</find>
       <find>popul</find>
       <find>data-step=&quot;1&quot;</find>
       <find>year-ring-stage</find>
       <find>chart-line-com</find>
       <find>yearRingWidth</find>
       <find>setYearRingWidth</find>
-      <find>year</find>
       <find>console.log</find>
       <find>crime-comparison-chart</find>
       <find>stats by crime</find>
       <find>globalInitYearRingWidth</find>
+      <find>year</find>
+      <find>setCrimeChartWidth</find>
     </findStrings>
     <replaceStrings>
       <replace>libs</replace>
@@ -252,8 +246,8 @@
         <option value="$PROJECT_DIR$/templates/layout.html" />
         <option value="$PROJECT_DIR$/templates/country.html" />
         <option value="$PROJECT_DIR$/static/js/graph.js" />
-        <option value="$PROJECT_DIR$/static/js/crime_graph.js" />
         <option value="$PROJECT_DIR$/templates/crime.html" />
+        <option value="$PROJECT_DIR$/static/js/crime_graph.js" />
       </list>
     </option>
   </component>
@@ -894,21 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/crime_graph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="356" column="44" lean-forward="true" selection-start-line="356" selection-start-column="44" selection-end-line="356" selection-end-column="44" />
-          <folding>
-            <element signature="n#!!block;n#setCrimeChartWidth#0" expanded="false" />
-            <element signature="e#4399#4538#0" expanded="false" />
-            <element signature="e#4603#4732#0" expanded="false" />
-            <element signature="e#4799#4930#0" expanded="false" />
-            <element signature="e#4997#5128#0" expanded="false" />
-            <element signature="e#5387#5515#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/crime.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -917,6 +896,20 @@
             <element signature="e#584#611#0#HTML" expanded="true" />
             <element signature="e#1410#1437#0#HTML" expanded="true" />
             <element signature="e#7171#7198#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/crime_graph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="380" column="32" lean-forward="false" selection-start-line="380" selection-start-column="29" selection-end-line="380" selection-end-column="32" />
+          <folding>
+            <element signature="e#4104#4243#0" expanded="false" />
+            <element signature="e#4308#4437#0" expanded="false" />
+            <element signature="e#4504#4635#0" expanded="false" />
+            <element signature="e#4702#4833#0" expanded="false" />
+            <element signature="e#5092#5220#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -47,30 +47,20 @@ function setCrimeChartWidth(width){
     crimeLineChartRestOfUk.width(width);
 }
 function setYearRingWidth(width){
-    console.log('setYearRingWidth function. yearRingWidth:'+width);
-    console.log('globalInitYearRingWidth:'+globalInitYearRingWidth);
     if(0==width){
-        console.log('a');
         width=globalYearRingWidth-50;
     }else{
-        console.log('b');
         //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
         width=width-50;
     }
-    console.log('setting width as:'+width);
     yearPieChart.width(width);
-    yearPieChart.height(width);
-    yearPieChart.render();
 }
 
 function buildGraphs(error,jsonData){
-
     var euCrimeStats = jsonData;
-
     //  FORMATS for NUMBERS and DATES
     var parseDate = d3.time.format('%d/%m/%Y').parse;
     var numberFormat = d3.format('.0f');
-
     // loop through the data
     euCrimeStats.forEach(function(d){
         d.date = parseDate('01/01/'+d.year);
@@ -385,14 +375,7 @@ function buildGraphs(error,jsonData){
 
         //  retrieve the initial width of the page
         initPageSize  = $(this).width();
-        console.log('init size:'+initPageSize);
         $(window).on('resize', function(){
-            /**
-             * When the page load we store the container size
-             * When the page resizes
-             * We check the container size and resize the graph
-             *
-             */
             //  retrieve the size of the page
             width = $(this).width();
             // countryCompareContainer = $('#country-crime-compare-stage').outerWidth(true);

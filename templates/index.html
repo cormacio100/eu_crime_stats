@@ -6,25 +6,16 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="container">
-  <div class="jumbotron">
-      <p><i class="fa fa-balance-scale fa-5x" aria-hidden="true"></i></p>
-    <h1>A snapshot of Crime and Justice in EU countries</h1>
-        <p>The data displayed here was obtained from the <a href="http://www.cso.ie/en/" target="_blank">Central Statistics Office</a> of Ireland</p>
-  </div>
-</div>
+                    <div class="jumbotron" data-step="1" data-intro="Description of the project" style="font-weight: normal" data-position="bottom">
+                        <p><i class="fa fa-balance-scale fa-5x" aria-hidden="true"></i></p>
+                        <h1>A snapshot of Crime and Justice in EU countries</h1>
+                        <p>The data displayed here was obtained from the <a href="http://www.cso.ie/en/" target="_blank">Central Statistics Office</a> of Ireland</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block scripts %}
-    <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/dc_old.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
-    <script src="{{ url_for('static',filename='js/graph2.js') }}"></script>
     {{ script }}
 {% endblock %}

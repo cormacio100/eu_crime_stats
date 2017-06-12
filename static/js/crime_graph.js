@@ -47,14 +47,20 @@ function setCrimeChartWidth(width){
     crimeLineChartRestOfUk.width(width);
 }
 function setYearRingWidth(width){
+    console.log('setYearRingWidth function. yearRingWidth:'+width);
+    console.log('globalInitYearRingWidth:'+globalInitYearRingWidth);
     if(0==width){
+        console.log('a');
         width=globalYearRingWidth-50;
     }else{
+        console.log('b');
         //  MAKE THE CHART SLIGHTLY SMALLER THAN IT'S CONTAINER
         width=width-50;
     }
+    console.log('setting width as:'+width);
     yearPieChart.width(width);
     yearPieChart.height(width);
+    yearPieChart.render();
 }
 
 function buildGraphs(error,jsonData){
@@ -102,8 +108,6 @@ function buildGraphs(error,jsonData){
 
     //  RETRIEVE CRIME TYPE FROM HIDDEN FIELD
     var crime_type = $('#hidden_crime_type').text();
-    console.log('crime type '+crime_type);
-
     var austriaCrimeGrp = dateDim.group().reduceSum(function(d){
         if(d.eu_member_state=='Austria'){
             //return d.burglary;
@@ -182,7 +186,6 @@ function buildGraphs(error,jsonData){
             return 0;
         }
     });
-
     crimeLineChartAustria
         //.width(svgWidth)
         .height(svgHeight)
@@ -347,17 +350,19 @@ function buildGraphs(error,jsonData){
         globalCrimeCompWidth = crimeLineWidth;
         setCrimeChartWidth(crimeLineWidth);
     }
+    //  retrieve the initial size of the year container
     var yearRingWidth = $('#year-ring-stage').outerWidth( true );
+    //  set the initial width of the the Year Ring
     if(0<yearRingWidth) {
         globalYearRingWidth = yearRingWidth;
-        if($(window).width()>768){
+        if(0<globalYearRingWidth){
             globalInitYearRingWidth = yearRingWidth;
-            console.log('globalInitYearRingWidth:'+globalInitYearRingWidth);
-        }else{
+        }
+        /*else{
             //  set a limit on the size of the year Ring. Otherwise when the screen is at it's smallest the year ring is at it's largest
             globalInitYearRingWidth = 200;
-        }
-        setYearRingWidth(globalInitYearRingWidth);
+        }*/
+        setYearRingWidth(yearRingWidth);
     }
 
 
@@ -377,10 +382,23 @@ function buildGraphs(error,jsonData){
      *          -   dc.renderAll
      * @type {*}
      */
+
+        //  retrieve the initial width of the page
+        initPageSize  = $(this).width();
+        console.log('init size:'+initPageSize);
         $(window).on('resize', function(){
-            console.log('window resized');
+            /**
+             * When the page load we store the container size
+             * When the page resizes
+             * We check the container size and resize the graph
+             *
+             */
+            //  retrieve the size of the page
             width = $(this).width();
             // countryCompareContainer = $('#country-crime-compare-stage').outerWidth(true);
+            if(width!=initPageSize){
+                newPageSize = width;
+            }
             if(width >= 992 ) {
                 //  detect the size of teh chart containers and resize the charts
                 countryCrimeChartWidth = $('#country-crime-compare-stage').outerWidth( true );
@@ -403,7 +421,9 @@ function buildGraphs(error,jsonData){
                 setCountryCrimeChartWidth(countryCrimeChartWidth);
                 crimeLineWidth = $('#crime-line-stage').outerWidth( true );
                 setCrimeChartWidth(crimeLineWidth);
-                setYearRingWidth(globalInitYearRingWidth);
+                yearRingWidth = $('#year-ring-stage').outerWidth( true );
+                setYearRingWidth(yearRingWidth);
+                //setYearRingWidth(globalInitYearRingWidth);
                 dc.renderAll();
             }
         });

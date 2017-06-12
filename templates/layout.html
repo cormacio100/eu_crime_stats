@@ -15,51 +15,57 @@
 <body class="application">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-        <!--<div class="container">-->
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">Crime and Justice Statistics for the EU</a>
-            </div>
+            </button>
+            <a class="navbar-brand" href="/">Crime and Justice Statistics for the EU</a>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a tabindex="-1" href="/country"><i class="fa fa-area-chart" aria-hidden="true"></i> Stats By Country</a></li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bar-chart" aria-hidden="true"></i> Stats by Crime<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Assault</a></li>
-                            <li><a href="/burglary"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Burlary</a></li>
-                            <li><a href="/drug_offences"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Drug Offences</a></li>
-                            <li><a href="/intentional_homicide"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Intentional Homicide</a></li>
-                            <li><a href="/kidnapping"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Kidnapping</a></li>
-                            <li><a href="/rape"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Rape</a></li>
-                            <li><a href="/robbery"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Robbery</a></li>
-                            <li><a href="/sexual_assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Assault</a></li>
-                            <li><a href="/sexual_violence"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Violence</a></li>
-                            <li><a href="/theft"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Theft</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        <!--</div>-->
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a tabindex="-1" href="/country"><i class="fa fa-area-chart" aria-hidden="true"></i> Stats By Country</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bar-chart" aria-hidden="true"></i> Stats by Crime<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Assault</a></li>
+                        <li><a href="/burglary"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Burlary</a></li>
+                        <li><a href="/drug_offences"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Drug Offences</a></li>
+                        <li><a href="/intentional_homicide"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Intentional Homicide</a></li>
+                        <li><a href="/kidnapping"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Kidnapping</a></li>
+                        <li><a href="/rape"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Rape</a></li>
+                        <li><a href="/robbery"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Robbery</a></li>
+                        <li><a href="/sexual_assault"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Assault</a></li>
+                        <li><a href="/sexual_violence"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Sexual Violence</a></li>
+                        <li><a href="/theft"><span class="glyphicon glyphicon-stats glyph-nav" aria-hidden="true"></span> Theft</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" autofocus onclick="javascript:introJs().start();"><i class="fa fa-info-circle" aria-hidden="true"></i> Graph Info</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <main>
-        <!--<div class="container">-->
-            {% block content %}
-            {% endblock %}
-        <!--</div>-->
+        {% block content %}
+        {% endblock %}
     </main>
-    <!--<script src="{{ url_for('static',filename='js/graph.js') }}"></script>-->
+        <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
+        <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
+        <script src="{{ url_for('static',filename='libs/js/dc_old.js') }}"></script>
+        <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
+        <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

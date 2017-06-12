@@ -12,7 +12,7 @@
                                 Select A Country
                             </div>
                             <div class="chart-stage">
-                                <div id="select-country" data-step="1" data-intro="Select a Country to View Stats" style="font-weight: normal" data-position="right"></div>
+                                <div id="select-country" data-step="1" data-intro="Select a Country to View Statistical Graphs" style="font-weight: normal" data-position="right"></div>
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                                 Population
                             </div>
                             <div class="chart-stage">
-                                <div id="population" data-step="1" data-intro="Country Population" style="font-weight: normal" data-position="right"></div>
+                                <div id="population" data-step="2" data-intro="The Population of the Country" style="font-weight: normal" data-position="right"></div>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                                 Crime Types
                             </div>
                             <div class="chart-stage" id="crime-type-stage">
-                                 <div id="crime-comparison-chart"></div>
+                                 <div id="crime-comparison-chart" data-step="3" data-intro="Graph displays an amount comparison of different crime types for the selected country" style="font-weight: normal" data-position="left"></div>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <div class="chart-title">
                                 Police Officers
                             </div>
-                            <div class="chart-stage" id="police-comparison-stage">
+                            <div class="chart-stage" id="police-comparison-stage" data-step="4" data-intro="Graph displays a comparison between Male and Female Police Officer numbers" style="font-weight: normal" data-position="left">
                                 <div class="col-md-6" id="police-officers-gender-comparison-chart"></div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             <div class="chart-title">
                                 Prison Personnel
                             </div>
-                            <div class="chart-stage" id="prison-pers-comparison-stage">
+                            <div class="chart-stage" id="prison-pers-comparison-stage" data-step="5" data-intro="Graph displays a comparison between Male and Female Prison Personnel numbers" style="font-weight: normal" data-position="left">
                                 <div class="col-md-4" id="prison-pers-gender-comparison-chart"></div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                             <div class="chart-title">
                                 Prisoner Population
                             </div>
-                            <div class="chart-stage">
+                            <div class="chart-stage" data-step="6" data-intro="Table describing the categories of Prisoners" style="font-weight: normal" data-position="left">
                                 <table id="prison-population-table">
                                     <thead>
                                         <tr class="header">
@@ -141,14 +141,6 @@
     </div>
 {% endblock %}
 {% block scripts %}
-    <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/dc_old.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
     <script src="{{ url_for('static',filename='js/graph2.js') }}"></script>
     {{ script }}
 {% endblock %}

@@ -3,28 +3,28 @@
 {% block content %}
     <div id="outer" class="container-fluid">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-3 hidden-sm hidden-xs">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-md-12 ">
                         <div class="chart-wrapper">
                             <div class="chart-title">
                                 Year
                             </div>
-                            <div class="chart-stage" id="year-ring-stage">
+                            <div class="chart-stage" id="year-ring-stage" data-step="1" data-intro="Filter data by Year" style="font-weight: normal" data-position="right">
                                 <div id="chart-ring-year" data-step="1" data-intro="Select Year" style="font-weight: normal" data-position="right"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-12 col-md-9">
                 <div class="row init-hide">
                     <div class="col-sm-12">
                         <div class="chart-wrapper">
                             <div class="chart-title">
                                 {{ heading.byCountry }}
                             </div>
-                            <div class="chart-stage" id="crime-line-stage">
+                            <div class="chart-stage" id="crime-line-stage" data-step="2" data-intro="Line Graph showing the amount of the crime by country" style="font-weight: normal" data-position="left">
                                 <div id="carousel-individual-country" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
                                     <ol class="carousel-indicators">
@@ -98,7 +98,7 @@
                                 {{ heading.combo }}
                             </div>
                             <div class="chart-stage" id="country-crime-compare-stage">
-                                <div class="colouredChart" id="chart-line-compare-countries"></div>
+                                <div class="colouredChart" id="chart-line-compare-countries" data-step="3" data-intro="Compare crime type by country" style="font-weight: normal" data-position="left"></div>
                             </div>
                         </div>
                     </div>
@@ -113,14 +113,6 @@
 
 {% endblock %}
 {% block scripts %}
-    <script src="{{ url_for('static',filename='libs/js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/crossfilter.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/d3.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/dc.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/queue.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/keen.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='libs/js/intro.js') }}"></script>
     <script src="{{ url_for('static',filename='js/graph.js') }}"></script>
     {{ script }}
 {% endblock %}

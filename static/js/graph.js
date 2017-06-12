@@ -40,7 +40,13 @@ var svgHeight = 200;
 var globalCountryCrimeChartWidth = 0;
 var globalCrimeChartWidth = 0;
 var globalYearRingWidth = 0;
-var globalInitYearRingWidth = 0
+var globalInitYearRingWidth = 0;
+var initPageSize = 0;
+var newPageSize = 0;
+//var s992YearWidth = 0;
+//var sGtr768YearWidth = 0;
+//var sLss768YearWith = 0;
+
 
 //  RETRIEVE DATA FROM API
 queue()

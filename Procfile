@@ -1,0 +1,1 @@
+web: gunicorn eu_crime_stats:app

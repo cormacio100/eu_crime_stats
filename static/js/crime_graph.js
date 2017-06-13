@@ -54,6 +54,7 @@ function setYearRingWidth(width){
         width=width-50;
     }
     yearPieChart.width(width);
+    yearPieChart.height(width);
 }
 
 function buildGraphs(error,jsonData){

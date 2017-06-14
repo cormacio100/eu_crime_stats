@@ -10,10 +10,18 @@ app = Flask(__name__)
 '''
 LOCAL DB SETTINGS
 '''
+'''
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DBS_NAME = 'projectModule2'
 COLLECTION_NAME = 'eu_crime_stats'
+'''
+
+'''
+HEROKU DB SETTINGS
+'''
+MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://heroku_0h4msgdv:9eud76jj8vm9eatsd0btcrnl2i@ds123752.mlab.com:23752/heroku_0h4msgdv')
+DBS_NAME = os.getenv('MONGO_DB_NAME', 'heroku_0h4msgdv')
 
 
 @app.route('/')
@@ -157,12 +165,12 @@ def charts_data():
 
     #   Open a connection to MongoDB
     #   the "with" statement auto-closes the connection when done
-    with MongoClient(MONGODB_HOST,MONGODB_PORT) as conn:
+    with MongoClient(MONGO_URI) as conn:
         #   Define the collection to access
         collection = conn[DBS_NAME][COLLECTION_NAME]
         #   Retrieve a result set that includes the properties
         #   defined in FIELDS
-        eu_crime_stats = collection.find(projection=FIELDS,limit=50000)
+        eu_crime_stats = collection.find(projection=FIELDS,limit=20000)
         #   convert the data to a list in a JSON object
         #   and RETURN the JSONS
         return json.dumps(list(eu_crime_stats))

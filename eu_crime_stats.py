@@ -10,18 +10,19 @@ app = Flask(__name__)
 '''
 LOCAL DB SETTINGS
 '''
-'''
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = 'projectModule2'
-COLLECTION_NAME = 'eu_crime_stats'
-'''
+#   MONGODB_HOST = 'localhost'
+#   MONGODB_PORT = 27017
+#   DBS_NAME = 'projectModule2'
+#   COLLECTION_NAME = 'eu_crime_stats'
+
 
 '''
 HEROKU DB SETTINGS
 '''
-MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://heroku_0h4msgdv:9eud76jj8vm9eatsd0btcrnl2i@ds123752.mlab.com:23752/heroku_0h4msgdv')
+#   MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://heroku_0h4msgdv:9eud76jj8vm9eatsd0btcrnl2i@ds123752.mlab.com:23752/heroku_0h4msgdv')
+MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://eu_crime_stats_user:eu_crime_stats_user@ds123752.mlab.com:23752/heroku_0h4msgdv')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'heroku_0h4msgdv')
+COLLECTION_NAME = 'heroku_eu_crime_stats'
 
 
 @app.route('/')
